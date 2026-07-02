@@ -1,13 +1,486 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Villa Joka – Admin</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Villa Joka · Admin</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#1A6575;--teal2:#134E5C;--teal-light:#E8F4F5;
+  --terra:#C26038;--cream:#FAFAF5;--dark:#192830;
+  --text:#2A3840;--muted:#7A8A90;--border:#DDD5C4;
+  --r:10px;--shadow:0 4px 20px rgba(0,0,0,.10);
+}
+html{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased}
+body{min-height:100vh}
+a{color:var(--teal)}
+button{font-family:inherit;cursor:pointer}
+
+/* ── LOGIN ── */
+#login{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+.login-box{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:2.5rem 2rem;max-width:420px;width:100%}
+.login-logo{font-size:1.6rem;font-weight:700;color:var(--teal);margin-bottom:.3rem}
+.login-sub{color:var(--muted);font-size:.9rem;margin-bottom:2rem}
+.login-box label{display:block;font-size:.82rem;font-weight:600;color:var(--teal);margin-bottom:.35rem;letter-spacing:.04em;text-transform:uppercase}
+.login-box input{width:100%;padding:.75rem 1rem;border:2px solid var(--border);border-radius:var(--r);font-size:.95rem;font-family:inherit;outline:none;transition:border .2s}
+.login-box input:focus{border-color:var(--teal)}
+.login-hint{font-size:.78rem;color:var(--muted);margin-top:.5rem;margin-bottom:1.5rem}
+.login-hint a{color:var(--teal)}
+.btn-login{width:100%;padding:.85rem;background:var(--teal);color:#fff;border:none;border-radius:var(--r);font-size:1rem;font-weight:600;transition:background .2s}
+.btn-login:hover{background:var(--teal2)}
+.login-err{margin-top:1rem;padding:.7rem 1rem;background:#fde8e8;color:#c0392b;border-radius:var(--r);font-size:.85rem;display:none}
+
+/* ── APP ── */
+#app{display:none;min-height:100vh}
+
+/* Header */
+.hdr{background:var(--teal);color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.hdr-logo{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+.hdr-logo span{opacity:.7;font-weight:400;font-size:.85rem;margin-left:.5rem}
+.hdr-right{display:flex;align-items:center;gap:.75rem}
+.btn-save{background:#fff;color:var(--teal);border:none;border-radius:8px;padding:.55rem 1.25rem;font-weight:700;font-size:.9rem;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.btn-save:hover{background:var(--teal-light)}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+.btn-logout{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:.5rem .9rem;font-size:.82rem}
+.btn-logout:hover{color:#fff;border-color:#fff}
+
+/* Toast */
+#toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--dark);color:#fff;padding:.75rem 1.5rem;border-radius:50px;font-size:.9rem;font-weight:500;transition:transform .3s;z-index:999;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0)}
+#toast.err{background:#c0392b}
+
+/* Main */
+.main{max-width:780px;margin:0 auto;padding:1.5rem 1rem 4rem}
+
+/* Section cards */
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:1.25rem;overflow:hidden}
+.card-head{padding:1rem 1.25rem;background:var(--teal-light);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem;cursor:pointer;user-select:none}
+.card-head h2{font-size:1rem;font-weight:700;color:var(--teal);flex:1}
+.card-icon{font-size:1.2rem}
+.card-arrow{color:var(--teal);font-size:.8rem;transition:transform .25s}
+.card.open .card-arrow{transform:rotate(180deg)}
+.card-body{padding:1.25rem;display:none}
+.card.open .card-body{display:block}
+
+/* Fields */
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.78rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.field input,.field select{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit;outline:none;transition:border .2s;background:#fff}
+.field input:focus{border-color:var(--teal)}
+.field-hint{font-size:.75rem;color:var(--muted);margin-top:.25rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media(max-width:480px){.field-row{grid-template-columns:1fr}}
+
+/* Price table editor */
+.price-rows{display:flex;flex-direction:column;gap:.6rem;margin-bottom:.9rem}
+.price-row{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:.75rem;display:grid;grid-template-columns:1fr 1fr 1fr 80px 36px;gap:.5rem;align-items:center}
+@media(max-width:560px){.price-row{grid-template-columns:1fr 1fr;gap:.4rem}.price-row-price{grid-column:1}.price-row-hi{grid-column:2;justify-self:start}.price-row-del{grid-column:2;justify-self:end}}
+.price-row input[type="text"]{padding:.5rem .65rem;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-family:inherit;outline:none;width:100%;background:#fff}
+.price-row input[type="text"]:focus{border-color:var(--teal)}
+.price-row-hi{display:flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.price-row-hi input{width:16px;height:16px;accent-color:var(--terra)}
+.price-row-del{background:none;border:none;color:#ccc;font-size:1.2rem;cursor:pointer;transition:color .2s;padding:0;line-height:1}
+.price-row-del:hover{color:#c0392b}
+.price-row-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.15rem}
+
+.btn-add{background:none;border:2px dashed var(--border);border-radius:8px;padding:.6rem;width:100%;color:var(--muted);font-size:.88rem;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.btn-add:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light)}
+
+/* Gallery */
+.gallery-rows{display:flex;flex-direction:column;gap:.6rem;margin-bottom:.9rem}
+.gallery-row{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:.65rem;display:grid;grid-template-columns:48px 1fr 1fr 36px;gap:.5rem;align-items:center}
+@media(max-width:560px){.gallery-row{grid-template-columns:40px 1fr 36px;grid-template-rows:auto auto}}
+.gallery-thumb{width:44px;height:36px;object-fit:cover;border-radius:5px;border:1px solid var(--border)}
+.gallery-thumb-err{width:44px;height:36px;background:var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--muted)}
+.gallery-row input{padding:.45rem .65rem;border:1.5px solid var(--border);border-radius:6px;font-size:.8rem;font-family:inherit;outline:none;width:100%;background:#fff}
+.gallery-row input:focus{border-color:var(--teal)}
+.gallery-row-del{background:none;border:none;color:#ccc;font-size:1.1rem;cursor:pointer;transition:color .2s;padding:0}
+.gallery-row-del:hover{color:#c0392b}
+.gallery-move{display:flex;flex-direction:column;gap:2px}
+.gallery-move button{background:none;border:1px solid var(--border);border-radius:4px;width:22px;height:18px;font-size:.65rem;cursor:pointer;color:var(--muted);line-height:1;transition:all .2s}
+.gallery-move button:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+
+/* Status bar */
+.status{text-align:center;padding:.5rem;font-size:.8rem;color:var(--muted)}
+.status.loading{color:var(--teal)}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <div class="login-logo">🏡 Villa Joka</div>
+    <div class="login-sub">Admin · Inhalte bearbeiten</div>
+    <label>GitHub Personal Access Token</label>
+    <input type="password" id="pat-input" placeholder="ghp_xxxxxxxxxxxxxxxx" autocomplete="off">
+    <div class="login-hint">
+      Einmalig eingeben — wird nur auf diesem Gerät gespeichert.<br>
+      Token anlegen: <a href="https://github.com/settings/tokens/new?scopes=repo&description=VillaJokaAdmin" target="_blank">github.com/settings/tokens</a> → Scope: <strong>repo</strong>
+    </div>
+    <button class="btn-login" onclick="doLogin()">Einloggen →</button>
+    <div class="login-err" id="login-err">Token ungültig. Bitte prüfen.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header class="hdr">
+    <div class="hdr-logo">🏡 Villa Joka <span>Admin</span></div>
+    <div class="hdr-right">
+      <button class="btn-save" id="btn-save" onclick="saveAll()">💾 Speichern & Live</button>
+      <button class="btn-logout" onclick="doLogout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="status" id="status">Lädt Inhalte…</div>
+
+    <!-- KONTAKT -->
+    <div class="card open" id="card-contact">
+      <div class="card-head" onclick="toggleCard('contact')">
+        <span class="card-icon">📞</span>
+        <h2>Kontakt & Links</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="field-row">
+          <div class="field">
+            <label>WhatsApp-Nummer</label>
+            <input type="text" id="c-whatsapp" placeholder="436505428229">
+            <div class="field-hint">Nur Ziffern, kein + am Anfang</div>
+          </div>
+          <div class="field">
+            <label>E-Mail</label>
+            <input type="text" id="c-email" placeholder="info@villa-joka.eu">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Telefon</label>
+            <input type="text" id="c-phone" placeholder="+436505428229">
+          </div>
+          <div class="field">
+            <label>Formspree Form-ID</label>
+            <input type="text" id="c-formspree" placeholder="xpzvwkgr">
+            <div class="field-hint">Von formspree.io → dein Formular</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREISE VILLA -->
+    <div class="card open" id="card-pvilla">
+      <div class="card-head" onclick="toggleCard('pvilla')">
+        <span class="card-icon">🏠</span>
+        <h2>Preise Villa – Gesamtes Haus</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="price-rows" id="rows-villa"></div>
+        <button class="btn-add" onclick="addPriceRow('villa')">+ Preiszeile hinzufügen</button>
+        <div class="field" style="margin-top:1rem">
+          <label>Hinweistext Deutsch</label>
+          <input type="text" id="pn-villa-de">
+        </div>
+        <div class="field">
+          <label>Hinweistext Englisch</label>
+          <input type="text" id="pn-villa-en">
+        </div>
+        <div class="field">
+          <label>Hinweistext Ukrainisch</label>
+          <input type="text" id="pn-villa-uk">
+        </div>
+      </div>
+    </div>
+
+    <!-- PREISE ELW -->
+    <div class="card" id="card-papt">
+      <div class="card-head" onclick="toggleCard('papt')">
+        <span class="card-icon">🏡</span>
+        <h2>Preise Einliegerwohnung</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="price-rows" id="rows-apt"></div>
+        <button class="btn-add" onclick="addPriceRow('apt')">+ Preiszeile hinzufügen</button>
+        <div class="field" style="margin-top:1rem">
+          <label>Hinweistext Deutsch</label>
+          <input type="text" id="pn-apt-de">
+        </div>
+        <div class="field">
+          <label>Hinweistext Englisch</label>
+          <input type="text" id="pn-apt-en">
+        </div>
+        <div class="field">
+          <label>Hinweistext Ukrainisch</label>
+          <input type="text" id="pn-apt-uk">
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERIE -->
+    <div class="card" id="card-gallery">
+      <div class="card-head" onclick="toggleCard('gallery')">
+        <span class="card-icon">🖼</span>
+        <h2>Galerie & Fotos</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.9rem">
+          Beschriftungen bearbeiten & Reihenfolge ändern. Neue Fotos direkt in
+          <a href="https://github.com/stefanfersterer/villa-joka/upload/main/images" target="_blank">GitHub → images/</a> hochladen, dann hier eintragen.
+        </p>
+        <div class="gallery-rows" id="rows-gallery"></div>
+        <button class="btn-add" onclick="addGalleryRow()">+ Foto hinzufügen</button>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<div id="toast"></div>
+
+<script>
+const REPO = 'stefanfersterer/villa-joka';
+const FILE = 'content.json';
+let token = '', fileSha = '', data = {};
+
+/* ── AUTH ── */
+function doLogin() {
+  const t = document.getElementById('pat-input').value.trim();
+  if(!t){ return; }
+  document.querySelector('.btn-login').textContent = 'Verbinde…';
+  document.getElementById('login-err').style.display = 'none';
+  fetch('https://api.github.com/repos/' + REPO + '/contents/' + FILE, {
+    headers: { Authorization: 'token ' + t }
+  }).then(function(r){
+    if(!r.ok) throw new Error('auth');
+    return r.json();
+  }).then(function(d){
+    token = t;
+    localStorage.setItem('vj_pat', t);
+    fileSha = d.sha;
+    data = JSON.parse(atob(d.content.replace(/\n/g,'')));
+    showApp();
+  }).catch(function(){
+    document.getElementById('login-err').style.display = 'block';
+    document.querySelector('.btn-login').textContent = 'Einloggen →';
+  });
+}
+
+function doLogout() {
+  localStorage.removeItem('vj_pat');
+  token = ''; fileSha = ''; data = {};
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login').style.display = 'flex';
+}
+
+/* ── INIT ── */
+window.addEventListener('load', function(){
+  const saved = localStorage.getItem('vj_pat');
+  if(saved){
+    document.getElementById('pat-input').value = saved;
+    doLogin();
+  }
+});
+document.getElementById('pat-input').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') doLogin();
+});
+
+function showApp() {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  renderAll();
+  document.getElementById('status').style.display = 'none';
+}
+
+/* ── RENDER ── */
+function renderAll() {
+  var c = data.contact || {};
+  document.getElementById('c-whatsapp').value  = c.whatsapp  || '';
+  document.getElementById('c-email').value     = c.email     || '';
+  document.getElementById('c-phone').value     = c.phone     || '';
+  document.getElementById('c-formspree').value = c.formspree_id || '';
+
+  renderPriceRows('villa', data.prices_villa || []);
+  renderPriceRows('apt',   data.prices_apt   || []);
+  var pnv = data.prices_villa_notes || {};
+  document.getElementById('pn-villa-de').value = stripTags(pnv.de || '');
+  document.getElementById('pn-villa-en').value = stripTags(pnv.en || '');
+  document.getElementById('pn-villa-uk').value = stripTags(pnv.uk || '');
+  var pna = data.prices_apt_notes || {};
+  document.getElementById('pn-apt-de').value = stripTags(pna.de || '');
+  document.getElementById('pn-apt-en').value = stripTags(pna.en || '');
+  document.getElementById('pn-apt-uk').value = stripTags(pna.uk || '');
+
+  renderGalleryRows(data.gallery || []);
+}
+
+function stripTags(s){ return s.replace(/<[^>]+>/g,''); }
+function addStrong(s){ return s ? '<strong>' + s.split(':')[0] + ':</strong>' + (s.includes(':') ? s.slice(s.indexOf(':')+1) : '') : s; }
+
+/* Price rows */
+function renderPriceRows(type, rows) {
+  var el = document.getElementById('rows-' + type);
+  el.innerHTML = rows.map(function(r, i){ return priceRowHTML(type, r, i); }).join('');
+}
+function priceRowHTML(type, r, i) {
+  return '<div class="price-row" id="pr-' + type + '-' + i + '">'
+    + '<div><div class="price-row-label">Zeitraum DE</div><input type="text" value="' + esc(r.period_de) + '" data-f="period_de" data-type="' + type + '" data-i="' + i + '"></div>'
+    + '<div><div class="price-row-label">Zeitraum EN</div><input type="text" value="' + esc(r.period_en) + '" data-f="period_en" data-type="' + type + '" data-i="' + i + '"></div>'
+    + '<div><div class="price-row-label">Zeitraum UK</div><input type="text" value="' + esc(r.period_uk) + '" data-f="period_uk" data-type="' + type + '" data-i="' + i + '"></div>'
+    + '<div><div class="price-row-label">Preis/Nacht</div><input type="text" value="' + esc(r.price) + '" data-f="price" data-type="' + type + '" data-i="' + i + '" style="font-weight:700"></div>'
+    + '<div class="price-row-hi"><input type="checkbox"' + (r.highlight ? ' checked' : '') + ' data-f="highlight" data-type="' + type + '" data-i="' + i + '"><span>Hoch&shy;saison</span></div>'
+    + '<button class="price-row-del" onclick="delPriceRow(\'' + type + '\',' + i + ')" title="Löschen">✕</button>'
+    + '</div>';
+}
+function addPriceRow(type) {
+  var arr = type === 'villa' ? data.prices_villa : data.prices_apt;
+  arr.push({period_de:'',period_en:'',period_uk:'',price:'€ ',highlight:false});
+  renderPriceRows(type, arr);
+}
+function delPriceRow(type, i) {
+  var arr = type === 'villa' ? data.prices_villa : data.prices_apt;
+  arr.splice(i, 1);
+  renderPriceRows(type, arr);
+}
+
+/* Gallery rows */
+function renderGalleryRows(rows) {
+  var el = document.getElementById('rows-gallery');
+  el.innerHTML = rows.map(function(r, i){ return galleryRowHTML(r, i, rows.length); }).join('');
+}
+function galleryRowHTML(r, i, total) {
+  var imgSrc = r.src ? ('https://raw.githubusercontent.com/' + REPO + '/main/' + r.src) : '';
+  var thumbHTML = imgSrc
+    ? '<img class="gallery-thumb" src="' + imgSrc + '" onerror="this.style.display=\'none\'">'
+    : '<div class="gallery-thumb-err">?</div>';
+  return '<div class="gallery-row">'
+    + thumbHTML
+    + '<div>'
+        + '<div class="price-row-label" style="margin-bottom:.2rem">Dateiname (z.B. images/pool.jpg)</div>'
+        + '<input type="text" value="' + esc(r.src) + '" data-f="src" data-gi="' + i + '" style="margin-bottom:.3rem">'
+        + '<input type="text" value="' + esc(r.label_de) + '" data-f="label_de" data-gi="' + i + '" placeholder="Label Deutsch">'
+      + '</div>'
+    + '<div>'
+        + '<input type="text" value="' + esc(r.label_en) + '" data-f="label_en" data-gi="' + i + '" placeholder="Label Englisch" style="margin-bottom:.3rem">'
+        + '<input type="text" value="' + esc(r.label_uk) + '" data-f="label_uk" data-gi="' + i + '" placeholder="Label Ukrainisch">'
+      + '</div>'
+    + '<div style="display:flex;flex-direction:column;gap:4px;align-items:center">'
+        + '<button onclick="moveGallery(' + i + ',-1)" style="background:none;border:1px solid var(--border);border-radius:4px;width:26px;height:22px;cursor:pointer;color:var(--muted);font-size:.7rem" title="Nach oben"' + (i===0?' disabled':'') + '>▲</button>'
+        + '<button onclick="moveGallery(' + i + ',1)"  style="background:none;border:1px solid var(--border);border-radius:4px;width:26px;height:22px;cursor:pointer;color:var(--muted);font-size:.7rem" title="Nach unten"' + (i===total-1?' disabled':'') + '>▼</button>'
+        + '<button class="gallery-row-del" onclick="delGalleryRow(' + i + ')" title="Löschen">✕</button>'
+      + '</div>'
+    + '</div>';
+}
+function addGalleryRow() {
+  data.gallery.push({src:'images/',alt_de:'',label_de:'',label_en:'',label_uk:''});
+  renderGalleryRows(data.gallery);
+}
+function delGalleryRow(i) {
+  data.gallery.splice(i, 1);
+  renderGalleryRows(data.gallery);
+}
+function moveGallery(i, dir) {
+  var arr = data.gallery;
+  var j = i + dir;
+  if(j < 0 || j >= arr.length) return;
+  var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  renderGalleryRows(arr);
+}
+
+/* ── COLLECT ── */
+function collectData() {
+  data.contact = {
+    whatsapp:     document.getElementById('c-whatsapp').value.trim(),
+    email:        document.getElementById('c-email').value.trim(),
+    phone:        document.getElementById('c-phone').value.trim(),
+    formspree_id: document.getElementById('c-formspree').value.trim()
+  };
+
+  // Price rows from DOM
+  function collectPriceRows(type) {
+    var rows = [];
+    document.querySelectorAll('[data-type="' + type + '"]').forEach(function(el){
+      var i = parseInt(el.dataset.i);
+      if(!rows[i]) rows[i] = {};
+      if(el.type === 'checkbox') rows[i][el.dataset.f] = el.checked;
+      else rows[i][el.dataset.f] = el.value;
+    });
+    return rows.filter(Boolean);
+  }
+  data.prices_villa = collectPriceRows('villa');
+  data.prices_apt   = collectPriceRows('apt');
+
+  function wrapNote(val, key) {
+    var v = document.getElementById('pn-' + key).value.trim();
+    return v ? '<strong>' + v.split(':')[0] + ':</strong>' + (v.includes(':') ? v.slice(v.indexOf(':')+1) : '') : '';
+  }
+  data.prices_villa_notes = {
+    de: document.getElementById('pn-villa-de').value.trim(),
+    en: document.getElementById('pn-villa-en').value.trim(),
+    uk: document.getElementById('pn-villa-uk').value.trim()
+  };
+  data.prices_apt_notes = {
+    de: document.getElementById('pn-apt-de').value.trim(),
+    en: document.getElementById('pn-apt-en').value.trim(),
+    uk: document.getElementById('pn-apt-uk').value.trim()
+  };
+
+  // Gallery from DOM
+  data.gallery.forEach(function(row, i){
+    ['src','label_de','label_en','label_uk'].forEach(function(f){
+      var el = document.querySelector('[data-f="' + f + '"][data-gi="' + i + '"]');
+      if(el) row[f] = el.value;
+    });
+    if(!row.alt_de) row.alt_de = row.label_de || '';
+  });
+}
+
+/* ── SAVE ── */
+function saveAll() {
+  collectData();
+  var btn = document.getElementById('btn-save');
+  btn.disabled = true;
+  btn.textContent = '⏳ Speichert…';
+
+  var content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+  fetch('https://api.github.com/repos/' + REPO + '/contents/' + FILE, {
+    method: 'PUT',
+    headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: 'Admin: Inhalte aktualisiert', content: content, sha: fileSha })
+  }).then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.content && d.content.sha) {
+        fileSha = d.content.sha;
+        toast('✅ Gespeichert! Live in ~30 Sek.', false);
+      } else {
+        toast('⚠️ Fehler beim Speichern', true);
+      }
+      btn.disabled = false;
+      btn.textContent = '💾 Speichern & Live';
+    }).catch(function(){
+      toast('⚠️ Netzwerkfehler', true);
+      btn.disabled = false;
+      btn.textContent = '💾 Speichern & Live';
+    });
+}
+
+/* ── UI HELPERS ── */
+function toggleCard(id) {
+  document.getElementById('card-' + id).classList.toggle('open');
+}
+function toast(msg, err) {
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = err ? 'show err' : 'show';
+  setTimeout(function(){ el.className = ''; }, 3500);
+}
+function esc(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;') : ''; }
+</script>
 </body>
 </html>
