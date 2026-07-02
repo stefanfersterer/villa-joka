@@ -1,0 +1,52 @@
+{
+  "contact": {
+    "whatsapp": "436505428229",
+    "formspree_id": "YOUR_FORM_ID",
+    "email": "info@villa-joka.eu",
+    "phone": "+436505428229"
+  },
+  "gallery": [
+    {"src": "images/villa_aussen.jpg",  "alt_de": "Villa Joka Außenansicht mit privatem Pool", "label_de": "Pool & Außenanlage",   "label_en": "Pool & Exterior",       "label_uk": "Басейн і подвір'я"},
+    {"src": "images/image00112.jpeg",   "alt_de": "Moderner Wohn- und Essbereich",              "label_de": "Wohn- & Essbereich",    "label_en": "Living & Dining",        "label_uk": "Їдальня та вітальня"},
+    {"src": "images/image00101.jpeg",   "alt_de": "Außenbereich mit Pool und Garten",           "label_de": "Garten & Terrasse",     "label_en": "Garden & Terrace",       "label_uk": "Сад і тераса"},
+    {"src": "images/dachterrasse.jpg",  "alt_de": "Weitläufige Dachterrasse",                   "label_de": "Dachterrasse",          "label_en": "Rooftop Terrace",        "label_uk": "Тераса на даху"},
+    {"src": "images/pool.jpg",          "alt_de": "Privater Salzwasserpool",                    "label_de": "Privater Pool",         "label_en": "Private Pool",           "label_uk": "Приватний басейн"},
+    {"src": "images/image00037.jpeg",   "alt_de": "Lounge-Terrasse mit Sitzbereich",            "label_de": "Lounge-Terrasse",       "label_en": "Lounge Terrace",         "label_uk": "Тераса-лаунж"},
+    {"src": "images/grill.jpg",         "alt_de": "Außenküche mit Grill",                       "label_de": "Außenküche & Grill",    "label_en": "Outdoor Kitchen & BBQ",  "label_uk": "Зовнішня кухня"},
+    {"src": "images/image00179.jpeg",   "alt_de": "Dachterrasse mit Meerblick",                 "label_de": "Aussicht vom Dach",     "label_en": "Rooftop View",           "label_uk": "Вид з даху"},
+    {"src": "images/banjole_bucht.jpg", "alt_de": "Bucht von Banjole",                          "label_de": "Banjole Bucht",         "label_en": "Banjole Bay",            "label_uk": "Затока Банйоле"},
+    {"src": "images/image00127.jpeg",   "alt_de": "Pool mit Liegestühlen und Villa",            "label_de": "Pool & Liegestühle",    "label_en": "Pool & Sunbeds",         "label_uk": "Басейн з лежаками"},
+    {"src": "images/image00058.jpeg",   "alt_de": "Hafenblick von der Dachterrasse",            "label_de": "Hafenblick",            "label_en": "Harbour View",           "label_uk": "Вид на гавань"},
+    {"src": "images/image00076.jpeg",   "alt_de": "Modernes Treppenhaus mit Marmor",            "label_de": "Innenbereich",          "label_en": "Interior",               "label_uk": "Інтер'єр"},
+    {"src": "images/image00169.jpeg",   "alt_de": "Villa Joka Eingang mit Schriftzug",          "label_de": "Eingang Villa Joka",    "label_en": "Villa Joka Entrance",    "label_uk": "Вхід у Віллу Йока"},
+    {"src": "images/image00102.jpeg",   "alt_de": "Gemauerte Grillstation",                     "label_de": "Grillstation",          "label_en": "BBQ Station",            "label_uk": "Барбекю"},
+    {"src": "images/image00180.jpeg",   "alt_de": "Weite Dachterrasse blauer Himmel",           "label_de": "Weite Dachterrasse",    "label_en": "Spacious Rooftop",       "label_uk": "Простора тераса"},
+    {"src": "images/image00163.jpeg",   "alt_de": "Villa Joka Panorama Garten und Pool",        "label_de": "Villa Joka & Garten",   "label_en": "Villa Joka & Garden",    "label_uk": "Вілла Йока та сад"}
+  ],
+  "prices_villa": [
+    {"period_de": "November – März",  "period_en": "November – March",    "period_uk": "Листопад – Березень",    "price": "€ 200", "highlight": false},
+    {"period_de": "April",             "period_en": "April",               "period_uk": "Квітень",                "price": "€ 250", "highlight": false},
+    {"period_de": "Mai & September",   "period_en": "May & September",     "period_uk": "Травень & Вересень",     "price": "€ 300", "highlight": false},
+    {"period_de": "Juni",              "period_en": "June",                "period_uk": "Червень",                "price": "€ 350", "highlight": false},
+    {"period_de": "Juli & August",     "period_en": "July & August",       "period_uk": "Липень & Серпень",       "price": "€ 520", "highlight": true},
+    {"period_de": "Oktober",           "period_en": "October",             "period_uk": "Жовтень",                "price": "€ 250", "highlight": false}
+  ],
+  "prices_villa_notes": {
+    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 350 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
+    "en": "<strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 &middot; Tourism tax € 3/day/person &middot; Security deposit € 350 (returned on site) &middot; Minimum stay 7 nights",
+    "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 350 (повертається) &middot; Мінімальний строк 7 ночей"
+  },
+  "prices_apt": [
+    {"period_de": "Nov, Jan, Feb, März", "period_en": "Nov, Jan, Feb, March", "period_uk": "лист., січ., лют., бер.", "price": "€ 50",  "highlight": false},
+    {"period_de": "Dezember & April",    "period_en": "December & April",     "period_uk": "Грудень & Квітень",      "price": "€ 60",  "highlight": false},
+    {"period_de": "Mai & Oktober",       "period_en": "May & October",        "period_uk": "Травень & Жовтень",      "price": "€ 70",  "highlight": false},
+    {"period_de": "September",           "period_en": "September",            "period_uk": "Вересень",               "price": "€ 80",  "highlight": false},
+    {"period_de": "Juni",                "period_en": "June",                 "period_uk": "Червень",                "price": "€ 90",  "highlight": false},
+    {"period_de": "Juli & August",       "period_en": "July & August",        "period_uk": "Липень & Серпень",       "price": "€ 110", "highlight": true}
+  ],
+  "prices_apt_notes": {
+    "de": "<strong>Zusätzlich:</strong> Endreinigung € 100 + Energiepauschale € 25 &middot; Kurtaxe € 3/Tag/Person &middot; Mindestaufenthalt 7 Nächte",
+    "en": "<strong>Additional:</strong> End cleaning € 100 + energy flat rate € 25 &middot; Tourism tax € 3/day/person &middot; Min. 7 nights",
+    "uk": "<strong>Додатково:</strong> Уборка € 100 + енергія € 25 &middot; Збір € 3/день &middot; Мінім. 7 ночей"
+  }
+}
