@@ -1259,6 +1259,7 @@ setTimeout(function() {
             + '<td class="' + hi.trim() + '">' + r.price + '</td>'
             + '</tr>';
         }).join('');
+      }
       var pts = document.querySelectorAll('#preise .price-table');
       if(d.prices_villa && pts[0]) pts[0].tBodies[0].innerHTML = buildRows(d.prices_villa);
       if(d.prices_apt   && pts[1]) pts[1].tBodies[0].innerHTML = buildRows(d.prices_apt);
