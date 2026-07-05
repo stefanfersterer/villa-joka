@@ -5,6 +5,57 @@
     "email": "info@villa-joka.eu",
     "phone": "+43 650 542 82 29"
   },
+  "hero": {
+    "sub_de": "Urlaub, wie wir ihn selbst am liebsten mögen.",
+    "sub_en": "Holidays the way we love them ourselves.",
+    "sub_uk": "Відпочинок, який залишається у серці."
+  },
+  "about": {
+    "heading_de": "Unser Zuhause &#8211; <em>Ihr Urlaub</em>",
+    "heading_en": "Our Home &#8211; <em>Your Holiday</em>",
+    "heading_uk": "Наш дім &#8212; <em>ваш відпочинок</em>",
+    "body_de": "Villa Joka ist unser eigenes Zuhause &#8211; gebaut und mit viel Liebe eingerichtet. Was wir uns selbst f&#252;r den Urlaub wünschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der Tür und Ruhe, die man heute nicht mehr überall findet.",
+    "body_en": "Villa Joka is our own home &#8211; built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
+    "body_uk": "Вілла Йока &#8212; це наш власний дім, збудований і облаштований з любов'ю. Тут ми втілили все, що самі хотіли б від відпустки: приватний басейн, запах моря біля порога і спокій, якого сьогодні рідко де знайдеш."
+  },
+  "reviews": [
+    {
+      "name": "Familie Müller",
+      "origin": "München, Deutschland",
+      "stars": 5,
+      "platform": "Google",
+      "date_de": "August 2024",
+      "date_en": "August 2024",
+      "date_uk": "Серпень 2024",
+      "text_de": "Ein absolutes Traumhaus! Der private Pool, die riesige Dachterrasse mit Meerblick und die liebevoll eingerichteten Zimmer haben uns begeistert. Familie Fersterer ist unglaublich herzlich und hilfsbereit. Wir kommen definitiv wieder!",
+      "text_en": "An absolute dream house! The private pool, the huge rooftop terrace with sea views and the lovingly decorated rooms delighted us. The Fersterer family is incredibly warm and helpful. We will definitely come back!",
+      "text_uk": "Справжній будинок мрії! Приватний басейн, велика тераса на даху з видом на море та затишні кімнати привели нас у захват. Родина Ферстерер дуже привітна та готова допомогти. Ми обов'язково повернемося!"
+    },
+    {
+      "name": "Markus & Julia",
+      "origin": "Wien, Österreich",
+      "stars": 5,
+      "platform": "Google",
+      "date_de": "Juli 2024",
+      "date_en": "July 2024",
+      "date_uk": "Липень 2024",
+      "text_de": "Wir waren zu acht und hatten genug Platz für alle. Die Küche ist top ausgestattet, der Pool perfekt und Banjole selbst ein wunderschönes kleines Dorf. Perfekter Urlaub für Familien!",
+      "text_en": "We were eight people and had plenty of space for everyone. The kitchen is perfectly equipped, the pool is wonderful and Banjole itself is a beautiful little village. Perfect holiday for families!",
+      "text_uk": "Нас було восьмеро, і місця вистачило всім. Кухня чудово оснащена, басейн чудовний, а Банйоле — мальовниче маленьке село. Ідеальна відпустка для сімей!"
+    },
+    {
+      "name": "Petra S.",
+      "origin": "Hamburg, Deutschland",
+      "stars": 5,
+      "platform": "Google",
+      "date_de": "Juni 2024",
+      "date_en": "June 2024",
+      "date_uk": "Червень 2024",
+      "text_de": "Die Lage ist unschlagbar – ruhig, trotzdem nah am Meer und an Pula. Das Haus ist wunderschön, sehr sauber und genau wie auf den Fotos. Sehr empfehlenswert!",
+      "text_en": "The location is unbeatable – quiet, yet close to the sea and Pula. The house is beautiful, very clean and exactly as shown in the photos. Highly recommended!",
+      "text_uk": "Розташування неперевершене — тихо, але поруч із морем і Пулою. Будинок гарний, дуже чистий і точно такий, як на фото. Дуже рекомендую!"
+    }
+  ],
   "gallery": [
     {"src": "images/villa_aussen.jpg",  "alt_de": "Villa Joka Außenansicht mit privatem Pool", "label_de": "Pool & Außenanlage",   "label_en": "Pool & Exterior",       "label_uk": "Басейн і подвір'я"},
     {"src": "images/image00112.jpeg",   "alt_de": "Moderner Wohn- und Essbereich",              "label_de": "Wohn- & Essbereich",    "label_en": "Living & Dining",        "label_uk": "Їдальня та вітальня"},
