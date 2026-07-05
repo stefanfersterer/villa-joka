@@ -75,7 +75,7 @@ input, textarea, select { font-family: inherit; }
 /* BUTTONS */
 .btn-add { background: transparent; border: 2px dashed #1A6575; color: #1A6575; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem; }
 .btn-add:hover { background: #e8f4f5; }
-.btn-del { background: transparent; border: 1px solid #e0d8cc; color: #C26038; border-radius: 6px; padding: 5px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-del { background: transparent; border: 1px solid #e0d8cc; color: #C26038; border-radius: 6px; padding: 5px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
 .btn-del:hover { background: #fde8e0; border-color: #C26038; }
 
 /* REVIEW CARD */
@@ -94,11 +94,25 @@ input, textarea, select { font-family: inherit; }
 .price-row label { font-size: 12px; color: #888; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
 .price-row input[type=checkbox] { width: auto; }
 
+/* ITEM ROW (Pills & Highlights) */
+.item-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; padding: 0.45rem 0.6rem; background: #fafaf8; border: 1px solid #e0d8cc; border-radius: 6px; }
+.item-row .icon-field { width: 44px; border: 1px solid #ddd; border-radius: 6px; padding: 4px 6px; font-size: 16px; text-align: center; outline: none; }
+.item-row .icon-field:focus { border-color: #1A6575; }
+.item-row .text-field { flex: 1; border: 1px solid #ddd; border-radius: 6px; padding: 5px 8px; font-size: 13px; outline: none; }
+.item-row .text-field:focus { border-color: #1A6575; }
+
 /* GALLERY CELL */
-.gallery-cell { background: #fff; border: 1px solid #e0d8cc; border-radius: 8px; padding: 0.75rem; }
-.gallery-filename { font-size: 11px; color: #aaa; margin-bottom: 0.5rem; word-break: break-all; }
-.gallery-cell input { border: 1px solid #ddd; border-radius: 6px; padding: 5px 8px; font-size: 12px; width: 100%; outline: none; margin-bottom: 0.35rem; }
+.gallery-cell { background: #fff; border: 1px solid #e0d8cc; border-radius: 8px; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.gal-preview { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 5px; background: #f0ede8; }
+.gallery-filename { font-size: 11px; color: #aaa; word-break: break-all; }
+.gallery-cell input { border: 1px solid #ddd; border-radius: 6px; padding: 5px 8px; font-size: 12px; width: 100%; outline: none; }
 .gallery-cell input:focus { border-color: #1A6575; }
+.btn-upload { background: transparent; border: 1px solid #e0d8cc; color: #1A6575; border-radius: 6px; padding: 5px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; margin-top: 2px; }
+.btn-upload:hover { background: #e8f4f5; border-color: #1A6575; }
+.upload-status { font-size: 11px; min-height: 14px; }
+.upload-status.ok { color: #1A6575; }
+.upload-status.err { color: #c0392b; }
+.upload-status.loading { color: #888; }
 
 /* NOTES TEXTAREA */
 .notes-area { width: 100%; border: 1px solid #ddd; border-radius: 6px; padding: 8px 10px; font-size: 13px; resize: vertical; min-height: 70px; outline: none; }
@@ -113,6 +127,9 @@ input, textarea, select { font-family: inherit; }
 /* SECTION HEADING */
 .section-heading { font-size: 13px; font-weight: 700; color: #444; margin: 1.25rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
 .section-heading:first-child { margin-top: 0; }
+
+/* HTML HINT */
+.html-hint { font-size: 11px; color: #aaa; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -141,7 +158,7 @@ input, textarea, select { font-family: inherit; }
 
   <div class="tabs-bar">
     <button class="tab-btn active" data-tab="kontakt">Kontakt</button>
-    <button class="tab-btn" data-tab="texte">Texte</button>
+    <button class="tab-btn" data-tab="texte">Texte &amp; Seite</button>
     <button class="tab-btn" data-tab="bewertungen">Bewertungen</button>
     <button class="tab-btn" data-tab="galerie">Galerie</button>
     <button class="tab-btn" data-tab="villa">Villa</button>
@@ -151,31 +168,73 @@ input, textarea, select { font-family: inherit; }
   <!-- TAB: KONTAKT -->
   <div class="tab-content active" id="tab-kontakt">
     <div class="card">
-      <div class="card-title">Kontakt</div>
+      <div class="card-title">Kontaktdaten</div>
       <div class="grid-2">
         <div class="field"><label class="field-label">E-Mail</label><input type="email" id="c-email"></div>
         <div class="field"><label class="field-label">Telefon</label><input type="tel" id="c-phone"></div>
-        <div class="field"><label class="field-label">WhatsApp</label><input type="tel" id="c-whatsapp"></div>
-        <div class="field"><label class="field-label">Formspree ID</label><input type="text" id="c-formspree"></div>
+        <div class="field"><label class="field-label">WhatsApp (nur Ziffern)</label><input type="tel" id="c-whatsapp" placeholder="436505428229"></div>
+        <div class="field"><label class="field-label">Formspree ID</label><input type="text" id="c-formspree" placeholder="xyzabcde"></div>
       </div>
+    </div>
+    <div class="card" style="border-left:3px solid #C26038; background:#fffdf9;">
+      <div class="card-title" style="color:#C26038;">Formspree-Hinweis</div>
+      <p style="font-size:13px;color:#666;line-height:1.6;">
+        Registriere dich auf <a href="https://formspree.io" target="_blank" style="color:#1A6575;">formspree.io</a>, erstelle ein Formular für <strong>info@villa-joka.eu</strong> und trage die 8-stellige Form-ID oben ein. Danach funktioniert das Kontaktformular auf der Website.
+      </p>
     </div>
   </div>
 
-  <!-- TAB: TEXTE -->
+  <!-- TAB: TEXTE & SEITE -->
   <div class="tab-content" id="tab-texte">
-    <div class="lang-bar">
+    <div class="lang-bar" id="texte-lang-bar">
       <button class="lang-btn active" data-lang="de">DE</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="uk">UK</button>
     </div>
+
+    <!-- Hero Subtitle -->
     <div class="card">
-      <div class="card-title">Hero</div>
-      <div class="field"><label class="field-label">Untertitel</label><textarea id="t-hero-sub" rows="3"></textarea></div>
+      <div class="card-title">Hero – Untertitel</div>
+      <div class="field">
+        <textarea id="t-hero-sub" rows="2"></textarea>
+      </div>
     </div>
+
+    <!-- About -->
     <div class="card">
-      <div class="card-title">About</div>
-      <div class="field"><label class="field-label">Überschrift</label><input type="text" id="t-about-heading"></div>
-      <div class="field"><label class="field-label">Text</label><textarea id="t-about-body" rows="6"></textarea></div>
+      <div class="card-title">About-Abschnitt</div>
+      <div class="field">
+        <label class="field-label">Überschrift</label>
+        <input type="text" id="t-about-heading">
+        <div class="html-hint">HTML erlaubt: &lt;em&gt;kursiv&lt;/em&gt; · Gedankenstrich: –</div>
+      </div>
+      <div class="field">
+        <label class="field-label">Text</label>
+        <textarea id="t-about-body" rows="5"></textarea>
+        <div class="html-hint">HTML erlaubt: &lt;strong&gt;, &lt;em&gt; · Gedankenstrich: –</div>
+      </div>
+    </div>
+
+    <!-- Hero Pills -->
+    <div class="card">
+      <div class="card-title">Hero Pills</div>
+      <div id="pills-list"></div>
+      <button class="btn-add" id="add-pill-btn">+ Pill hinzufügen</button>
+    </div>
+
+    <!-- Highlights Bar -->
+    <div class="card">
+      <div class="card-title">Highlights Bar (unter dem Hero)</div>
+      <div id="highlights-list"></div>
+      <button class="btn-add" id="add-highlight-btn">+ Highlight hinzufügen</button>
+    </div>
+
+    <!-- Footer Tagline -->
+    <div class="card">
+      <div class="card-title">Footer-Tagline</div>
+      <div class="field">
+        <textarea id="t-footer-tagline" rows="2"></textarea>
+      </div>
     </div>
   </div>
 
@@ -187,7 +246,7 @@ input, textarea, select { font-family: inherit; }
 
   <!-- TAB: GALERIE -->
   <div class="tab-content" id="tab-galerie">
-    <div class="lang-bar">
+    <div class="lang-bar" id="galerie-lang-bar">
       <button class="lang-btn active" data-lang="de">DE</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="uk">UK</button>
@@ -197,7 +256,7 @@ input, textarea, select { font-family: inherit; }
 
   <!-- TAB: VILLA -->
   <div class="tab-content" id="tab-villa">
-    <div class="lang-bar">
+    <div class="lang-bar" id="villa-prices-lang-bar">
       <button class="lang-btn active" data-lang="de">DE</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="uk">UK</button>
@@ -205,22 +264,23 @@ input, textarea, select { font-family: inherit; }
     <div class="card">
       <div class="card-title">Preise Villa</div>
       <div id="villa-prices"></div>
-      <button class="btn-add" id="add-villa-btn">+ Zeile hinzufuegen</button>
+      <button class="btn-add" id="add-villa-btn">+ Zeile hinzufügen</button>
     </div>
     <div class="card" style="margin-top:1rem;">
       <div class="card-title">Hinweistext Villa</div>
-      <div class="lang-bar">
+      <div class="lang-bar" id="villa-notes-lang-bar">
         <button class="lang-btn active" data-lang="de">DE</button>
         <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="uk">UK</button>
       </div>
       <textarea class="notes-area" id="villa-notes"></textarea>
+      <div class="html-hint" style="margin-top:4px;">HTML erlaubt: &lt;strong&gt;, &amp;middot; für ·</div>
     </div>
   </div>
 
   <!-- TAB: APARTMENT -->
   <div class="tab-content" id="tab-apartment">
-    <div class="lang-bar">
+    <div class="lang-bar" id="apt-prices-lang-bar">
       <button class="lang-btn active" data-lang="de">DE</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="uk">UK</button>
@@ -228,130 +288,118 @@ input, textarea, select { font-family: inherit; }
     <div class="card">
       <div class="card-title">Preise Apartment</div>
       <div id="apt-prices"></div>
-      <button class="btn-add" id="add-apt-btn">+ Zeile hinzufuegen</button>
+      <button class="btn-add" id="add-apt-btn">+ Zeile hinzufügen</button>
     </div>
     <div class="card" style="margin-top:1rem;">
       <div class="card-title">Hinweistext Apartment</div>
-      <div class="lang-bar">
+      <div class="lang-bar" id="apt-notes-lang-bar">
         <button class="lang-btn active" data-lang="de">DE</button>
         <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="uk">UK</button>
       </div>
       <textarea class="notes-area" id="apt-notes"></textarea>
+      <div class="html-hint" style="margin-top:4px;">HTML erlaubt: &lt;strong&gt;, &amp;middot; für ·</div>
     </div>
   </div>
 </div>
 
 <!-- TOAST -->
 <div id="toast"></div>
+
 <script>
 var REPO = 'stefanfersterer/villa-joka';
 var FILE = 'content.json';
-var API = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE;
+var API  = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE;
 
-var data = {};
+var data    = {};
 var fileSha = '';
-var pat = '';
+var pat     = '';
 
-var textsLang = 'de';
-var galleryLang = 'de';
-var villaLang = 'de';
-var aptLang = 'de';
+var textsLang     = 'de';
+var galleryLang   = 'de';
+var villaLang     = 'de';
+var aptLang       = 'de';
 var villaNotesLang = 'de';
-var aptNotesLang = 'de';
+var aptNotesLang  = 'de';
+
+/* Entity decode bug-fix */
+function decodeEntities(html) {
+  var ta = document.createElement('textarea');
+  ta.innerHTML = html;
+  return ta.value;
+}
 
 /* INIT */
 window.addEventListener('DOMContentLoaded', function() {
   pat = localStorage.getItem('vj_pat') || '';
-  if (pat) {
-    loadData();
-  } else {
-    document.getElementById('login').style.display = 'flex';
-  }
+  if (pat) { loadData(); } else { document.getElementById('login').style.display = 'flex'; }
 
   document.getElementById('login-btn').addEventListener('click', doLogin);
-  document.getElementById('pat-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') doLogin();
-  });
+  document.getElementById('pat-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
   document.getElementById('logout-btn').addEventListener('click', doLogout);
   document.getElementById('save-btn').addEventListener('click', saveData);
   document.getElementById('add-review-btn').addEventListener('click', addReview);
   document.getElementById('add-villa-btn').addEventListener('click', function() { addPriceRow('villa'); });
   document.getElementById('add-apt-btn').addEventListener('click', function() { addPriceRow('apt'); });
+  document.getElementById('add-pill-btn').addEventListener('click', addPill);
+  document.getElementById('add-highlight-btn').addEventListener('click', addHighlight);
 
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  for (var i = 0; i < tabBtns.length; i++) {
-    tabBtns[i].addEventListener('click', function() {
-      var tab = this.getAttribute('data-tab');
-      switchTab(tab, this);
-    });
-  }
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { switchTab(this.getAttribute('data-tab'), this); });
+  });
 
-  var textsTab = document.getElementById('tab-texte');
-  var textsLangBtns = textsTab.querySelectorAll('.lang-btn');
-  for (var i = 0; i < textsLangBtns.length; i++) {
-    textsLangBtns[i].addEventListener('click', function() {
-      saveTextsToData();
-      textsLang = this.getAttribute('data-lang');
-      updateLangBtns(textsLangBtns, textsLang);
-      loadTextsFromData();
-    });
-  }
+  bindLangBar('texte-lang-bar', function(lang) {
+    saveTextsToData();
+    textsLang = lang;
+    loadTextsFromData();
+  }, function() { return textsLang; });
 
-  var galTab = document.getElementById('tab-galerie');
-  var galLangBtns = galTab.querySelectorAll('.lang-btn');
-  for (var i = 0; i < galLangBtns.length; i++) {
-    galLangBtns[i].addEventListener('click', function() {
-      saveGalleryToData();
-      galleryLang = this.getAttribute('data-lang');
-      updateLangBtns(galLangBtns, galleryLang);
-      loadGalleryFromData();
-    });
-  }
+  bindLangBar('galerie-lang-bar', function(lang) {
+    saveGalleryToData();
+    galleryLang = lang;
+    loadGalleryFromData();
+  }, function() { return galleryLang; });
 
-  var villaTab = document.getElementById('tab-villa');
-  var villaLangBtns = villaTab.querySelectorAll('.lang-bar:first-of-type .lang-btn');
-  for (var i = 0; i < villaLangBtns.length; i++) {
-    villaLangBtns[i].addEventListener('click', function() {
-      savePricesToData('villa');
-      villaLang = this.getAttribute('data-lang');
-      updateLangBtns(villaLangBtns, villaLang);
-      loadPricesFromData('villa');
-    });
-  }
+  bindLangBar('villa-prices-lang-bar', function(lang) {
+    savePricesToData('villa');
+    villaLang = lang;
+    loadPricesFromData('villa');
+  }, function() { return villaLang; });
 
-  var villaNotesLangBtns = villaTab.querySelectorAll('.card:last-child .lang-btn');
-  for (var i = 0; i < villaNotesLangBtns.length; i++) {
-    villaNotesLangBtns[i].addEventListener('click', function() {
-      saveNotesToData('villa');
-      villaNotesLang = this.getAttribute('data-lang');
-      updateLangBtns(villaNotesLangBtns, villaNotesLang);
-      loadNotesFromData('villa');
-    });
-  }
+  bindLangBar('villa-notes-lang-bar', function(lang) {
+    saveNotesToData('villa');
+    villaNotesLang = lang;
+    loadNotesFromData('villa');
+  }, function() { return villaNotesLang; });
 
-  var aptTab = document.getElementById('tab-apartment');
-  var aptLangBtns = aptTab.querySelectorAll('.lang-bar:first-of-type .lang-btn');
-  for (var i = 0; i < aptLangBtns.length; i++) {
-    aptLangBtns[i].addEventListener('click', function() {
-      savePricesToData('apt');
-      aptLang = this.getAttribute('data-lang');
-      updateLangBtns(aptLangBtns, aptLang);
-      loadPricesFromData('apt');
-    });
-  }
+  bindLangBar('apt-prices-lang-bar', function(lang) {
+    savePricesToData('apt');
+    aptLang = lang;
+    loadPricesFromData('apt');
+  }, function() { return aptLang; });
 
-  var aptNotesLangBtns = aptTab.querySelectorAll('.card:last-child .lang-btn');
-  for (var i = 0; i < aptNotesLangBtns.length; i++) {
-    aptNotesLangBtns[i].addEventListener('click', function() {
-      saveNotesToData('apt');
-      aptNotesLang = this.getAttribute('data-lang');
-      updateLangBtns(aptNotesLangBtns, aptNotesLang);
-      loadNotesFromData('apt');
-    });
-  }
+  bindLangBar('apt-notes-lang-bar', function(lang) {
+    saveNotesToData('apt');
+    aptNotesLang = lang;
+    loadNotesFromData('apt');
+  }, function() { return aptNotesLang; });
 });
 
+function bindLangBar(barId, onChange, getCurrent) {
+  var bar = document.getElementById(barId);
+  if (!bar) return;
+  bar.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var lang = this.getAttribute('data-lang');
+      onChange(lang);
+      bar.querySelectorAll('.lang-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+    });
+  });
+}
+
+/* AUTH */
 function doLogin() {
   var val = document.getElementById('pat-input').value.trim();
   if (!val) { showLoginErr('Bitte PAT eingeben.'); return; }
@@ -361,9 +409,7 @@ function doLogin() {
 
 function doLogout() {
   localStorage.removeItem('vj_pat');
-  pat = '';
-  data = {};
-  fileSha = '';
+  pat = ''; data = {}; fileSha = '';
   document.getElementById('app').style.display = 'none';
   document.getElementById('login').style.display = 'flex';
   document.getElementById('pat-input').value = '';
@@ -375,44 +421,37 @@ function showLoginErr(msg) {
   el.style.display = 'block';
 }
 
+/* TAB SWITCHING */
 function switchTab(tab, btn) {
-  var contents = document.querySelectorAll('.tab-content');
-  for (var i = 0; i < contents.length; i++) contents[i].classList.remove('active');
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  for (var i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove('active');
+  document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(el) { el.classList.remove('active'); });
   document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
 }
 
-function updateLangBtns(btns, lang) {
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].classList.toggle('active', btns[i].getAttribute('data-lang') === lang);
-  }
-}
-
+/* LOAD DATA */
 function loadData() {
-  fetch(API, {
-    headers: { 'Authorization': 'token ' + pat, 'Accept': 'application/vnd.github.v3+json' }
-  }).then(function(r) {
-    if (r.status === 401) { showLoginErr('Ungultiger PAT.'); return null; }
-    if (!r.ok) { showLoginErr('Fehler beim Laden: ' + r.status); return null; }
-    return r.json();
-  }).then(function(d) {
-    if (!d) return;
-    fileSha = d.sha;
-    var bytes = new Uint8Array(atob(d.content.replace(/\n/g, '')).split('').map(function(c) { return c.charCodeAt(0); }));
-    var text = new TextDecoder('utf-8').decode(bytes);
-    data = JSON.parse(text);
-    localStorage.setItem('vj_pat', pat);
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('login-err').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    renderAll();
-  }).catch(function(err) {
-    showLoginErr('Verbindungsfehler: ' + err.message);
-  });
+  fetch(API, { headers: { 'Authorization': 'token ' + pat, 'Accept': 'application/vnd.github.v3+json' } })
+    .then(function(r) {
+      if (r.status === 401) { showLoginErr('Ungültiger PAT.'); return null; }
+      if (!r.ok) { showLoginErr('Fehler beim Laden: ' + r.status); return null; }
+      return r.json();
+    })
+    .then(function(d) {
+      if (!d) return;
+      fileSha = d.sha;
+      var bytes = new Uint8Array(atob(d.content.replace(/\n/g, '')).split('').map(function(c) { return c.charCodeAt(0); }));
+      data = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+      localStorage.setItem('vj_pat', pat);
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('login-err').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      renderAll();
+    })
+    .catch(function(err) { showLoginErr('Verbindungsfehler: ' + err.message); });
 }
 
+/* RENDER ALL */
 function renderAll() {
   renderContact();
   loadTextsFromData();
@@ -424,48 +463,136 @@ function renderAll() {
   loadNotesFromData('apt');
 }
 
+/* CONTACT */
 function renderContact() {
   var c = data.contact || {};
-  document.getElementById('c-email').value = c.email || '';
-  document.getElementById('c-phone').value = c.phone || '';
-  document.getElementById('c-whatsapp').value = c.whatsapp || '';
-  document.getElementById('c-formspree').value = c.formspree_id || '';
+  document.getElementById('c-email').value    = c.email        || '';
+  document.getElementById('c-phone').value    = c.phone        || '';
+  document.getElementById('c-whatsapp').value = c.whatsapp     || '';
+  document.getElementById('c-formspree').value= c.formspree_id || '';
 }
 
 function collectContact() {
   data.contact = {
-    email: document.getElementById('c-email').value,
-    phone: document.getElementById('c-phone').value,
-    whatsapp: document.getElementById('c-whatsapp').value,
+    email:        document.getElementById('c-email').value,
+    phone:        document.getElementById('c-phone').value,
+    whatsapp:     document.getElementById('c-whatsapp').value,
     formspree_id: document.getElementById('c-formspree').value
   };
 }
 
+/* TEXTS */
 function loadTextsFromData() {
-  var h = data.hero || {};
+  var h = data.hero  || {};
   var a = data.about || {};
   var l = textsLang;
-  document.getElementById('t-hero-sub').value = h['sub_' + l] || '';
-  document.getElementById('t-about-heading').value = a['heading_' + l] || '';
-  document.getElementById('t-about-body').value = a['body_' + l] || '';
+
+  document.getElementById('t-hero-sub').value     = h['sub_' + l] || '';
+  document.getElementById('t-about-heading').value = decodeEntities(a['heading_' + l] || '');
+  document.getElementById('t-about-body').value    = decodeEntities(a['body_' + l]    || '');
+
+  document.getElementById('t-footer-tagline').value = (data.footer_tagline && data.footer_tagline[l]) || '';
+
+  loadPillsFromData();
+  loadHighlightsFromData();
 }
 
 function saveTextsToData() {
   var l = textsLang;
-  if (!data.hero) data.hero = {};
+  if (!data.hero)  data.hero  = {};
   if (!data.about) data.about = {};
-  data.hero['sub_' + l] = document.getElementById('t-hero-sub').value;
+  if (!data.footer_tagline) data.footer_tagline = {};
+
+  data.hero['sub_' + l]      = document.getElementById('t-hero-sub').value;
   data.about['heading_' + l] = document.getElementById('t-about-heading').value;
-  data.about['body_' + l] = document.getElementById('t-about-body').value;
+  data.about['body_' + l]    = document.getElementById('t-about-body').value;
+  data.footer_tagline[l]     = document.getElementById('t-footer-tagline').value;
+
+  savePillsToData();
+  saveHighlightsToData();
 }
 
+/* PILLS */
+function loadPillsFromData() {
+  var list = document.getElementById('pills-list');
+  list.innerHTML = '';
+  (data.hero_pills || []).forEach(function(p, i) {
+    list.appendChild(makeItemRow(p, i, 'pill'));
+  });
+}
+
+function savePillsToData() {
+  if (!data.hero_pills) data.hero_pills = [];
+  var l = textsLang;
+  document.querySelectorAll('#pills-list .item-row').forEach(function(row) {
+    var idx = parseInt(row.getAttribute('data-idx'));
+    if (!data.hero_pills[idx]) data.hero_pills[idx] = {};
+    data.hero_pills[idx].icon = row.querySelector('.icon-field').value;
+    data.hero_pills[idx]['text_' + l] = row.querySelector('.text-field').value;
+  });
+}
+
+function addPill() {
+  savePillsToData();
+  if (!data.hero_pills) data.hero_pills = [];
+  data.hero_pills.push({ icon: '🌟', text_de: '', text_en: '', text_uk: '' });
+  loadPillsFromData();
+}
+
+/* HIGHLIGHTS */
+function loadHighlightsFromData() {
+  var list = document.getElementById('highlights-list');
+  list.innerHTML = '';
+  (data.highlights || []).forEach(function(h, i) {
+    list.appendChild(makeItemRow(h, i, 'highlight'));
+  });
+}
+
+function saveHighlightsToData() {
+  if (!data.highlights) data.highlights = [];
+  var l = textsLang;
+  document.querySelectorAll('#highlights-list .item-row').forEach(function(row) {
+    var idx = parseInt(row.getAttribute('data-idx'));
+    if (!data.highlights[idx]) data.highlights[idx] = {};
+    data.highlights[idx].icon = row.querySelector('.icon-field').value;
+    data.highlights[idx]['text_' + l] = row.querySelector('.text-field').value;
+  });
+}
+
+function addHighlight() {
+  saveHighlightsToData();
+  if (!data.highlights) data.highlights = [];
+  data.highlights.push({ icon: '✓', text_de: '', text_en: '', text_uk: '' });
+  loadHighlightsFromData();
+}
+
+function makeItemRow(item, idx, type) {
+  var row = document.createElement('div');
+  row.className = 'item-row';
+  row.setAttribute('data-idx', idx);
+  var l = textsLang;
+
+  row.innerHTML = '<input type="text" class="icon-field" value="' + esc(item.icon || '') + '" placeholder="🛏" title="Emoji/Icon">'
+    + '<input type="text" class="text-field" value="' + esc(item['text_' + l] || '') + '" placeholder="Text ' + l.toUpperCase() + '">'
+    + '<button class="btn-del" data-del="' + idx + '" data-type="' + type + '">✕</button>';
+
+  row.querySelector('[data-del]').addEventListener('click', function() {
+    var i   = parseInt(this.getAttribute('data-del'));
+    var t   = this.getAttribute('data-type');
+    var key = t === 'pill' ? 'hero_pills' : 'highlights';
+    if (t === 'pill') savePillsToData(); else saveHighlightsToData();
+    data[key].splice(i, 1);
+    if (t === 'pill') loadPillsFromData(); else loadHighlightsFromData();
+  });
+
+  return row;
+}
+
+/* REVIEWS */
 function renderReviews() {
   var list = document.getElementById('reviews-list');
   list.innerHTML = '';
-  var reviews = data.reviews || [];
-  for (var i = 0; i < reviews.length; i++) {
-    list.appendChild(makeReviewCard(reviews[i], i));
-  }
+  (data.reviews || []).forEach(function(r, i) { list.appendChild(makeReviewCard(r, i)); });
 }
 
 function makeReviewCard(r, idx) {
@@ -482,26 +609,22 @@ function makeReviewCard(r, idx) {
     + '<div class="review-meta">'
     + '<div class="field"><label class="field-label">Name</label><input type="text" class="rv-name" value="' + esc(r.name || '') + '"></div>'
     + '<div class="field"><label class="field-label">Herkunft</label><input type="text" class="rv-origin" value="' + esc(r.origin || '') + '"></div>'
-    + '<div class="field"><label class="field-label">Platform</label><input type="text" class="rv-platform" value="' + esc(r.platform || '') + '"></div>'
+    + '<div class="field"><label class="field-label">Plattform</label><input type="text" class="rv-platform" value="' + esc(r.platform || '') + '"></div>'
     + '<div class="field"><label class="field-label">Sterne</label><select class="rv-stars">' + starsOpts + '</select></div>'
     + '</div>'
-    + '<button class="btn-del" data-del="' + idx + '">&#x2715;</button>'
+    + '<button class="btn-del" data-del="' + idx + '">✕</button>'
     + '</div>'
     + '<div class="lang-bar rv-lang-bar">'
     + '<button class="lang-btn active rv-lang" data-lang="de">DE</button>'
     + '<button class="lang-btn rv-lang" data-lang="en">EN</button>'
     + '<button class="lang-btn rv-lang" data-lang="uk">UK</button>'
     + '</div>'
-    + '<div class="grid-2">'
-    + '<div class="field"><label class="field-label">Datum</label><input type="text" class="rv-date" value="' + esc(r.date_de || '') + '"></div>'
-    + '</div>'
-    + '<div class="field"><label class="field-label">Text</label><textarea class="rv-text" rows="3">' + esc(r.text_de || '') + '</textarea></div>';
+    + '<div class="grid-2"><div class="field"><label class="field-label">Datum</label><input type="text" class="rv-date" value="' + esc(r.date_de || '') + '"></div></div>'
+    + '<div class="field"><label class="field-label">Bewertungstext</label><textarea class="rv-text" rows="3">' + esc(r.text_de || '') + '</textarea></div>';
 
-  var delBtn = card.querySelector('[data-del]');
-  delBtn.addEventListener('click', function() {
-    var i = parseInt(this.getAttribute('data-del'));
+  card.querySelector('[data-del]').addEventListener('click', function() {
     collectAllReviews();
-    data.reviews.splice(i, 1);
+    data.reviews.splice(parseInt(this.getAttribute('data-del')), 1);
     renderReviews();
   });
 
@@ -511,46 +634,40 @@ function makeReviewCard(r, idx) {
   function setReviewLang(lang) {
     saveReviewLang(card, idx, currentLang);
     currentLang = lang;
-    for (var j = 0; j < langBtns.length; j++) {
-      langBtns[j].classList.toggle('active', langBtns[j].getAttribute('data-lang') === lang);
-    }
+    langBtns.forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
     var r2 = (data.reviews || [])[idx] || {};
     card.querySelector('.rv-date').value = r2['date_' + lang] || '';
     card.querySelector('.rv-text').value = r2['text_' + lang] || '';
   }
 
-  for (var j = 0; j < langBtns.length; j++) {
-    langBtns[j].addEventListener('click', function() {
-      setReviewLang(this.getAttribute('data-lang'));
-    });
-  }
+  langBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() { setReviewLang(this.getAttribute('data-lang')); });
+  });
 
   return card;
 }
 
 function saveReviewLang(card, idx, lang) {
-  if (!data.reviews) data.reviews = [];
+  if (!data.reviews)      data.reviews = [];
   if (!data.reviews[idx]) data.reviews[idx] = {};
   data.reviews[idx]['date_' + lang] = card.querySelector('.rv-date').value;
   data.reviews[idx]['text_' + lang] = card.querySelector('.rv-text').value;
 }
 
 function collectAllReviews() {
-  var cards = document.querySelectorAll('.review-card');
-  for (var i = 0; i < cards.length; i++) {
-    var card = cards[i];
+  document.querySelectorAll('.review-card').forEach(function(card) {
     var idx = parseInt(card.getAttribute('data-idx'));
-    if (!data.reviews) data.reviews = [];
+    if (!data.reviews)      data.reviews = [];
     if (!data.reviews[idx]) data.reviews[idx] = {};
-    data.reviews[idx].name = card.querySelector('.rv-name').value;
-    data.reviews[idx].origin = card.querySelector('.rv-origin').value;
+    data.reviews[idx].name     = card.querySelector('.rv-name').value;
+    data.reviews[idx].origin   = card.querySelector('.rv-origin').value;
     data.reviews[idx].platform = card.querySelector('.rv-platform').value;
-    data.reviews[idx].stars = parseInt(card.querySelector('.rv-stars').value);
-    var activeLangBtn = card.querySelector('.rv-lang.active');
-    var cl = activeLangBtn ? activeLangBtn.getAttribute('data-lang') : 'de';
+    data.reviews[idx].stars    = parseInt(card.querySelector('.rv-stars').value);
+    var activeLang = card.querySelector('.rv-lang.active');
+    var cl = activeLang ? activeLang.getAttribute('data-lang') : 'de';
     data.reviews[idx]['date_' + cl] = card.querySelector('.rv-date').value;
     data.reviews[idx]['text_' + cl] = card.querySelector('.rv-text').value;
-  }
+  });
 }
 
 function addReview() {
@@ -560,65 +677,121 @@ function addReview() {
   renderReviews();
 }
 
-function renderGallery() {
-  loadGalleryFromData();
-}
+/* GALLERY */
+function renderGallery() { loadGalleryFromData(); }
 
 function loadGalleryFromData() {
   var grid = document.getElementById('gallery-grid');
   grid.innerHTML = '';
   var gallery = data.gallery || [];
   var l = galleryLang;
-  for (var i = 0; i < gallery.length; i++) {
-    var item = gallery[i];
-    var cell = document.createElement('div');
-    cell.className = 'gallery-cell';
-    cell.setAttribute('data-idx', i);
-    var src = item.src || '';
-    var filename = src.split('/').pop() || src;
-    var labelVal = item['label_' + l] || '';
-    var altVal = item.alt_de || '';
+  gallery.forEach(function(item, i) {
+    grid.appendChild(makeGalleryCell(item, i, l));
+  });
+}
 
-    cell.innerHTML = '<div class="gallery-filename">' + esc(filename) + '</div>'
-      + '<label class="field-label">Label</label>'
-      + '<input type="text" class="gal-label" value="' + esc(labelVal) + '">'
-      + (l === 'de' ? '<label class="field-label" style="margin-top:4px;">Alt-Text (DE)</label><input type="text" class="gal-alt" value="' + esc(altVal) + '">' : '');
+function makeGalleryCell(item, i, l) {
+  var cell = document.createElement('div');
+  cell.className = 'gallery-cell';
+  cell.setAttribute('data-idx', i);
 
-    grid.appendChild(cell);
-  }
+  var src      = item.src || '';
+  var filename = src.split('/').pop() || src;
+  var labelVal = item['label_' + l] || '';
+  var altVal   = item.alt_de || '';
+
+  cell.innerHTML = '<img class="gal-preview" src="/' + esc(src) + '" alt="" loading="lazy">'
+    + '<div class="gallery-filename">' + esc(filename) + '</div>'
+    + '<label class="field-label">Label</label>'
+    + '<input type="text" class="gal-label" value="' + esc(labelVal) + '">'
+    + (l === 'de' ? '<label class="field-label" style="margin-top:4px;">Alt-Text (DE)</label><input type="text" class="gal-alt" value="' + esc(altVal) + '">' : '')
+    + '<button class="btn-upload">&#128228; Bild tauschen</button>'
+    + '<input type="file" class="file-input" accept="image/*" style="display:none">'
+    + '<div class="upload-status"></div>';
+
+  var fileInput   = cell.querySelector('.file-input');
+  var uploadBtn   = cell.querySelector('.btn-upload');
+  var statusEl    = cell.querySelector('.upload-status');
+  var previewImg  = cell.querySelector('.gal-preview');
+  var filenameDiv = cell.querySelector('.gallery-filename');
+
+  uploadBtn.addEventListener('click', function() { fileInput.click(); });
+
+  fileInput.addEventListener('change', function() {
+    var file = fileInput.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var dataUrl = e.target.result;
+      var b64     = dataUrl.split(',')[1];
+      var fname   = file.name;
+      var imgPath = 'images/' + fname;
+      statusEl.textContent = 'Hochladen...';
+      statusEl.className   = 'upload-status loading';
+
+      uploadImageToGitHub(imgPath, b64, function(ok, newSrc) {
+        if (ok) {
+          if (!data.gallery[i]) data.gallery[i] = {};
+          data.gallery[i].src = imgPath;
+          previewImg.src  = '/' + imgPath + '?t=' + Date.now();
+          filenameDiv.textContent = fname;
+          statusEl.textContent = '✓ Hochgeladen';
+          statusEl.className   = 'upload-status ok';
+          setTimeout(function() { statusEl.textContent = ''; }, 3000);
+        } else {
+          statusEl.textContent = '✗ Fehler beim Upload';
+          statusEl.className   = 'upload-status err';
+        }
+      });
+    };
+    reader.readAsDataURL(file);
+  });
+
+  return cell;
+}
+
+function uploadImageToGitHub(path, b64, callback) {
+  var fileApi = 'https://api.github.com/repos/' + REPO + '/contents/' + path;
+  fetch(fileApi, { headers: { 'Authorization': 'token ' + pat, 'Accept': 'application/vnd.github.v3+json' } })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(existing) {
+      var body = { message: 'Admin: Bild aktualisiert – ' + path, content: b64 };
+      if (existing && existing.sha) body.sha = existing.sha;
+      return fetch(fileApi, {
+        method: 'PUT',
+        headers: { 'Authorization': 'token ' + pat, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+        body: JSON.stringify(body)
+      });
+    })
+    .then(function(r) { callback(r.ok); })
+    .catch(function() { callback(false); });
 }
 
 function saveGalleryToData() {
-  var cells = document.querySelectorAll('.gallery-cell');
   var l = galleryLang;
-  for (var i = 0; i < cells.length; i++) {
-    var cell = cells[i];
-    var idx = parseInt(cell.getAttribute('data-idx'));
-    if (!data.gallery) data.gallery = [];
-    if (!data.gallery[idx]) data.gallery[idx] = {};
+  document.querySelectorAll('.gallery-cell').forEach(function(cell) {
+    var idx   = parseInt(cell.getAttribute('data-idx'));
+    if (!data.gallery)       data.gallery = [];
+    if (!data.gallery[idx])  data.gallery[idx] = {};
     var labelEl = cell.querySelector('.gal-label');
     if (labelEl) data.gallery[idx]['label_' + l] = labelEl.value;
     if (l === 'de') {
       var altEl = cell.querySelector('.gal-alt');
       if (altEl) data.gallery[idx].alt_de = altEl.value;
     }
-  }
+  });
 }
 
-function renderPrices(type) {
-  loadPricesFromData(type);
-}
+/* PRICES */
+function renderPrices(type) { loadPricesFromData(type); }
 
 function loadPricesFromData(type) {
-  var key = type === 'villa' ? 'prices_villa' : 'prices_apt';
+  var key         = type === 'villa' ? 'prices_villa' : 'prices_apt';
   var containerId = type === 'villa' ? 'villa-prices' : 'apt-prices';
-  var lang = type === 'villa' ? villaLang : aptLang;
-  var container = document.getElementById(containerId);
+  var lang        = type === 'villa' ? villaLang : aptLang;
+  var container   = document.getElementById(containerId);
   container.innerHTML = '';
-  var prices = data[key] || [];
-  for (var i = 0; i < prices.length; i++) {
-    container.appendChild(makePriceRow(prices[i], i, type, lang));
-  }
+  (data[key] || []).forEach(function(p, i) { container.appendChild(makePriceRow(p, i, type, lang)); });
 }
 
 function makePriceRow(p, idx, type, lang) {
@@ -629,20 +802,15 @@ function makePriceRow(p, idx, type, lang) {
   row.innerHTML = '<input type="text" class="period-field" value="' + esc(p['period_' + lang] || '') + '" placeholder="Zeitraum">'
     + '<input type="text" class="price-field" value="' + esc(p.price || '') + '" placeholder="Preis">'
     + '<label><input type="checkbox" class="hl-check"' + (p.highlight ? ' checked' : '') + '> Hochsaison</label>'
-    + '<button class="btn-del" data-del="' + idx + '" data-type="' + type + '">&#x2715;</button>';
+    + '<button class="btn-del" data-del="' + idx + '" data-type="' + type + '">✕</button>';
 
-  var hlCheck = row.querySelector('.hl-check');
-  hlCheck.addEventListener('change', function() {
-    row.classList.toggle('highlight', this.checked);
-  });
+  row.querySelector('.hl-check').addEventListener('change', function() { row.classList.toggle('highlight', this.checked); });
 
-  var delBtn = row.querySelector('[data-del]');
-  delBtn.addEventListener('click', function() {
+  row.querySelector('[data-del]').addEventListener('click', function() {
     var i = parseInt(this.getAttribute('data-del'));
     var t = this.getAttribute('data-type');
     savePricesToData(t);
-    var k = t === 'villa' ? 'prices_villa' : 'prices_apt';
-    data[k].splice(i, 1);
+    data[t === 'villa' ? 'prices_villa' : 'prices_apt'].splice(i, 1);
     loadPricesFromData(t);
   });
 
@@ -650,19 +818,17 @@ function makePriceRow(p, idx, type, lang) {
 }
 
 function savePricesToData(type) {
-  var key = type === 'villa' ? 'prices_villa' : 'prices_apt';
+  var key         = type === 'villa' ? 'prices_villa' : 'prices_apt';
   var containerId = type === 'villa' ? 'villa-prices' : 'apt-prices';
-  var lang = type === 'villa' ? villaLang : aptLang;
-  var rows = document.querySelectorAll('#' + containerId + ' .price-row');
+  var lang        = type === 'villa' ? villaLang : aptLang;
   if (!data[key]) data[key] = [];
-  for (var i = 0; i < rows.length; i++) {
-    var row = rows[i];
+  document.querySelectorAll('#' + containerId + ' .price-row').forEach(function(row) {
     var idx = parseInt(row.getAttribute('data-idx'));
     if (!data[key][idx]) data[key][idx] = {};
     data[key][idx]['period_' + lang] = row.querySelector('.period-field').value;
-    data[key][idx].price = row.querySelector('.price-field').value;
-    data[key][idx].highlight = row.querySelector('.hl-check').checked;
-  }
+    data[key][idx].price             = row.querySelector('.price-field').value;
+    data[key][idx].highlight         = row.querySelector('.hl-check').checked;
+  });
 }
 
 function addPriceRow(type) {
@@ -673,22 +839,23 @@ function addPriceRow(type) {
   loadPricesFromData(type);
 }
 
+/* NOTES */
 function loadNotesFromData(type) {
-  var key = type === 'villa' ? 'prices_villa_notes' : 'prices_apt_notes';
-  var elId = type === 'villa' ? 'villa-notes' : 'apt-notes';
-  var lang = type === 'villa' ? villaNotesLang : aptNotesLang;
-  var notes = data[key] || {};
-  document.getElementById(elId).value = notes[lang] || '';
+  var key  = type === 'villa' ? 'prices_villa_notes' : 'prices_apt_notes';
+  var elId = type === 'villa' ? 'villa-notes'        : 'apt-notes';
+  var lang = type === 'villa' ? villaNotesLang        : aptNotesLang;
+  document.getElementById(elId).value = ((data[key] || {})[lang]) || '';
 }
 
 function saveNotesToData(type) {
-  var key = type === 'villa' ? 'prices_villa_notes' : 'prices_apt_notes';
-  var elId = type === 'villa' ? 'villa-notes' : 'apt-notes';
-  var lang = type === 'villa' ? villaNotesLang : aptNotesLang;
+  var key  = type === 'villa' ? 'prices_villa_notes' : 'prices_apt_notes';
+  var elId = type === 'villa' ? 'villa-notes'        : 'apt-notes';
+  var lang = type === 'villa' ? villaNotesLang        : aptNotesLang;
   if (!data[key]) data[key] = {};
   data[key][lang] = document.getElementById(elId).value;
 }
 
+/* COLLECT ALL & SAVE */
 function collectAll() {
   collectContact();
   saveTextsToData();
@@ -703,7 +870,7 @@ function collectAll() {
 function saveData() {
   collectAll();
   var btn = document.getElementById('save-btn');
-  btn.disabled = true;
+  btn.disabled    = true;
   btn.textContent = 'Speichern...';
 
   var jsonStr = JSON.stringify(data, null, 2);
@@ -718,32 +885,35 @@ function saveData() {
     method: 'PUT',
     headers: { 'Authorization': 'token ' + pat, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
     body: JSON.stringify({ message: 'Admin: content.json aktualisiert', content: b64, sha: fileSha })
-  }).then(function(r) {
-    return r.json().then(function(d) { return { ok: r.ok, d: d }; });
-  }).then(function(res) {
-    btn.disabled = false;
-    btn.textContent = 'Speichern';
-    if (res.ok && res.d.commit) {
-      fileSha = res.d.content.sha;
-      showToast('Gespeichert!', 'success');
-    } else {
-      showToast('Fehler: ' + (res.d.message || 'Unbekannt'), 'error');
-    }
-  }).catch(function(err) {
-    btn.disabled = false;
-    btn.textContent = 'Speichern';
-    showToast('Fehler: ' + err.message, 'error');
-  });
+  })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, d: d }; }); })
+    .then(function(res) {
+      btn.disabled    = false;
+      btn.textContent = 'Speichern';
+      if (res.ok && res.d.commit) {
+        fileSha = res.d.content.sha;
+        showToast('Gespeichert! Netlify deployt in ~30 s.', 'success');
+      } else {
+        showToast('Fehler: ' + (res.d.message || 'Unbekannt'), 'error');
+      }
+    })
+    .catch(function(err) {
+      btn.disabled    = false;
+      btn.textContent = 'Speichern';
+      showToast('Fehler: ' + err.message, 'error');
+    });
 }
 
+/* TOAST */
 function showToast(msg, type) {
   var t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = type || '';
+  t.className   = type || '';
   t.classList.add('show');
-  setTimeout(function() { t.classList.remove('show'); }, 3000);
+  setTimeout(function() { t.classList.remove('show'); }, 3500);
 }
 
+/* ESCAPE */
 function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
