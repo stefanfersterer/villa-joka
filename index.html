@@ -40,7 +40,6 @@
   ]
 }
 </script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -348,7 +347,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
       <a href="#buchung" class="nav-cta lang-en hidden">Enquire Now</a>
       <a href="#buchung" class="nav-cta lang-uk hidden">&#1047;&#1072;&#1083;&#1080;&#1096;&#1080;&#1090;&#1080; &#1079;&#1072;&#1087;&#1080;&#1090;</a>
     </div>
-    <button class="hbg" id="hbg" aria-label="&#1052;&#1077;&#1085;&#1102;">&#9776;</button>
+    <button class="hbg" id="hbg" aria-label="Menu">&#9776;</button>
   </div>
   <div class="mob-nav" id="mobNav">
     <a href="#villa" onclick="closeMob()" class="lang-de">Die Villa</a>
@@ -540,7 +539,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
         <div class="acard-title lang-en hidden">Kitchen</div>
         <div class="acard-title lang-uk hidden">Кухня</div>
         <ul class="acard-list">
-          <li><span class="lang-de">Induktionsherd (Kücheinsel)</span><span class="lang-en hidden">Induction hob (kitchen island)</span><span class="lang-uk hidden">Індукційна плита (кухонний острів)</span></li>
+          <li><span class="lang-de">Induktionsherd (Kücheninsel)</span><span class="lang-en hidden">Induction hob (kitchen island)</span><span class="lang-uk hidden">Індукційна плита (кухонний острів)</span></li>
           <li><span class="lang-de">Jura Kaffeevollautomat</span><span class="lang-en hidden">Jura bean-to-cup machine</span><span class="lang-uk hidden">Кавова машина Jura</span></li>
           <li><span class="lang-de">Vollausstattung mit Geschirr</span><span class="lang-en hidden">Full crockery &amp; utensils</span><span class="lang-uk hidden">Повний набір посуду</span></li>
           <li><span class="lang-de">Geschirrspüler &amp; Kühlschrank mit TK</span><span class="lang-en hidden">Dishwasher &amp; fridge with freezer</span><span class="lang-uk hidden">Посудомийна машина та холодильник</span></li>
@@ -589,7 +588,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
         <ul class="acard-list">
           <li><span class="lang-de">Solaranlage &amp; E-Auto-Ladestation</span><span class="lang-en hidden">Solar panels &amp; EV charger</span><span class="lang-uk hidden">Сонячні панелі та зарядка для ел. авто</span></li>
           <li><span class="lang-de">Carport (2 Stellplätze)</span><span class="lang-en hidden">Carport (2 parking spaces)</span><span class="lang-uk hidden">Навіс для авто (2 місця)</span></li>
-          <li><span class="lang-de">Fahrräder (auf Anfrage)</span><span class="lang-en hidden">Mountain bikes (on request)</span><span class="lang-uk hidden">Велосипеди (на запит)</span></li>
+          <li><span class="lang-de">Fahrräder (auf Anfrage)</span><span class="lang-en hidden">Bicycles (on request)</span><span class="lang-uk hidden">Велосипеди (на запит)</span></li>
           <li><span class="lang-de">Babybett &amp; Kinderstuhl (bitte vormerken)</span><span class="lang-en hidden">Baby cot &amp; high chair (please request)</span><span class="lang-uk hidden">Дитяче ліжечко та стілець (на запит)</span></li>
         </ul>
       </div>
@@ -601,9 +600,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
 <section class="price-wrap sp" id="preise">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:2.5rem" class="fu">
-      <div class="sec-eye lang-de" style="justify-content:center">Preise 2025/2026</div>
-      <div class="sec-eye lang-en hidden" style="justify-content:center">Prices 2025/2026</div>
-      <div class="sec-eye lang-uk hidden" style="justify-content:center">Ціни 2025/2026</div>
+      <div class="sec-eye lang-de" style="justify-content:center">Preise 2026/2027</div>
+      <div class="sec-eye lang-en hidden" style="justify-content:center">Prices 2026/2027</div>
+      <div class="sec-eye lang-uk hidden" style="justify-content:center">Ціни 2026/2027</div>
       <h2 class="sec-h lang-de" style="margin:0 auto .5rem">Transparent &amp; <em>direkt</em></h2>
       <h2 class="sec-h lang-en hidden" style="margin:0 auto .5rem">Transparent &amp; <em>direct</em></h2>
       <h2 class="sec-h lang-uk hidden" style="margin:0 auto .5rem">Прозоро &#38; <em>без посередників</em></h2>
@@ -865,8 +864,15 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
               <input type="date" name="abreise">
             </div>
             <div class="f-g full">
+              <label class="lang-de">Anfrage für</label><label class="lang-en hidden">Enquiry for</label><label class="lang-uk hidden">Запит щодо</label>
+              <select name="objekt">
+                <option value="Villa Joka – Gesamtes Haus (bis 8 Pers.)">Villa Joka – Gesamtes Haus / Entire House / Весь будинок (max. 8)</option>
+                <option value="Einliegerwohnung – Garden Apartment (1–2 Pers.)">Einliegerwohnung / Garden Apartment / Садова квартира (1–2)</option>
+              </select>
+            </div>
+            <div class="f-g full">
               <label class="lang-de">Personen</label><label class="lang-en hidden">Guests</label><label class="lang-uk hidden">Кількість гостей</label>
-              <select name="personen"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+              <select name="personen"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
             </div>
             <div class="f-g full">
               <label class="lang-de">Nachricht</label><label class="lang-en hidden">Message</label><label class="lang-uk hidden">Повідомлення</label>
@@ -979,23 +985,42 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
 <div class="modal-ov" id="modal-impressum" onclick="closeModal('impressum')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('impressum')">&times;</button>
-    <h2>Impressum</h2>
-    <h3>Unternehmensangaben</h3>
-    <address>
-      Joka Immo d.o.o.<br>
-      Vertreten durch: Familie Fersterer<br>
-      Volme 142, Haus 2B<br>
-      52100 Banjole, Kroatien
-    </address>
-    <h3>Registereintrag</h3>
-    <p>EUID: HRSR:130114404<br>
-    OIB (Steuernummer): 82263836671<br>
-    Aufsichtsbehörde: Handelsgericht Pazin</p>
-    <h3>Kontakt</h3>
-    <p>E-Mail: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a><br>
-    Telefon: <a href="tel:+436505428229">+43 650 542 82 29</a></p>
-    <h3>Bildquellen</h3>
-    <p>Eigene Bilder. Sollten wir mit einem Bild Urheberrechte verletzen, bitten wir um kurze Mitteilung an info@villa-joka.eu. Das betreffende Bild wird umgehend entfernt.</p>
+    <!-- DE -->
+    <div class="lang-de">
+      <h2>Impressum</h2>
+      <h3>Unternehmensangaben</h3>
+      <address>Joka Immo d.o.o.<br>Vertreten durch: Familie Fersterer<br>Volme 142, Haus 2B<br>52100 Banjole, Kroatien</address>
+      <h3>Registereintrag</h3>
+      <p>EUID: HRSR:130114404<br>OIB (Steuernummer): 82263836671<br>Aufsichtsbeh&ouml;rde: Handelsgericht Pazin</p>
+      <h3>Kontakt</h3>
+      <p>E-Mail: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a><br>Telefon: <a href="tel:+436505428229">+43 650 542 82 29</a></p>
+      <h3>Bildquellen</h3>
+      <p>Eigene Bilder. Sollten wir mit einem Bild Urheberrechte verletzen, bitten wir um kurze Mitteilung an info@villa-joka.eu. Das betreffende Bild wird umgehend entfernt.</p>
+    </div>
+    <!-- EN -->
+    <div class="lang-en hidden">
+      <h2>Legal Notice</h2>
+      <h3>Company Details</h3>
+      <address>Joka Immo d.o.o.<br>Represented by: The Fersterer Family<br>Volme 142, House 2B<br>52100 Banjole, Croatia</address>
+      <h3>Company Register</h3>
+      <p>EUID: HRSR:130114404<br>OIB (Tax Number): 82263836671<br>Supervisory Authority: Commercial Court Pazin</p>
+      <h3>Contact</h3>
+      <p>E-Mail: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a><br>Phone: <a href="tel:+436505428229">+43 650 542 82 29</a></p>
+      <h3>Image Credits</h3>
+      <p>All images are our own. If we have inadvertently infringed any copyright, please notify us at info@villa-joka.eu. The relevant image will be removed immediately.</p>
+    </div>
+    <!-- UK -->
+    <div class="lang-uk hidden">
+      <h2>&#1070;&#1088;&#1080;&#1076;&#1080;&#1095;&#1085;&#1072; &#1110;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1110;&#1103;</h2>
+      <h3>&#1044;&#1072;&#1085;&#1110; &#1087;&#1110;&#1076;&#1087;&#1088;&#1080;&#1108;&#1084;&#1089;&#1090;&#1074;&#1072;</h3>
+      <address>Joka Immo d.o.o.<br>&#1055;&#1088;&#1077;&#1076;&#1089;&#1090;&#1072;&#1074;&#1085;&#1080;&#1082;: &#1056;&#1086;&#1076;&#1080;&#1085;&#1072; &#1060;&#1077;&#1088;&#1089;&#1090;&#1077;&#1088;&#1077;&#1088;<br>Volme 142, &#1073;&#1091;&#1076;&#1080;&#1085;&#1086;&#1082; 2B<br>52100 &#1041;&#1072;&#1085;&#1081;&#1086;&#1083;&#1077;, &#1061;&#1086;&#1088;&#1074;&#1072;&#1090;&#1110;&#1103;</address>
+      <h3>&#1056;&#1077;&#1108;&#1089;&#1090;&#1088;&#1072;&#1094;&#1110;&#1081;&#1085;&#1110; &#1076;&#1072;&#1085;&#1110;</h3>
+      <p>EUID: HRSR:130114404<br>OIB (&#1087;&#1086;&#1076;&#1072;&#1090;&#1082;&#1086;&#1074;&#1080;&#1081; &#1085;&#1086;&#1084;&#1077;&#1088;): 82263836671<br>&#1054;&#1088;&#1075;&#1072;&#1085; &#1085;&#1072;&#1075;&#1083;&#1103;&#1076;&#1091;: &#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1080;&#1081; &#1089;&#1091;&#1076; &#1055;&#1072;&#1079;&#1110;&#1085;&#1072;</p>
+      <h3>&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;</h3>
+      <p>&#1045;&#1083;. &#1087;&#1086;&#1096;&#1090;&#1072;: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a><br>&#1058;&#1077;&#1083;&#1077;&#1092;&#1086;&#1085;: <a href="tel:+436505428229">+43 650 542 82 29</a></p>
+      <h3>&#1044;&#1078;&#1077;&#1088;&#1077;&#1083;&#1072; &#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1100;</h3>
+      <p>&#1042;&#1089;&#1110; &#1092;&#1086;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;&#1110;&#1111; &#1074;&#1083;&#1072;&#1089;&#1085;&#1110;. &#1071;&#1082;&#1097;&#1086; &#1084;&#1080; &#1085;&#1077;&#1085;&#1072;&#1074;&#1084;&#1080;&#1089;&#1085;&#1086; &#1087;&#1086;&#1088;&#1091;&#1096;&#1080;&#1083;&#1080; &#1072;&#1074;&#1090;&#1086;&#1088;&#1089;&#1100;&#1082;&#1110; &#1087;&#1088;&#1072;&#1074;&#1072;, &#1087;&#1088;&#1086;&#1089;&#1080;&#1084;&#1086; &#1087;&#1086;&#1074;&#1110;&#1076;&#1086;&#1084;&#1080;&#1090;&#1080; &#1085;&#1072;&#1089; &#1085;&#1072; info@villa-joka.eu. &#1047;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1085;&#1103; &#1073;&#1091;&#1076;&#1077; &#1085;&#1077;&#1075;&#1072;&#1081;&#1085;&#1086; &#1074;&#1080;&#1076;&#1072;&#1083;&#1077;&#1085;&#1086;.</p>
+    </div>
   </div>
 </div>
 
@@ -1003,22 +1028,60 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
 <div class="modal-ov" id="modal-datenschutz" onclick="closeModal('datenschutz')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('datenschutz')">&times;</button>
-    <h2>Datenschutzerklärung</h2>
-    <h3>Verantwortliche Stelle</h3>
-    <p>Joka Immo d.o.o., Volme 142, Haus 2B, 52100 Banjole, Kroatien<br>
-    Kontakt: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a></p>
-    <h3>Welche Daten erfassen wir?</h3>
-    <p>Wir erfassen Daten, die Sie uns aktiv übermitteln (z.&nbsp;B. über das Kontaktformular): Name, E-Mail-Adresse, Reisedaten und Ihre Nachricht. Darüber hinaus werden beim Besuch unserer Website technische Daten (IP-Adresse, Browser, Zugriffszeit) erhoben.</p>
-    <h3>Zweck der Datenverarbeitung</h3>
-    <p>Die erhobenen Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und zur Anbahnung eines Mietverhältnisses genutzt. Eine Weitergabe an Dritte erfolgt nicht, sofern dies nicht zur Vertragserfüllung notwendig ist.</p>
-    <h3>Formularübermittlung (Formspree)</h3>
-    <p>Das Kontaktformular wird über den Dienst Formspree (formspree.io) verarbeitet. Ihre Daten werden dabei an Server in den USA übertragen. Formspree ist nach dem EU-U.S. Data Privacy Framework zertifiziert.</p>
-    <h3>Eingebettete Inhalte</h3>
-    <p>Diese Website bindet Google Maps (Karte) und Google Fonts ein. Beim Laden dieser Inhalte werden Daten an Google LLC übertragen. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzrichtlinie</a>.</p>
-    <h3>Ihre Rechte</h3>
-    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich dazu an: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a>.</p>
-    <h3>Zuständige Aufsichtsbehörde</h3>
-    <p>Agencija za zaštitu osobnih podataka (AZOP), Zagreb, Kroatien &ndash; <a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a></p>
+    <!-- DE -->
+    <div class="lang-de">
+      <h2>Datenschutzerkl&auml;rung</h2>
+      <h3>Verantwortliche Stelle</h3>
+      <p>Joka Immo d.o.o., Volme 142, Haus 2B, 52100 Banjole, Kroatien<br>Kontakt: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a></p>
+      <h3>Welche Daten erfassen wir?</h3>
+      <p>Wir erfassen Daten, die Sie uns aktiv &uuml;bermitteln (z.&nbsp;B. &uuml;ber das Kontaktformular): Name, E-Mail-Adresse, Reisedaten und Ihre Nachricht. Dar&uuml;ber hinaus werden beim Besuch unserer Website technische Daten (IP-Adresse, Browser, Zugriffszeit) erhoben.</p>
+      <h3>Zweck der Datenverarbeitung</h3>
+      <p>Die erhobenen Daten werden ausschlie&szlig;lich zur Bearbeitung Ihrer Anfrage und zur Anbahnung eines Mietverh&auml;ltnisses genutzt. Eine Weitergabe an Dritte erfolgt nicht, sofern dies nicht zur Vertragserf&uuml;llung notwendig ist.</p>
+      <h3>Formular&uuml;bermittlung (Formspree)</h3>
+      <p>Das Kontaktformular wird &uuml;ber den Dienst Formspree (formspree.io) verarbeitet. Ihre Daten werden dabei an Server in den USA &uuml;bertragen. Formspree ist nach dem EU-U.S. Data Privacy Framework zertifiziert.</p>
+      <h3>Eingebettete Inhalte</h3>
+      <p>Diese Website bindet Google Maps (Karte) und Google Fonts ein. Beim Laden dieser Inhalte werden Daten an Google LLC &uuml;bertragen. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzrichtlinie</a>.</p>
+      <h3>Ihre Rechte</h3>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, L&ouml;schung und Einschr&auml;nkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich dazu an: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a>.</p>
+      <h3>Zust&auml;ndige Aufsichtsbeh&ouml;rde</h3>
+      <p>Agencija za za&scaron;titu osobnih podataka (AZOP), Zagreb, Kroatien &ndash; <a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a></p>
+    </div>
+    <!-- EN -->
+    <div class="lang-en hidden">
+      <h2>Privacy Policy</h2>
+      <h3>Responsible Party</h3>
+      <p>Joka Immo d.o.o., Volme 142, House 2B, 52100 Banjole, Croatia<br>Contact: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a></p>
+      <h3>What Data Do We Collect?</h3>
+      <p>We collect data you actively submit to us (e.g. via the contact form): name, email address, travel dates and your message. In addition, technical data (IP address, browser, access time) is collected when you visit our website.</p>
+      <h3>Purpose of Data Processing</h3>
+      <p>The data collected is used exclusively to process your enquiry and to initiate a rental agreement. Data is not passed on to third parties unless this is necessary for the fulfilment of the contract.</p>
+      <h3>Form Submission (Formspree)</h3>
+      <p>The contact form is processed via the service Formspree (formspree.io). Your data is transferred to servers in the USA. Formspree is certified under the EU&ndash;US Data Privacy Framework.</p>
+      <h3>Embedded Content</h3>
+      <p>This website embeds Google Maps (map) and Google Fonts. When these contents are loaded, data is transferred to Google LLC. Further information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+      <h3>Your Rights</h3>
+      <p>You have the right to access, rectification, erasure and restriction of processing of your personal data. Please contact: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a>.</p>
+      <h3>Supervisory Authority</h3>
+      <p>Agencija za za&scaron;titu osobnih podataka (AZOP), Zagreb, Croatia &ndash; <a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a></p>
+    </div>
+    <!-- UK -->
+    <div class="lang-uk hidden">
+      <h2>&#1055;&#1086;&#1083;&#1110;&#1090;&#1080;&#1082;&#1072; &#1082;&#1086;&#1085;&#1092;&#1110;&#1076;&#1077;&#1085;&#1094;&#1110;&#1081;&#1085;&#1086;&#1089;&#1090;&#1110;</h2>
+      <h3>&#1042;&#1110;&#1076;&#1087;&#1086;&#1074;&#1110;&#1076;&#1072;&#1083;&#1100;&#1085;&#1072; &#1089;&#1090;&#1086;&#1088;&#1086;&#1085;&#1072;</h3>
+      <p>Joka Immo d.o.o., Volme 142, &#1073;&#1091;&#1076;&#1080;&#1085;&#1086;&#1082; 2B, 52100 &#1041;&#1072;&#1085;&#1081;&#1086;&#1083;&#1077;, &#1061;&#1086;&#1088;&#1074;&#1072;&#1090;&#1110;&#1103;<br>&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a></p>
+      <h3>&#1071;&#1082;&#1110; &#1076;&#1072;&#1085;&#1110; &#1084;&#1080; &#1079;&#1073;&#1080;&#1088;&#1072;&#1108;&#1084;&#1086;?</h3>
+      <p>&#1052;&#1080; &#1079;&#1073;&#1080;&#1088;&#1072;&#1108;&#1084;&#1086; &#1076;&#1072;&#1085;&#1110;, &#1103;&#1082;&#1110; &#1074;&#1080; &#1072;&#1082;&#1090;&#1080;&#1074;&#1085;&#1086; &#1085;&#1072;&#1076;&#1072;&#1108;&#1090;&#1077; (&#1085;&#1072;&#1087;&#1088;., &#1095;&#1077;&#1088;&#1077;&#1079; &#1082;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1085;&#1091; &#1092;&#1086;&#1088;&#1084;&#1091;): &#1110;&#1084;&#8217;&#1103;, &#1077;-&#1087;&#1086;&#1096;&#1090;&#1072;, &#1076;&#1072;&#1090;&#1080; &#1087;&#1086;&#1076;&#1086;&#1088;&#1086;&#1078;&#1110; &#1090;&#1072; &#1074;&#1072;&#1096;&#1077; &#1087;&#1086;&#1074;&#1110;&#1076;&#1086;&#1084;&#1083;&#1077;&#1085;&#1085;&#1103;. &#1050;&#1088;&#1110;&#1084; &#1090;&#1086;&#1075;&#1086;, &#1087;&#1088;&#1080; &#1074;&#1110;&#1076;&#1074;&#1110;&#1076;&#1091;&#1074;&#1072;&#1085;&#1085;&#1110; &#1089;&#1072;&#1081;&#1090;&#1091; &#1079;&#1073;&#1080;&#1088;&#1072;&#1102;&#1090;&#1100;&#1089;&#1103; &#1090;&#1077;&#1093;&#1085;&#1110;&#1095;&#1085;&#1110; &#1076;&#1072;&#1085;&#1110; (IP-&#1072;&#1076;&#1088;&#1077;&#1089;&#1072;, &#1073;&#1088;&#1072;&#1091;&#1079;&#1077;&#1088;, &#1095;&#1072;&#1089; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1091;).</p>
+      <h3>&#1052;&#1077;&#1090;&#1072; &#1086;&#1073;&#1088;&#1086;&#1073;&#1082;&#1080; &#1076;&#1072;&#1085;&#1080;&#1093;</h3>
+      <p>&#1047;&#1110;&#1073;&#1088;&#1072;&#1085;&#1110; &#1076;&#1072;&#1085;&#1110; &#1074;&#1080;&#1082;&#1086;&#1088;&#1080;&#1089;&#1090;&#1086;&#1074;&#1091;&#1102;&#1090;&#1100;&#1089;&#1103; &#1074;&#1080;&#1082;&#1083;&#1102;&#1095;&#1085;&#1086; &#1076;&#1083;&#1103; &#1086;&#1073;&#1088;&#1086;&#1073;&#1082;&#1080; &#1074;&#1072;&#1096;&#1086;&#1075;&#1086; &#1079;&#1072;&#1087;&#1080;&#1090;&#1091; &#1090;&#1072; &#1091;&#1082;&#1083;&#1072;&#1076;&#1077;&#1085;&#1085;&#1103; &#1076;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;&#1091; &#1086;&#1088;&#1077;&#1085;&#1076;&#1080;. &#1055;&#1077;&#1088;&#1077;&#1076;&#1072;&#1095;&#1072; &#1090;&#1088;&#1077;&#1090;&#1110;&#1084; &#1086;&#1089;&#1086;&#1073;&#1072;&#1084; &#1085;&#1077; &#1079;&#1076;&#1110;&#1081;&#1089;&#1085;&#1102;&#1108;&#1090;&#1100;&#1089;&#1103;, &#1103;&#1082;&#1097;&#1086; &#1094;&#1077; &#1085;&#1077; &#1108; &#1085;&#1077;&#1086;&#1073;&#1093;&#1110;&#1076;&#1085;&#1080;&#1084; &#1076;&#1083;&#1103; &#1074;&#1080;&#1082;&#1086;&#1085;&#1072;&#1085;&#1085;&#1103; &#1076;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;&#1091;.</p>
+      <h3>&#1042;&#1110;&#1076;&#1087;&#1088;&#1072;&#1074;&#1082;&#1072; &#1092;&#1086;&#1088;&#1084;&#1080; (Formspree)</h3>
+      <p>&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1085;&#1072; &#1092;&#1086;&#1088;&#1084;&#1072; &#1086;&#1073;&#1088;&#1086;&#1073;&#1083;&#1103;&#1108;&#1090;&#1100;&#1089;&#1103; &#1095;&#1077;&#1088;&#1077;&#1079; Formspree (formspree.io). &#1042;&#1072;&#1096;&#1110; &#1076;&#1072;&#1085;&#1110; &#1087;&#1077;&#1088;&#1077;&#1076;&#1072;&#1102;&#1090;&#1100;&#1089;&#1103; &#1085;&#1072; &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1080; &#1089;&#1087;&#1086;&#1083;&#1091;&#1095;&#1077;&#1085;&#1080;&#1093; &#1096;&#1090;&#1072;&#1090;&#1110;&#1074;. Formspree &#1089;&#1077;&#1088;&#1090;&#1080;&#1092;&#1110;&#1082;&#1086;&#1074;&#1072;&#1085;&#1086; &#1074;&#1110;&#1076;&#1087;&#1086;&#1074;&#1110;&#1076;&#1085;&#1086; &#1076;&#1086; EU&ndash;US Data Privacy Framework.</p>
+      <h3>&#1042;&#1073;&#1091;&#1076;&#1086;&#1074;&#1072;&#1085;&#1080;&#1081; &#1082;&#1086;&#1085;&#1090;&#1077;&#1085;&#1090;</h3>
+      <p>&#1062;&#1077;&#1081; &#1089;&#1072;&#1081;&#1090; &#1074;&#1080;&#1082;&#1086;&#1088;&#1080;&#1089;&#1090;&#1086;&#1074;&#1091;&#1108; Google Maps &#1090;&#1072; Google Fonts. &#1055;&#1088;&#1080; &#1079;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1077;&#1085;&#1085;&#1110; &#1094;&#1100;&#1086;&#1075;&#1086; &#1082;&#1086;&#1085;&#1090;&#1077;&#1085;&#1090;&#1091; &#1076;&#1072;&#1085;&#1110; &#1087;&#1077;&#1088;&#1077;&#1076;&#1072;&#1102;&#1090;&#1100;&#1089;&#1103; Google LLC. &#1044;&#1086;&#1082;&#1083;&#1072;&#1076;&#1085;&#1110;&#1096;&#1077;: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+      <h3>&#1042;&#1072;&#1096;&#1110; &#1087;&#1088;&#1072;&#1074;&#1072;</h3>
+      <p>&#1042;&#1080; &#1084;&#1072;&#1108;&#1090;&#1077; &#1087;&#1088;&#1072;&#1074;&#1086; &#1085;&#1072; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;, &#1074;&#1080;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103;, &#1074;&#1080;&#1076;&#1072;&#1083;&#1077;&#1085;&#1085;&#1103; &#1090;&#1072; &#1086;&#1073;&#1084;&#1077;&#1078;&#1077;&#1085;&#1085;&#1103; &#1086;&#1073;&#1088;&#1086;&#1073;&#1082;&#1080; &#1074;&#1072;&#1096;&#1080;&#1093; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1080;&#1093; &#1076;&#1072;&#1085;&#1080;&#1093;. &#1047;&#1074;&#1077;&#1088;&#1085;&#1110;&#1090;&#1100;&#1089;&#1103;: <a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a>.</p>
+      <h3>&#1053;&#1072;&#1075;&#1083;&#1103;&#1076;&#1086;&#1074;&#1080;&#1081; &#1086;&#1088;&#1075;&#1072;&#1085;</h3>
+      <p>Agencija za za&scaron;titu osobnih podataka (AZOP), &#1047;&#1072;&#1075;&#1088;&#1077;&#1073;, &#1061;&#1086;&#1088;&#1074;&#1072;&#1090;&#1110;&#1103; &ndash; <a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a></p>
+    </div>
   </div>
 </div>
 
@@ -1050,12 +1113,18 @@ function setLang(l) {
   document.querySelectorAll('.lang-opt').forEach(function(b) { b.classList.toggle('act', b.dataset.lang === l); });
   document.getElementById('form-lang').value = l;
   document.documentElement.lang = l;
+  // Update form subject line
+  var subjects = {de:'Villa Joka Anfrage', en:'Villa Joka Enquiry', uk:'Villa Joka Запит'};
+  var subj = document.querySelector('input[name="_subject"]');
+  if (subj) subj.value = subjects[l] || subjects.de;
+  // Update multilingual placeholders
   var phKey = 'ph' + l.charAt(0).toUpperCase() + l.slice(1);
   document.querySelectorAll('[data-ph-de]').forEach(function(el) {
     if (el.dataset[phKey]) el.placeholder = el.dataset[phKey];
   });
   lang = l;
 }
+
 function openLb(i) {
   lbIdx = i;
   var im = imgs[i];
