@@ -1,9 +1,9 @@
 {
   "contact": {
-    "whatsapp": "436505428229",
-    "formspree_id": "YOUR_FORM_ID",
     "email": "info@villa-joka.eu",
-    "phone": "+43 650 542 82 29"
+    "phone": "+43 650 542 82 29",
+    "whatsapp": "436505428229",
+    "formspree_id": "YOUR_FORM_ID"
   },
   "hero": {
     "sub_de": "Urlaub, wie wir ihn selbst am liebsten mögen.",
@@ -11,76 +11,171 @@
     "sub_uk": "Відпочинок, який залишається у серці."
   },
   "about": {
-    "heading_de": "Unser Zuhause &#8211; <em>Ihr Urlaub</em>",
+    "heading_de": "Unser Zuhause – <em>Ihr Urlaub</em>",
     "heading_en": "Our Home &#8211; <em>Your Holiday</em>",
     "heading_uk": "Наш дім &#8212; <em>ваш відпочинок</em>",
-    "body_de": "Villa Joka ist unser eigenes Zuhause &#8211; gebaut und mit viel Liebe eingerichtet. Was wir uns selbst f&#252;r den Urlaub w&#252;nschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der T&#252;r und Ruhe, die man heute nicht mehr &#252;berall findet.",
+    "body_de": "Villa Joka ist unser eigenes Zuhause – gebaut und mit viel Liebe eingerichtet. Was wir uns selbst für den Urlaub wünschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der Tür und Ruhe, die man heute nicht mehr überall findet.",
     "body_en": "Villa Joka is our own home &#8211; built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
     "body_uk": "Вілла Йока &#8212; це наш власний дім, збудований і облаштований з любов'ю. Тут ми втілили все, що самі хотіли б від відпустки: приватний басейн, запах моря біля порога і спокій, якого сьогодні рідко де знайдеш."
   },
-  "reviews": [
+  "reviews": [],
+  "gallery": [
     {
-      "name": "Familie Müller",
-      "origin": "München, Deutschland",
-      "stars": 5,
-      "platform": "Google",
-      "date_de": "August 2024",
-      "date_en": "August 2024",
-      "date_uk": "Серпень 2024",
-      "text_de": "Ein absolutes Traumhaus! Der private Pool, die riesige Dachterrasse mit Meerblick und die liebevoll eingerichteten Zimmer haben uns begeistert. Familie Fersterer ist unglaublich herzlich und hilfsbereit. Wir kommen definitiv wieder!",
-      "text_en": "An absolute dream house! The private pool, the huge rooftop terrace with sea views and the lovingly decorated rooms delighted us. The Fersterer family is incredibly warm and helpful. We will definitely come back!",
-      "text_uk": "Справжній будинок мрії! Приватний басейн, велика тераса на даху з видом на море та затишні кімнати привели нас у захват. Родина Ферстерер дуже привітна та готова допомогти. Ми обов'язково повернемося!"
+      "src": "images/villa_aussen.jpg",
+      "alt_de": "Villa Joka Außenansicht mit privatem Pool",
+      "label_de": "Pool & Außenanlage",
+      "label_en": "Pool & Exterior",
+      "label_uk": "Басейн і подвір'я"
     },
     {
-      "name": "Markus & Julia",
-      "origin": "Wien, Österreich",
-      "stars": 5,
-      "platform": "Google",
-      "date_de": "Juli 2024",
-      "date_en": "July 2024",
-      "date_uk": "Липень 2024",
-      "text_de": "Wir waren zu acht und hatten genug Platz für alle. Die Küche ist top ausgestattet, der Pool perfekt und Banjole selbst ein wunderschönes kleines Dorf. Perfekter Urlaub für Familien!",
-      "text_en": "We were eight people and had plenty of space for everyone. The kitchen is perfectly equipped, the pool is wonderful and Banjole itself is a beautiful little village. Perfect holiday for families!",
-      "text_uk": "Нас було восьмеро, і місця вистачило всім. Кухня чудово оснащена, басейн чудовий, а Банйоле — мальовниче маленьке село. Ідеальна відпустка для сімей!"
+      "src": "images/image00112.jpeg",
+      "alt_de": "Moderner Wohn- und Essbereich",
+      "label_de": "Wohn- & Essbereich",
+      "label_en": "Living & Dining",
+      "label_uk": "Їдальня та вітальня"
     },
     {
-      "name": "Petra S.",
-      "origin": "Hamburg, Deutschland",
-      "stars": 5,
-      "platform": "Google",
-      "date_de": "Juni 2024",
-      "date_en": "June 2024",
-      "date_uk": "Червень 2024",
-      "text_de": "Die Lage ist unschlagbar – ruhig, trotzdem nah am Meer und an Pula. Das Haus ist wunderschön, sehr sauber und genau wie auf den Fotos. Sehr empfehlenswert!",
-      "text_en": "The location is unbeatable – quiet, yet close to the sea and Pula. The house is beautiful, very clean and exactly as shown in the photos. Highly recommended!",
-      "text_uk": "Розташування неперевершене — тихо, але поруч із морем і Пулою. Будинок гарний, дуже чистий і точно такий, як на фото. Дуже рекомендую!"
+      "src": "images/image00101.jpeg",
+      "alt_de": "Außenbereich mit Pool und Garten",
+      "label_de": "Garten & Terrasse",
+      "label_en": "Garden & Terrace",
+      "label_uk": "Сад і тераса"
+    },
+    {
+      "src": "images/dachterrasse.jpg",
+      "alt_de": "Weitläufige Dachterrasse",
+      "label_de": "Dachterrasse",
+      "label_en": "Rooftop Terrace",
+      "label_uk": "Тераса на даху"
+    },
+    {
+      "src": "images/pool.jpg",
+      "alt_de": "Privater Salzwasserpool",
+      "label_de": "Privater Pool",
+      "label_en": "Private Pool",
+      "label_uk": "Приватний басейн"
+    },
+    {
+      "src": "images/image00037.jpeg",
+      "alt_de": "Lounge-Terrasse mit Sitzbereich",
+      "label_de": "Lounge-Terrasse",
+      "label_en": "Lounge Terrace",
+      "label_uk": "Тераса-лаунж"
+    },
+    {
+      "src": "images/grill.jpg",
+      "alt_de": "Außenküche mit Grill",
+      "label_de": "Außenküche & Grill",
+      "label_en": "Outdoor Kitchen & BBQ",
+      "label_uk": "Зовнішня кухня"
+    },
+    {
+      "src": "images/image00179.jpeg",
+      "alt_de": "Dachterrasse mit Meerblick",
+      "label_de": "Aussicht vom Dach",
+      "label_en": "Rooftop View",
+      "label_uk": "Вид з даху"
+    },
+    {
+      "src": "images/banjole_bucht.jpg",
+      "alt_de": "Bucht von Banjole",
+      "label_de": "Banjole Bucht",
+      "label_en": "Banjole Bay",
+      "label_uk": "Затока Банйоле"
+    },
+    {
+      "src": "images/image00127.jpeg",
+      "alt_de": "Pool mit Liegestühlen und Villa",
+      "label_de": "Pool & Liegestühle",
+      "label_en": "Pool & Sunbeds",
+      "label_uk": "Басейн з лежаками"
+    },
+    {
+      "src": "images/image00058.jpeg",
+      "alt_de": "Hafenblick von der Dachterrasse",
+      "label_de": "Hafenblick",
+      "label_en": "Harbour View",
+      "label_uk": "Вид на гавань"
+    },
+    {
+      "src": "images/image00076.jpeg",
+      "alt_de": "Modernes Treppenhaus mit Marmor",
+      "label_de": "Innenbereich",
+      "label_en": "Interior",
+      "label_uk": "Інтер'єр"
+    },
+    {
+      "src": "images/image00169.jpeg",
+      "alt_de": "Villa Joka Eingang mit Schriftzug",
+      "label_de": "Eingang Villa Joka",
+      "label_en": "Villa Joka Entrance",
+      "label_uk": "Вхід у Віллу Йока"
+    },
+    {
+      "src": "images/image00102.jpeg",
+      "alt_de": "Gemauerte Grillstation",
+      "label_de": "Grillstation",
+      "label_en": "BBQ Station",
+      "label_uk": "Барбекю"
+    },
+    {
+      "src": "images/image00180.jpeg",
+      "alt_de": "Weite Dachterrasse blauer Himmel",
+      "label_de": "Weite Dachterrasse",
+      "label_en": "Spacious Rooftop",
+      "label_uk": "Простора тераса"
+    },
+    {
+      "src": "images/image00163.jpeg",
+      "alt_de": "Villa Joka Panorama Garten und Pool",
+      "label_de": "Villa Joka & Garten",
+      "label_en": "Villa Joka & Garden",
+      "label_uk": "Вілла Йока та сад"
     }
   ],
-  "gallery": [
-    {"src": "images/villa_aussen.jpg",  "alt_de": "Villa Joka Außenansicht mit privatem Pool", "label_de": "Pool & Außenanlage",   "label_en": "Pool & Exterior",       "label_uk": "Басейн і подвір'я"},
-    {"src": "images/image00112.jpeg",   "alt_de": "Moderner Wohn- und Essbereich",              "label_de": "Wohn- & Essbereich",    "label_en": "Living & Dining",        "label_uk": "Їдальня та вітальня"},
-    {"src": "images/image00101.jpeg",   "alt_de": "Außenbereich mit Pool und Garten",           "label_de": "Garten & Terrasse",     "label_en": "Garden & Terrace",       "label_uk": "Сад і тераса"},
-    {"src": "images/dachterrasse.jpg",  "alt_de": "Weitläufige Dachterrasse",                   "label_de": "Dachterrasse",          "label_en": "Rooftop Terrace",        "label_uk": "Тераса на даху"},
-    {"src": "images/pool.jpg",          "alt_de": "Privater Salzwasserpool",                    "label_de": "Privater Pool",         "label_en": "Private Pool",           "label_uk": "Приватний басейн"},
-    {"src": "images/image00037.jpeg",   "alt_de": "Lounge-Terrasse mit Sitzbereich",            "label_de": "Lounge-Terrasse",       "label_en": "Lounge Terrace",         "label_uk": "Тераса-лаунж"},
-    {"src": "images/grill.jpg",         "alt_de": "Außenküche mit Grill",                       "label_de": "Außenküche & Grill",    "label_en": "Outdoor Kitchen & BBQ",  "label_uk": "Зовнішня кухня"},
-    {"src": "images/image00179.jpeg",   "alt_de": "Dachterrasse mit Meerblick",                 "label_de": "Aussicht vom Dach",     "label_en": "Rooftop View",           "label_uk": "Вид з даху"},
-    {"src": "images/banjole_bucht.jpg", "alt_de": "Bucht von Banjole",                          "label_de": "Banjole Bucht",         "label_en": "Banjole Bay",            "label_uk": "Затока Банйоле"},
-    {"src": "images/image00127.jpeg",   "alt_de": "Pool mit Liegestühlen und Villa",            "label_de": "Pool & Liegestühle",    "label_en": "Pool & Sunbeds",         "label_uk": "Басейн з лежаками"},
-    {"src": "images/image00058.jpeg",   "alt_de": "Hafenblick von der Dachterrasse",            "label_de": "Hafenblick",            "label_en": "Harbour View",           "label_uk": "Вид на гавань"},
-    {"src": "images/image00076.jpeg",   "alt_de": "Modernes Treppenhaus mit Marmor",            "label_de": "Innenbereich",          "label_en": "Interior",               "label_uk": "Інтер'єр"},
-    {"src": "images/image00169.jpeg",   "alt_de": "Villa Joka Eingang mit Schriftzug",          "label_de": "Eingang Villa Joka",    "label_en": "Villa Joka Entrance",    "label_uk": "Вхід у Віллу Йока"},
-    {"src": "images/image00102.jpeg",   "alt_de": "Gemauerte Grillstation",                     "label_de": "Grillstation",          "label_en": "BBQ Station",            "label_uk": "Барбекю"},
-    {"src": "images/image00180.jpeg",   "alt_de": "Weite Dachterrasse blauer Himmel",           "label_de": "Weite Dachterrasse",    "label_en": "Spacious Rooftop",       "label_uk": "Простора тераса"},
-    {"src": "images/image00163.jpeg",   "alt_de": "Villa Joka Panorama Garten und Pool",        "label_de": "Villa Joka & Garten",   "label_en": "Villa Joka & Garden",    "label_uk": "Вілла Йока та сад"}
-  ],
   "prices_villa": [
-    {"period_de": "November – März",  "period_en": "November – March",    "period_uk": "Листопад – Березень",    "price": "€ 200", "highlight": false},
-    {"period_de": "April",             "period_en": "April",               "period_uk": "Квітень",                "price": "€ 250", "highlight": false},
-    {"period_de": "Mai & September",   "period_en": "May & September",     "period_uk": "Травень & Вересень",     "price": "€ 300", "highlight": false},
-    {"period_de": "Juni",              "period_en": "June",                "period_uk": "Червень",                "price": "€ 350", "highlight": false},
-    {"period_de": "Juli & August",     "period_en": "July & August",       "period_uk": "Липень & Серпень",       "price": "€ 520", "highlight": true},
-    {"period_de": "Oktober",           "period_en": "October",             "period_uk": "Жовтень",                "price": "€ 250", "highlight": false}
+    {
+      "period_de": "November – März",
+      "period_en": "November – March",
+      "period_uk": "Листопад – Березень",
+      "price": "€ 200",
+      "highlight": false
+    },
+    {
+      "period_de": "April",
+      "period_en": "April",
+      "period_uk": "Квітень",
+      "price": "€ 250",
+      "highlight": false
+    },
+    {
+      "period_de": "Mai & September",
+      "period_en": "May & September",
+      "period_uk": "Травень & Вересень",
+      "price": "€ 300",
+      "highlight": false
+    },
+    {
+      "period_de": "Juni",
+      "period_en": "June",
+      "period_uk": "Червень",
+      "price": "€ 350",
+      "highlight": false
+    },
+    {
+      "period_de": "Juli & August",
+      "period_en": "July & August",
+      "period_uk": "Липень & Серпень",
+      "price": "€ 520",
+      "highlight": true
+    },
+    {
+      "period_de": "Oktober",
+      "period_en": "October",
+      "period_uk": "Жовтень",
+      "price": "€ 250",
+      "highlight": false
+    }
   ],
   "prices_villa_notes": {
     "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 350 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
@@ -88,12 +183,48 @@
     "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 350 (повертається) &middot; Мінімальний строк 7 ночей"
   },
   "prices_apt": [
-    {"period_de": "Nov, Jan, Feb, März", "period_en": "Nov, Jan, Feb, March", "period_uk": "лист., січ., лют., бер.", "price": "€ 50",  "highlight": false},
-    {"period_de": "Dezember & April",    "period_en": "December & April",     "period_uk": "Грудень & Квітень",      "price": "€ 60",  "highlight": false},
-    {"period_de": "Mai & Oktober",       "period_en": "May & October",        "period_uk": "Травень & Жовтень",      "price": "€ 70",  "highlight": false},
-    {"period_de": "September",           "period_en": "September",            "period_uk": "Вересень",               "price": "€ 80",  "highlight": false},
-    {"period_de": "Juni",                "period_en": "June",                 "period_uk": "Червень",                "price": "€ 90",  "highlight": false},
-    {"period_de": "Juli & August",       "period_en": "July & August",        "period_uk": "Липень & Серпень",       "price": "€ 110", "highlight": true}
+    {
+      "period_de": "Nov, Jan, Feb, März",
+      "period_en": "Nov, Jan, Feb, March",
+      "period_uk": "лист., січ., лют., бер.",
+      "price": "€ 50",
+      "highlight": false
+    },
+    {
+      "period_de": "Dezember & April",
+      "period_en": "December & April",
+      "period_uk": "Грудень & Квітень",
+      "price": "€ 60",
+      "highlight": false
+    },
+    {
+      "period_de": "Mai & Oktober",
+      "period_en": "May & October",
+      "period_uk": "Травень & Жовтень",
+      "price": "€ 70",
+      "highlight": false
+    },
+    {
+      "period_de": "September",
+      "period_en": "September",
+      "period_uk": "Вересень",
+      "price": "€ 80",
+      "highlight": false
+    },
+    {
+      "period_de": "Juni",
+      "period_en": "June",
+      "period_uk": "Червень",
+      "price": "€ 90",
+      "highlight": false
+    },
+    {
+      "period_de": "Juli & August",
+      "period_en": "July & August",
+      "period_uk": "Липень & Серпень",
+      "price": "€ 110",
+      "highlight": true
+    }
   ],
   "prices_apt_notes": {
     "de": "<strong>Zusätzlich:</strong> Endreinigung € 100 + Energiepauschale € 25 &middot; Kurtaxe € 3/Tag/Person &middot; Mindestaufenthalt 7 Nächte",
@@ -101,20 +232,80 @@
     "uk": "<strong>Додатково:</strong> Уборка € 100 + енергія € 25 &middot; Збір € 3/день &middot; Мінім. 7 ночей"
   },
   "hero_pills": [
-    {"icon": "🛏", "text_de": "3 Schlafzimmer", "text_en": "3 Bedrooms", "text_uk": "3 спальні"},
-    {"icon": "🏊", "text_de": "Privater Salzwasserpool", "text_en": "Private Saltwater Pool", "text_uk": "Приватний солоний басейн"},
-    {"icon": "📐", "text_de": "~180 m²", "text_en": "~180 m²", "text_uk": "~180 m²"},
-    {"icon": "👥", "text_de": "Bis 8 Gäste", "text_en": "Up to 8 Guests", "text_uk": "до 8 гостей"},
-    {"icon": "🌊", "text_de": "600 m zum Meer", "text_en": "600 m to the Sea", "text_uk": "600 м до моря"}
+    {
+      "icon": "🛏",
+      "text_de": "3 Schlafzimmer",
+      "text_en": "3 Bedrooms",
+      "text_uk": "3 спальні"
+    },
+    {
+      "icon": "🏊",
+      "text_de": "Privater Salzwasserpool",
+      "text_en": "Private Saltwater Pool",
+      "text_uk": "Приватний солоний басейн"
+    },
+    {
+      "icon": "📐",
+      "text_de": "~180 m²",
+      "text_en": "~180 m²",
+      "text_uk": "~180 m²"
+    },
+    {
+      "icon": "👥",
+      "text_de": "Bis 8 Gäste",
+      "text_en": "Up to 8 Guests",
+      "text_uk": "до 8 гостей"
+    },
+    {
+      "icon": "🌊",
+      "text_de": "600 m zum Meer",
+      "text_en": "600 m to the Sea",
+      "text_uk": "600 м до моря"
+    }
   ],
   "highlights": [
-    {"icon": "🛏", "text_de": "3 Schlafzimmer", "text_en": "3 Bedrooms", "text_uk": "3 спальні"},
-    {"icon": "🚿", "text_de": "3 Bäder", "text_en": "3 Bathrooms", "text_uk": "3 ванні"},
-    {"icon": "🏊", "text_de": "Salzwasserpool beheizbar", "text_en": "Heated Saltwater Pool", "text_uk": "Солоний басейн"},
-    {"icon": "🌿", "text_de": "Dachterrasse", "text_en": "Rooftop Terrace", "text_uk": "Тераса на даху"},
-    {"icon": "👥", "text_de": "Bis 8 Gäste", "text_en": "Up to 8 Guests", "text_uk": "до 8 гостей"},
-    {"icon": "🏖️", "text_de": "600 m Strand", "text_en": "600 m Beach", "text_uk": "600 м пляж"},
-    {"icon": "✈️", "text_de": "4 km Flughafen Pula", "text_en": "4 km Pula Airport", "text_uk": "4 км аеропорт Пула"}
+    {
+      "icon": "🛏",
+      "text_de": "3 Schlafzimmer",
+      "text_en": "3 Bedrooms",
+      "text_uk": "3 спальні"
+    },
+    {
+      "icon": "🚿",
+      "text_de": "3 Bäder",
+      "text_en": "3 Bathrooms",
+      "text_uk": "3 ванні"
+    },
+    {
+      "icon": "🏊",
+      "text_de": "Salzwasserpool beheizbar",
+      "text_en": "Heated Saltwater Pool",
+      "text_uk": "Солоний басейн"
+    },
+    {
+      "icon": "🌿",
+      "text_de": "Dachterrasse",
+      "text_en": "Rooftop Terrace",
+      "text_uk": "Тераса на даху"
+    },
+    {
+      "icon": "👥",
+      "text_de": "Bis 8 Gäste",
+      "text_en": "Up to 8 Guests",
+      "text_uk": "до 8 гостей"
+    },
+    {
+      "icon": "🏖️",
+      "text_de": "600 m Strand",
+      "text_en": "600 m Beach",
+      "text_uk": "600 м пляж"
+    },
+    {
+      "icon": "✈️",
+      "text_de": "4 km Flughafen Pula",
+      "text_en": "4 km Pula Airport",
+      "text_uk": "4 км аеропорт Пула"
+    }
   ],
   "footer_tagline": {
     "de": "Privates Ferienhaus mit Salzwasserpool in Banjole, Istrien. Familie Fersterer freut sich auf Sie.",
@@ -125,56 +316,208 @@
   "checkout_time": "10:00",
   "kaution": "€ 300",
   "distances": [
-    {"icon": "🌊", "name_de": "Meer & Hafen Banjole", "name_en": "Sea & Harbour Banjole", "name_uk": "Море та гавань Банйоле", "dist": "~ 600 m"},
-    {"icon": "🏖️", "name_de": "Badebucht Banjole", "name_en": "Banjole Beach Cove", "name_uk": "Пляж Банйоле", "dist": "~ 700 m"},
-    {"icon": "🛒", "name_de": "Supermarkt", "name_en": "Supermarket", "name_uk": "Супермаркет", "dist": "~ 500 m"},
-    {"icon": "🍽️", "name_de": "Restaurants & Cafés", "name_en": "Restaurants & Cafés", "name_uk": "Ресторани та кафе", "dist": "~ 500 m"},
-    {"icon": "🏛️", "name_de": "Pula – Römisches Amphitheater", "name_en": "Pula – Roman Amphitheatre", "name_uk": "Пула – Римський амфітеатр", "dist": "~ 4 km"},
-    {"icon": "✈️", "name_de": "Flughafen Pula", "name_en": "Pula Airport", "name_uk": "Аеропорт Пули", "dist": "~ 4 km"},
-    {"icon": "🏘️", "name_de": "Rovinj (Altstadt)", "name_en": "Rovinj (Old Town)", "name_uk": "Ровінь (Старе місто)", "dist": "~ 40 km"}
+    {
+      "icon": "🌊",
+      "name_de": "Meer & Hafen Banjole",
+      "name_en": "Sea & Harbour Banjole",
+      "name_uk": "Море та гавань Банйоле",
+      "dist": "~ 600 m"
+    },
+    {
+      "icon": "🏖️",
+      "name_de": "Badebucht Banjole",
+      "name_en": "Banjole Beach Cove",
+      "name_uk": "Пляж Банйоле",
+      "dist": "~ 700 m"
+    },
+    {
+      "icon": "🛒",
+      "name_de": "Supermarkt",
+      "name_en": "Supermarket",
+      "name_uk": "Супермаркет",
+      "dist": "~ 500 m"
+    },
+    {
+      "icon": "🍽️",
+      "name_de": "Restaurants & Cafés",
+      "name_en": "Restaurants & Cafés",
+      "name_uk": "Ресторани та кафе",
+      "dist": "~ 500 m"
+    },
+    {
+      "icon": "🏛️",
+      "name_de": "Pula – Römisches Amphitheater",
+      "name_en": "Pula – Roman Amphitheatre",
+      "name_uk": "Пула – Римський амфітеатр",
+      "dist": "~ 4 km"
+    },
+    {
+      "icon": "✈️",
+      "name_de": "Flughafen Pula",
+      "name_en": "Pula Airport",
+      "name_uk": "Аеропорт Пули",
+      "dist": "~ 4 km"
+    },
+    {
+      "icon": "🏘️",
+      "name_de": "Rovinj (Altstadt)",
+      "name_en": "Rovinj (Old Town)",
+      "name_uk": "Ровінь (Старе місто)",
+      "dist": "~ 40 km"
+    }
   ],
   "amenities": [
     {
       "icon": "🛏",
-      "title_de": "Schlafzimmer & Bad", "title_en": "Bedrooms & Bathrooms", "title_uk": "Спальні та ванні",
-      "items_de": ["Boxspring-Betten in allen Zimmern", "Bettwäsche & Handtücher inklusive", "3 Bäder inkl. Haartrockner", "Insektenschutz in allen Schlafzimmern"],
-      "items_en": ["Box-spring beds in all rooms", "Bed linen & towels included", "3 bathrooms incl. hair dryer", "Fly screens in all bedrooms"],
-      "items_uk": ["Двоспальні ліжка у всіх кімнатах", "Постільна білизна та рушники включено", "3 ванні кімнати з феном", "Москітні сітки в усіх спальнях"]
+      "title_de": "Schlafzimmer & Bad",
+      "title_en": "Bedrooms & Bathrooms",
+      "title_uk": "Спальні та ванні",
+      "items_de": [
+        "Boxspring-Betten in allen Zimmern",
+        "Bettwäsche & Handtücher inklusive",
+        "3 Bäder inkl. Haartrockner",
+        "Insektenschutz in allen Schlafzimmern"
+      ],
+      "items_en": [
+        "Box-spring beds in all rooms",
+        "Bed linen & towels included",
+        "3 bathrooms incl. hair dryer",
+        "Fly screens in all bedrooms"
+      ],
+      "items_uk": [
+        "Двоспальні ліжка у всіх кімнатах",
+        "Постільна білизна та рушники включено",
+        "3 ванні кімнати з феном",
+        "Москітні сітки в усіх спальнях"
+      ]
     },
     {
       "icon": "🍳",
-      "title_de": "Küche", "title_en": "Kitchen", "title_uk": "Кухня",
-      "items_de": ["Induktionsherd (Kücheninsel)", "Jura Kaffeevollautomat", "Vollausstattung mit Geschirr", "Geschirrspüler & Kühlschrank mit TK", "Waschmaschine (1. Obergeschoss)"],
-      "items_en": ["Induction hob (kitchen island)", "Jura bean-to-cup machine", "Full crockery & utensils", "Dishwasher & fridge with freezer", "Washing machine (1st floor)"],
-      "items_uk": ["Індукційна плита (кухонний острів)", "Кавова машина Jura", "Повний набір посуду", "Посудомийна машина та холодильник", "Пральна машина (1-й поверх)"]
+      "title_de": "Küche",
+      "title_en": "Kitchen",
+      "title_uk": "Кухня",
+      "items_de": [
+        "Induktionsherd (Kücheninsel)",
+        "Jura Kaffeevollautomat",
+        "Vollausstattung mit Geschirr",
+        "Geschirrspüler & Kühlschrank mit TK",
+        "Waschmaschine (1. Obergeschoss)"
+      ],
+      "items_en": [
+        "Induction hob (kitchen island)",
+        "Jura bean-to-cup machine",
+        "Full crockery & utensils",
+        "Dishwasher & fridge with freezer",
+        "Washing machine (1st floor)"
+      ],
+      "items_uk": [
+        "Індукційна плита (кухонний острів)",
+        "Кавова машина Jura",
+        "Повний набір посуду",
+        "Посудомийна машина та холодильник",
+        "Пральна машина (1-й поверх)"
+      ]
     },
     {
       "icon": "❄️",
-      "title_de": "Klima & Komfort", "title_en": "Climate & Comfort", "title_uk": "Клімат та комфорт",
-      "items_de": ["Klimaanlage in allen Räumen", "Fußbodenheizung (Winter)", "Elektrische Rollläden"],
-      "items_en": ["Air conditioning in all rooms", "Underfloor heating (winter)", "Electric roller blinds"],
-      "items_uk": ["Кондиціонер у всіх кімнатах", "Тепла підлога (зима)", "Електричні жалюзі"]
+      "title_de": "Klima & Komfort",
+      "title_en": "Climate & Comfort",
+      "title_uk": "Клімат та комфорт",
+      "items_de": [
+        "Klimaanlage in allen Räumen",
+        "Fußbodenheizung (Winter)",
+        "Elektrische Rollläden"
+      ],
+      "items_en": [
+        "Air conditioning in all rooms",
+        "Underfloor heating (winter)",
+        "Electric roller blinds"
+      ],
+      "items_uk": [
+        "Кондиціонер у всіх кімнатах",
+        "Тепла підлога (зима)",
+        "Електричні жалюзі"
+      ]
     },
     {
       "icon": "📺",
-      "title_de": "Entertainment", "title_en": "Entertainment", "title_uk": "Розваги",
-      "items_de": ["Smart TV in allen Schlafzimmern & Wohnzimmer", "Bose Soundbar im Wohnzimmer", "Gratis-WLAN im gesamten Haus"],
-      "items_en": ["Smart TV in all bedrooms & lounge", "Bose soundbar in the lounge", "Free Wi-Fi throughout"],
-      "items_uk": ["Smart TV у всіх кімнатах та вітальні", "Саундбар Bose у вітальні", "Безкоштовний Wi-Fi скрізь"]
+      "title_de": "Entertainment",
+      "title_en": "Entertainment",
+      "title_uk": "Розваги",
+      "items_de": [
+        "Smart TV in allen Schlafzimmern & Wohnzimmer",
+        "Bose Soundbar im Wohnzimmer",
+        "Gratis-WLAN im gesamten Haus"
+      ],
+      "items_en": [
+        "Smart TV in all bedrooms & lounge",
+        "Bose soundbar in the lounge",
+        "Free Wi-Fi throughout"
+      ],
+      "items_uk": [
+        "Smart TV у всіх кімнатах та вітальні",
+        "Саундбар Bose у вітальні",
+        "Безкоштовний Wi-Fi скрізь"
+      ]
     },
     {
       "icon": "🏊",
-      "title_de": "Outdoor & Pool", "title_en": "Outdoor & Pool", "title_uk": "Вулиця та басейн",
-      "items_de": ["Privater Salzwasserpool (Osmose, beheizbar)", "Dachterrasse mit Sonnensegel", "Außenküche & Grill", "Pool-Handtücher inklusive"],
-      "items_en": ["Private saltwater pool (osmosis, heatable)", "Rooftop terrace with sun sail", "Outdoor kitchen & BBQ", "Pool towels included"],
-      "items_uk": ["Приватний соляний басейн (осмос, обігрів)", "Тераса на даху із сонцезахисним вітрилом", "Зовнішня кухня та гриль", "Рушники для басейну включено"]
+      "title_de": "Outdoor & Pool",
+      "title_en": "Outdoor & Pool",
+      "title_uk": "Вулиця та басейн",
+      "items_de": [
+        "Privater Salzwasserpool (Osmose, beheizbar)",
+        "Dachterrasse mit Sonnensegel",
+        "Außenküche & Grill",
+        "Pool-Handtücher inklusive"
+      ],
+      "items_en": [
+        "Private saltwater pool (osmosis, heatable)",
+        "Rooftop terrace with sun sail",
+        "Outdoor kitchen & BBQ",
+        "Pool towels included"
+      ],
+      "items_uk": [
+        "Приватний соляний басейн (осмос, обігрів)",
+        "Тераса на даху із сонцезахисним вітрилом",
+        "Зовнішня кухня та гриль",
+        "Рушники для басейну включено"
+      ]
     },
     {
       "icon": "⚡",
-      "title_de": "Extras", "title_en": "Extras", "title_uk": "Додатково",
-      "items_de": ["Solaranlage & E-Auto-Ladestation", "Carport (2 Stellplätze)", "Fahrräder (auf Anfrage)", "Babybett & Kinderstuhl (bitte vormerken)"],
-      "items_en": ["Solar panels & EV charger", "Carport (2 parking spaces)", "Bicycles (on request)", "Baby cot & high chair (please request)"],
-      "items_uk": ["Сонячні панелі та зарядка для ел. авто", "Навіс для авто (2 місця)", "Велосипеди (на запит)", "Дитяче ліжечко та стілець (на запит)"]
+      "title_de": "Extras",
+      "title_en": "Extras",
+      "title_uk": "Додатково",
+      "items_de": [
+        "Solaranlage & E-Auto-Ladestation",
+        "Carport (2 Stellplätze)",
+        "Fahrräder (auf Anfrage)",
+        "Babybett & Kinderstuhl (bitte vormerken)"
+      ],
+      "items_en": [
+        "Solar panels & EV charger",
+        "Carport (2 parking spaces)",
+        "Bicycles (on request)",
+        "Baby cot & high chair (please request)"
+      ],
+      "items_uk": [
+        "Сонячні панелі та зарядка для ел. авто",
+        "Навіс для авто (2 місця)",
+        "Велосипеди (на запит)",
+        "Дитяче ліжечко та стілець (на запит)"
+      ]
+    },
+    {
+      "icon": "",
+      "title_de": "irgendwas noch",
+      "title_en": "",
+      "title_uk": "",
+      "items_de": [
+        "Bier"
+      ],
+      "items_en": [],
+      "items_uk": []
     }
   ]
 }
