@@ -12,10 +12,10 @@
   },
   "about": {
     "heading_de": "Unser Zuhause – <em>Ihr Urlaub</em>",
-    "heading_en": "Our Home &#8211; <em>Your Holiday</em>",
+    "heading_en": "Our Home – <em>Your Holiday</em>",
     "heading_uk": "Наш дім &#8212; <em>ваш відпочинок</em>",
     "body_de": "Villa Joka ist unser eigenes Zuhause – gebaut und mit viel Liebe eingerichtet. Was wir uns selbst für den Urlaub wünschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der Tür und Ruhe, die man heute nicht mehr überall findet.",
-    "body_en": "Villa Joka is our own home &#8211; built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
+    "body_en": "Villa Joka is our own home – built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
     "body_uk": "Вілла Йока &#8212; це наш власний дім, збудований і облаштований з любов'ю. Тут ми втілили все, що самі хотіли б від відпустки: приватний басейн, запах моря біля порога і спокій, якого сьогодні рідко де знайдеш."
   },
   "reviews": [],
@@ -178,9 +178,9 @@
     }
   ],
   "prices_villa_notes": {
-    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 350 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
-    "en": "<strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 &middot; Tourism tax € 3/day/person &middot; Security deposit € 350 (returned on site) &middot; Minimum stay 7 nights",
-    "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 350 (повертається) &middot; Мінімальний строк 7 ночей"
+    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 300 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
+    "en": "<strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 &middot; Tourism tax € 3/day/person &middot; Security deposit € 300 (returned on site) &middot; Minimum stay 7 nights",
+    "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 300 (повертається) &middot; Мінімальний строк 7 ночей"
   },
   "prices_apt": [
     {
@@ -507,17 +507,6 @@
         "Велосипеди (на запит)",
         "Дитяче ліжечко та стілець (на запит)"
       ]
-    },
-    {
-      "icon": "",
-      "title_de": "irgendwas noch",
-      "title_en": "",
-      "title_uk": "",
-      "items_de": [
-        "Bier"
-      ],
-      "items_en": [],
-      "items_uk": []
     }
   ]
 }
