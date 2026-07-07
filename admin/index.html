@@ -262,6 +262,7 @@ input, textarea, select { font-family: inherit; }
       <button class="lang-btn" data-lang="uk">UK</button>
     </div>
     <div class="grid-4" id="gallery-grid"></div>
+    <button class="btn-add" id="add-gallery-btn" style="margin-top:1rem;">+ Foto-Slot hinzufügen</button>
   </div>
 
   <!-- TAB: VILLA -->
@@ -389,6 +390,7 @@ window.addEventListener('DOMContentLoaded', function() {
   document.getElementById('add-apt-btn').addEventListener('click', function() { addPriceRow('apt'); });
   document.getElementById('add-pill-btn').addEventListener('click', addPill);
   document.getElementById('add-highlight-btn').addEventListener('click', addHighlight);
+  document.getElementById('add-gallery-btn').addEventListener('click', addGallerySlot);
   document.getElementById('add-dist-btn').addEventListener('click', addDistanceRow);
   document.getElementById('add-amen-btn').addEventListener('click', addAmenityCard);
 
@@ -851,6 +853,13 @@ function makeGalleryCell(item, i, l) {
   return cell;
 }
 
+function addGallerySlot() {
+  saveGalleryToData();
+  if (!data.gallery) data.gallery = [];
+  data.gallery.push({ src: '', alt_de: '', label_de: '', label_en: '', label_uk: '' });
+  loadGalleryFromData();
+}
+
 /* Upload a file to GitHub – checks for existing SHA first */
 function uploadImageToGitHub(path, b64, callback) {
   var fileApi = 'https://api.github.com/repos/' + REPO + '/contents/' + path;
@@ -1128,12 +1137,4 @@ function addAmenityCard() {
   loadAmenitiesFromData();
 }
 
-/* ─────────────────────────────────────────────
-   ESCAPE
-───────────────────────────────────────────── */
-function esc(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-</script>
-</body>
-</html>
+/* ─────────────�
