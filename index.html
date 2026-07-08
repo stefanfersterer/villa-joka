@@ -449,17 +449,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
         <p class="lang-en hidden">Banjole is a quiet fishing village south of Pula &#8211; relaxed, family-friendly and still close to everything. Around 180 m&#178; for up to 8 people: three bedrooms with box-spring beds, three bathrooms, a fully equipped kitchen and your own pool in the garden.</p>
         <p class="lang-uk hidden">&#1041;&#1072;&#1085;&#1081;&#1086;&#1083;&#1077; &#8212; &#1084;&#1072;&#1083;&#1077;&#1085;&#1100;&#1082;&#1077; &#1088;&#1080;&#1073;&#1072;&#1083;&#1100;&#1089;&#1100;&#1082;&#1077; &#1089;&#1077;&#1083;&#1086; &#1085;&#1072; &#1087;&#1110;&#1074;&#1076;&#1077;&#1085;&#1100; &#1074;&#1110;&#1076; &#1055;&#1091;&#1083;&#1080; &#8212; &#1089;&#1087;&#1086;&#1082;&#1110;&#1081;&#1085;&#1077;, &#1089;&#1110;&#1084;&#1077;&#1081;&#1085;&#1077; &#1110; &#1074;&#1086;&#1076;&#1085;&#1086;&#1095;&#1072;&#1089; &#1087;&#1086;&#1088;&#1091;&#1095; &#1110;&#1079; &#1091;&#1089;&#1110;&#1084;. &#1041;&#1083;&#1080;&#1079;&#1100;&#1082;&#1086; 180 &#1084;&#178; &#1076;&#1083;&#1103; &#1076;&#1086; 8 &#1086;&#1089;&#1110;&#1073;: &#1090;&#1088;&#1080; &#1089;&#1087;&#1072;&#1083;&#1100;&#1085;&#1110; &#1079; &#1076;&#1074;&#1086;&#1089;&#1087;&#1072;&#1083;&#1100;&#1085;&#1080;&#1084;&#1080; &#1083;&#1110;&#1078;&#1082;&#1072;&#1084;&#1080;, &#1090;&#1088;&#1080; &#1074;&#1072;&#1085;&#1085;&#1110; &#1082;&#1110;&#1084;&#1085;&#1072;&#1090;&#1080;, &#1087;&#1086;&#1074;&#1085;&#1110;&#1089;&#1090;&#1102; &#1086;&#1073;&#1083;&#1072;&#1076;&#1085;&#1072;&#1085;&#1072; &#1082;&#1091;&#1093;&#1085;&#1103; &#1110; &#1074;&#1083;&#1072;&#1089;&#1085;&#1080;&#1081; &#1073;&#1072;&#1089;&#1077;&#1081;&#1085; &#1091; &#1089;&#1072;&#1076;&#1091;.</p>
         <div class="villa-stats">
-          <div class="vstat">
+          <div class="vstat" id="vstat-checkin">
             <div class="vstat-l lang-de">Check-in</div><div class="vstat-l lang-en hidden">Check-in</div><div class="vstat-l lang-uk hidden">&#1047;&#1072;&#1111;&#1079;&#1076;</div>
-            <div class="vstat-v lang-de">ab 16:00 Uhr</div><div class="vstat-v lang-en hidden">from 4:00 pm</div><div class="vstat-v lang-uk hidden">&#1074;&#1110;&#1076; 16:00</div>
+            <div class="vstat-v lang-de">ab 16:00 Uhr</div><div class="vstat-v lang-en hidden">from 16:00</div><div class="vstat-v lang-uk hidden">&#1074;&#1110;&#1076; 16:00</div>
           </div>
-          <div class="vstat">
+          <div class="vstat" id="vstat-checkout">
             <div class="vstat-l lang-de">Check-out</div><div class="vstat-l lang-en hidden">Check-out</div><div class="vstat-l lang-uk hidden">&#1042;&#1080;&#1111;&#1079;&#1076;</div>
-            <div class="vstat-v lang-de">bis 09:30 Uhr</div><div class="vstat-v lang-en hidden">by 9:30 am</div><div class="vstat-v lang-uk hidden">&#1076;&#1086; 09:30</div>
+            <div class="vstat-v lang-de">bis 10:00 Uhr</div><div class="vstat-v lang-en hidden">by 10:00</div><div class="vstat-v lang-uk hidden">&#1076;&#1086; 10:00</div>
           </div>
-          <div class="vstat">
+          <div class="vstat" id="vstat-kaution">
             <div class="vstat-l lang-de">Kaution</div><div class="vstat-l lang-en hidden">Deposit</div><div class="vstat-l lang-uk hidden">&#1047;&#1072;&#1089;&#1090;&#1072;&#1074;&#1072;</div>
-            <div class="vstat-v">&#8364; 350</div>
+            <div class="vstat-v">&#8364; 300</div>
           </div>
           <div class="vstat">
             <div class="vstat-l lang-de">G&#228;ste</div><div class="vstat-l lang-en hidden">Guests</div><div class="vstat-l lang-uk hidden">&#1043;&#1086;&#1089;&#1090;&#1110;</div>
@@ -1377,6 +1377,24 @@ setTimeout(function() {
           + '<span class="ci-txt lang-de' + (lang !== 'de' ? ' hidden' : '') + '">Kaution: ' + d.kaution + ' (vor Ort zurückgegeben)</span>'
           + '<span class="ci-txt lang-en' + (lang !== 'en' ? ' hidden' : '') + '">Security deposit: ' + d.kaution + ' (returned on site)</span>'
           + '<span class="ci-txt lang-uk' + (lang !== 'uk' ? ' hidden' : '') + '">Застава: ' + d.kaution + ' (повертається на місці)</span>';
+      }
+
+      // 14b. Villa-Stats Cards (Check-in / Check-out / Kaution)
+      var vsCI = document.getElementById('vstat-checkin');
+      var vsCO = document.getElementById('vstat-checkout');
+      var vsKA = document.getElementById('vstat-kaution');
+      if (vsCI && d.checkin_time) {
+        vsCI.querySelector('.vstat-v.lang-de').textContent = 'ab ' + d.checkin_time + ' Uhr';
+        vsCI.querySelector('.vstat-v.lang-en').textContent = 'from ' + d.checkin_time;
+        vsCI.querySelector('.vstat-v.lang-uk').textContent = 'від ' + d.checkin_time;
+      }
+      if (vsCO && d.checkout_time) {
+        vsCO.querySelector('.vstat-v.lang-de').textContent = 'bis ' + d.checkout_time + ' Uhr';
+        vsCO.querySelector('.vstat-v.lang-en').textContent = 'by ' + d.checkout_time;
+        vsCO.querySelector('.vstat-v.lang-uk').textContent = 'до ' + d.checkout_time;
+      }
+      if (vsKA && d.kaution) {
+        vsKA.querySelector('.vstat-v').textContent = d.kaution;
       }
 
       // 15. Distances
