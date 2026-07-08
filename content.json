@@ -178,9 +178,9 @@
     }
   ],
   "prices_villa_notes": {
-    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 350 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
-    "en": "<strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 &middot; Tourism tax € 3/day/person &middot; Security deposit € 350 (returned on site) &middot; Minimum stay 7 nights",
-    "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 350 (повертається) &middot; Мінімальний строк 7 ночей"
+    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 300 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
+    "en": "<strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 &middot; Tourism tax € 3/day/person &middot; Security deposit € 300 (returned on site) &middot; Minimum stay 7 nights",
+    "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 300 (повертається) &middot; Мінімальний строк 7 ночей"
   },
   "prices_apt": [
     {
