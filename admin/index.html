@@ -36,6 +36,8 @@ input, textarea, select { font-family: inherit; }
 .btn-save { background: #fff; color: #1A6575; border: none; border-radius: 6px; padding: 7px 18px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
 .btn-save:hover { background: #e8f4f5; }
 .btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-preview { background: transparent; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; padding: 6px 12px; font-size: 13px; text-decoration: none; transition: all 0.2s; }
+.btn-preview:hover { color: #fff; border-color: #fff; }
 .btn-logout { background: transparent; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
 .btn-logout:hover { color: #fff; border-color: #fff; }
 
@@ -151,6 +153,7 @@ input, textarea, select { font-family: inherit; }
   <div class="topbar">
     <div class="topbar-title">&#127968; Villa Joka Admin</div>
     <div class="topbar-right">
+      <a class="btn-preview" href="https://villa-joka.netlify.app" target="_blank" rel="noopener">🌐 Vorschau</a>
       <button class="btn-save" id="save-btn">Speichern</button>
       <button class="btn-logout" id="logout-btn">Abmelden</button>
     </div>
@@ -353,6 +356,11 @@ var API  = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE;
 var data    = {};
 var fileSha = '';
 var pat     = '';
+var isDirty = false;
+
+window.addEventListener('beforeunload', function(e) {
+  if (isDirty) { e.preventDefault(); e.returnValue = ''; }
+});
 
 var textsLang     = 'de';
 var galleryLang   = 'de';
@@ -398,6 +406,10 @@ window.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.addEventListener('click', function() { switchTab(this.getAttribute('data-tab'), this); });
   });
+
+  // Ungespeichert-Warnung: jede Änderung im App markiert als dirty
+  document.getElementById('app').addEventListener('input',  function() { isDirty = true; });
+  document.getElementById('app').addEventListener('change', function() { isDirty = true; });
 
   // Texte lang switcher
   bindLangBar('texte-lang-bar', function(lang) {
@@ -818,7 +830,9 @@ function makeGalleryCell(item, i, l) {
     + (l === 'de' ? '<label class="field-label" style="margin-top:4px;">Alt-Text (DE)</label><input type="text" class="gal-alt" value="' + esc(altVal) + '">' : '')
     + '<div style="display:flex;gap:6px;margin-top:6px;">'
     + '<button class="btn-upload" style="flex:1;">&#128228; Bild tauschen</button>'
-    + '<button class="btn-del-slot" data-del="' + i + '" title="Foto-Slot löschen" style="background:#fde8e8;color:#c0392b;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;">&#10005; Slot löschen</button>'
+    + '<button class="btn-gal-up" data-idx="' + i + '" title="Nach oben" style="background:#e8f4f5;color:#1A6575;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;">&#8593;</button>'
+    + '<button class="btn-gal-dn" data-idx="' + i + '" title="Nach unten" style="background:#e8f4f5;color:#1A6575;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;">&#8595;</button>'
+    + '<button class="btn-del-slot" data-del="' + i + '" title="Foto-Slot löschen" style="background:#fde8e8;color:#c0392b;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;">&#10005;</button>'
     + '</div>'
     + '<input type="file" class="file-input" accept="image/*" style="display:none">'
     + '<div class="upload-status"></div>';
@@ -831,6 +845,28 @@ function makeGalleryCell(item, i, l) {
   var filenameDiv = cell.querySelector('.gallery-filename');
 
   uploadBtn.addEventListener('click', function() { fileInput.click(); });
+
+  cell.querySelector('.btn-gal-up').addEventListener('click', function() {
+    saveGalleryToData();
+    var idx = parseInt(this.getAttribute('data-idx'));
+    if (idx > 0) {
+      var tmp = data.gallery[idx - 1];
+      data.gallery[idx - 1] = data.gallery[idx];
+      data.gallery[idx] = tmp;
+      loadGalleryFromData();
+    }
+  });
+
+  cell.querySelector('.btn-gal-dn').addEventListener('click', function() {
+    saveGalleryToData();
+    var idx = parseInt(this.getAttribute('data-idx'));
+    if (idx < data.gallery.length - 1) {
+      var tmp = data.gallery[idx + 1];
+      data.gallery[idx + 1] = data.gallery[idx];
+      data.gallery[idx] = tmp;
+      loadGalleryFromData();
+    }
+  });
 
   cell.querySelector('.btn-del-slot').addEventListener('click', function() {
     saveGalleryToData();
@@ -1031,6 +1067,7 @@ function saveData() {
       btn.textContent = 'Speichern';
       if (res.ok && res.d.commit) {
         fileSha = res.d.content && res.d.content.sha ? res.d.content.sha : fileSha;
+        isDirty = false;
         showToast('Gespeichert! Netlify deployt in ~30 s.', 'success');
       } else {
         showToast('Fehler: ' + (res.d.message || 'Unbekannt'), 'error');
