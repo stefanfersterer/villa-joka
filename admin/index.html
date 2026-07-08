@@ -477,7 +477,16 @@ function doLogin() {
   var val = document.getElementById('pat-input').value.trim();
   if (!val) { showLoginErr('Bitte PAT eingeben.'); return; }
   pat = val;
+  document.getElementById('login-err').style.display = 'none';
+  var btn = document.getElementById('login-btn');
+  btn.disabled = true;
+  btn.textContent = 'Verbinden…';
   loadData();
+}
+
+function resetLoginBtn() {
+  var btn = document.getElementById('login-btn');
+  if (btn) { btn.disabled = false; btn.textContent = 'Verbinden'; }
 }
 
 function doLogout() {
@@ -510,8 +519,10 @@ function switchTab(tab, btn) {
 function loadData() {
   fetch(API, { headers: { 'Authorization': 'token ' + pat, 'Accept': 'application/vnd.github.v3+json' } })
     .then(function(r) {
-      if (r.status === 401) { showLoginErr('Ungültiger PAT.'); return null; }
-      if (!r.ok) { showLoginErr('Fehler beim Laden: ' + r.status); return null; }
+      if (r.status === 401) { resetLoginBtn(); showLoginErr('Ungültiger PAT – Token abgelaufen oder widerrufen. Bitte neuen PAT erstellen.'); return null; }
+      if (r.status === 403) { resetLoginBtn(); showLoginErr('Zugriff verweigert (403) – PAT hat keine repo-Berechtigung. Beim Erstellen: Haken bei „repo" setzen.'); return null; }
+      if (r.status === 404) { resetLoginBtn(); showLoginErr('Nicht gefunden (404) – PAT braucht Scope „repo" (vollständiger Zugriff auf Repository). Bitte neuen PAT mit repo-Scope erstellen.'); return null; }
+      if (!r.ok) { resetLoginBtn(); showLoginErr('Fehler ' + r.status + ' – bitte erneut versuchen oder neuen PAT erstellen.'); return null; }
       return r.json();
     })
     .then(function(d) {
@@ -523,9 +534,9 @@ function loadData() {
       document.getElementById('login').style.display = 'none';
       document.getElementById('login-err').style.display = 'none';
       document.getElementById('app').style.display = 'block';
-      renderAll();
+      try { renderAll(); } catch(e) { showToast('Ladefehler: ' + e.message, 'error'); }
     })
-    .catch(function(err) { showLoginErr('Verbindungsfehler: ' + err.message); });
+    .catch(function(err) { resetLoginBtn(); showLoginErr('Verbindungsfehler: ' + err.message); });
 }
 
 /* ─────────────────────────────────────────────
@@ -578,12 +589,10 @@ function loadTextsFromData() {
   var a = data.about || {};
   var l = textsLang;
 
-  document.getElementById('t-hero-sub').value     = h['sub_' + l] || '';
-  // Bug-Fix: decode HTML entities for human-readable editing
+  document.getElementById('t-hero-sub').value      = decodeEntities(h['sub_' + l] || '');
   document.getElementById('t-about-heading').value = decodeEntities(a['heading_' + l] || '');
   document.getElementById('t-about-body').value    = decodeEntities(a['body_' + l]    || '');
-
-  document.getElementById('t-footer-tagline').value = (data.footer_tagline && data.footer_tagline[l]) || '';
+  document.getElementById('t-footer-tagline').value = decodeEntities((data.footer_tagline && data.footer_tagline[l]) || '');
 
   loadPillsFromData();
   loadHighlightsFromData();
@@ -802,7 +811,7 @@ function makeGalleryCell(item, i, l) {
   var altVal   = item.alt_de || '';
 
   // Build inner HTML
-  cell.innerHTML = '<img class="gal-preview" src="/' + esc(src) + '" alt="" loading="lazy">'
+  cell.innerHTML = (src ? '<img class="gal-preview" src="/' + esc(src) + '" alt="" loading="lazy">' : '<div class="gal-preview" style="background:#e8e8e4;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:13px;border-radius:6px;min-height:80px;">Kein Bild</div>')
     + '<div class="gallery-filename">' + esc(filename) + '</div>'
     + '<label class="field-label">Label</label>'
     + '<input type="text" class="gal-label" value="' + esc(labelVal) + '">'
@@ -1011,7 +1020,7 @@ function saveData() {
       btn.disabled    = false;
       btn.textContent = 'Speichern';
       if (res.ok && res.d.commit) {
-        fileSha = res.d.content.sha;
+        fileSha = res.d.content && res.d.content.sha ? res.d.content.sha : fileSha;
         showToast('Gespeichert! Netlify deployt in ~30 s.', 'success');
       } else {
         showToast('Fehler: ' + (res.d.message || 'Unbekannt'), 'error');
@@ -1137,4 +1146,12 @@ function addAmenityCard() {
   loadAmenitiesFromData();
 }
 
-/* ─────────────�
+/* ─────────────────────────────────────────────
+   ESCAPE
+───────────────────────────────────────────── */
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+</body>
+</html>
