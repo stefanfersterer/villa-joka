@@ -816,7 +816,10 @@ function makeGalleryCell(item, i, l) {
     + '<label class="field-label">Label</label>'
     + '<input type="text" class="gal-label" value="' + esc(labelVal) + '">'
     + (l === 'de' ? '<label class="field-label" style="margin-top:4px;">Alt-Text (DE)</label><input type="text" class="gal-alt" value="' + esc(altVal) + '">' : '')
-    + '<button class="btn-upload">&#128228; Bild tauschen</button>'
+    + '<div style="display:flex;gap:6px;margin-top:6px;">'
+    + '<button class="btn-upload" style="flex:1;">&#128228; Bild tauschen</button>'
+    + '<button class="btn-del-slot" data-del="' + i + '" title="Foto-Slot löschen" style="background:#fde8e8;color:#c0392b;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;">&#10005; Slot löschen</button>'
+    + '</div>'
     + '<input type="file" class="file-input" accept="image/*" style="display:none">'
     + '<div class="upload-status"></div>';
 
@@ -828,6 +831,13 @@ function makeGalleryCell(item, i, l) {
   var filenameDiv = cell.querySelector('.gallery-filename');
 
   uploadBtn.addEventListener('click', function() { fileInput.click(); });
+
+  cell.querySelector('.btn-del-slot').addEventListener('click', function() {
+    saveGalleryToData();
+    var idx = parseInt(this.getAttribute('data-del'));
+    data.gallery.splice(idx, 1);
+    loadGalleryFromData();
+  });
 
   fileInput.addEventListener('change', function() {
     var file = fileInput.files[0];
