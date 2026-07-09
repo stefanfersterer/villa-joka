@@ -971,8 +971,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
     <img class="lb-img" id="lb-img" src="" alt="">
   </div>
   <button class="lb-btn lb-x" onclick="closeLb()" aria-label="Schliessen">&times;</button>
-  <button class="lb-btn lb-pv" onclick="moveLb(-1)" aria-label="Zurueck">&lsaquo;</button>
-  <button class="lb-btn lb-nx" onclick="moveLb(1)" aria-label="Weiter">&rsaquo;</button>
+  <button class="lb-btn lb-pv" onclick="moveLb(-1);event.stopPropagation()" aria-label="Zurueck">&lsaquo;</button>
+  <button class="lb-btn lb-nx" onclick="moveLb(1);event.stopPropagation()" aria-label="Weiter">&rsaquo;</button>
   <div class="lb-ct" id="lb-ct"></div>
 </div>
 
@@ -1143,6 +1143,22 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft') moveLb(-1);
   if (e.key === 'ArrowRight') moveLb(1);
 });
+// Touch/Swipe für Mobilgeräte
+(function() {
+  var lb = document.getElementById('lb');
+  var txStart = 0, tyStart = 0;
+  lb.addEventListener('touchstart', function(e) {
+    txStart = e.touches[0].clientX;
+    tyStart = e.touches[0].clientY;
+  }, {passive: true});
+  lb.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - txStart;
+    var dy = e.changedTouches[0].clientY - tyStart;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      moveLb(dx < 0 ? 1 : -1);
+    }
+  }, {passive: true});
+})();
 
 function openModal(id) {
   document.getElementById('modal-' + id).classList.add('open');
