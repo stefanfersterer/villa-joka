@@ -138,9 +138,21 @@ input, textarea, select { font-family: inherit; }
 
 <!-- LOGIN -->
 <div id="login">
-  <div class="login-box">
+  <!-- Screen 1: E-Mail + Passwort -->
+  <div class="login-box" id="auth-screen">
     <div class="login-title">Villa Joka Admin</div>
-    <div class="login-sub">GitHub Personal Access Token eingeben</div>
+    <div class="login-sub">Bitte mit E-Mail und Passwort anmelden</div>
+    <label class="login-label" for="auth-email">E-Mail</label>
+    <input class="login-input" type="email" id="auth-email" placeholder="deine@email.com" autocomplete="username">
+    <label class="login-label" for="auth-pw">Passwort</label>
+    <input class="login-input" type="password" id="auth-pw" placeholder="••••••••" autocomplete="current-password">
+    <button class="login-btn" id="auth-btn">Anmelden</button>
+    <div class="login-err" id="auth-err"></div>
+  </div>
+  <!-- Screen 2: PAT -->
+  <div class="login-box" id="pat-screen" style="display:none;">
+    <div class="login-title">GitHub Verbindung</div>
+    <div class="login-sub">Personal Access Token eingeben (einmalig, wird gespeichert)</div>
     <label class="login-label" for="pat-input">Personal Access Token</label>
     <input class="login-input" type="password" id="pat-input" placeholder="ghp_..." autocomplete="off">
     <button class="login-btn" id="login-btn">Verbinden</button>
@@ -168,6 +180,7 @@ input, textarea, select { font-family: inherit; }
     <button class="tab-btn" data-tab="apartment">Apartment</button>
     <button class="tab-btn" data-tab="entfernungen">Entfernungen</button>
     <button class="tab-btn" data-tab="ausstattung">Ausstattung</button>
+    <button class="tab-btn" data-tab="einstellungen">⚙ Einstellungen</button>
   </div>
 
   <!-- TAB: KONTAKT -->
@@ -343,12 +356,59 @@ input, textarea, select { font-family: inherit; }
       <button class="btn-add" id="add-amen-btn">+ Karte hinzufügen</button>
     </div>
   </div>
+
+  <!-- TAB: EINSTELLUNGEN -->
+  <div class="tab-content" id="tab-einstellungen">
+    <div class="card">
+      <div class="card-title">Passwort ändern</div>
+      <div style="max-width:420px;">
+        <div class="field"><label class="field-label">Aktuelles Passwort</label><input type="password" id="pw-current" class="login-input" style="margin-bottom:0;"></div>
+        <div class="field" style="margin-top:0.75rem;"><label class="field-label">Neues Passwort</label><input type="password" id="pw-new" class="login-input" style="margin-bottom:0;"></div>
+        <div class="field" style="margin-top:0.75rem;"><label class="field-label">Neues Passwort bestätigen</label><input type="password" id="pw-confirm" class="login-input" style="margin-bottom:0;"></div>
+        <button class="login-btn" id="pw-change-btn" style="margin-top:1.25rem;">Passwort speichern</button>
+        <div class="login-err" id="pw-err"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title">E-Mail ändern</div>
+      <div style="max-width:420px;">
+        <div class="field"><label class="field-label">Neue E-Mail-Adresse</label><input type="email" id="email-new" class="login-input" style="margin-bottom:0;" placeholder="neue@email.com"></div>
+        <button class="login-btn" id="email-change-btn" style="margin-top:1.25rem;">E-Mail speichern</button>
+        <div class="login-err" id="email-err" style="background:#e8f4f5;color:#1A6575;"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title">GitHub Token (PAT)</div>
+      <div style="max-width:420px;">
+        <div class="field"><label class="field-label">Neuer Personal Access Token</label><input type="password" id="pat-new" class="login-input" style="margin-bottom:0;" placeholder="ghp_..."></div>
+        <button class="login-btn" id="pat-change-btn" style="margin-top:1.25rem;">Token ersetzen</button>
+        <div class="login-err" id="pat-err" style="background:#e8f4f5;color:#1A6575;"></div>
+      </div>
+      <p style="font-size:12px;color:#aaa;margin-top:0.75rem;">Erstelle einen neuen PAT auf github.com → Settings → Developer Settings → Personal access tokens → Tokens (classic). Scope: <strong>repo</strong>.</p>
+    </div>
+  </div>
 </div>
 
 <!-- TOAST -->
 <div id="toast"></div>
 
 <script>
+/* ─────────────────────────────────────────────
+   AUTH-KONFIGURATION
+   Standard-Passwort: VillaJoka2025
+   Hash kann über Einstellungen-Tab geändert werden.
+   Gespeichert wird in localStorage (vj_auth_email / vj_auth_hash).
+───────────────────────────────────────────── */
+var AUTH_DEFAULT = {
+  email: 'chris@fg-eventproductions.com',
+  hash:  'cec0e0ce12cffe6283cbad2557ee26eef754d1cd751b887cbd8490ce34965e7a'
+};
+
+async function sha256(str) {
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+}
+
 var REPO = 'stefanfersterer/villa-joka';
 var FILE = 'content.json';
 var API  = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE;
@@ -386,8 +446,26 @@ function decodeEntities(html) {
    INIT
 ───────────────────────────────────────────── */
 window.addEventListener('DOMContentLoaded', function() {
+  // Auth-Check: ist Session aktiv?
+  var authed = sessionStorage.getItem('vj_authed') === '1';
   pat = localStorage.getItem('vj_pat') || '';
-  if (pat) { loadData(); } else { document.getElementById('login').style.display = 'flex'; }
+
+  if (authed && pat) {
+    // Bereits eingeloggt + PAT vorhanden → direkt laden
+    loadData();
+  } else if (authed && !pat) {
+    // Eingeloggt aber kein PAT → PAT-Screen zeigen
+    document.getElementById('login').style.display = 'flex';
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('pat-screen').style.display = 'block';
+  } else {
+    // Nicht eingeloggt → Auth-Screen zeigen
+    document.getElementById('login').style.display = 'flex';
+  }
+
+  document.getElementById('auth-btn').addEventListener('click', doAuth);
+  document.getElementById('auth-email').addEventListener('keydown', function(e) { if (e.key === 'Enter') document.getElementById('auth-pw').focus(); });
+  document.getElementById('auth-pw').addEventListener('keydown', function(e) { if (e.key === 'Enter') doAuth(); });
 
   document.getElementById('login-btn').addEventListener('click', doLogin);
   document.getElementById('pat-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
@@ -466,6 +544,13 @@ window.addEventListener('DOMContentLoaded', function() {
     amenitiesLang = lang;
     loadAmenitiesFromData();
   }, function() { return amenitiesLang; });
+
+  // Einstellungen: Passwort ändern
+  document.getElementById('pw-change-btn').addEventListener('click', doChangePassword);
+  // Einstellungen: E-Mail ändern
+  document.getElementById('email-change-btn').addEventListener('click', doChangeEmail);
+  // Einstellungen: PAT ersetzen
+  document.getElementById('pat-change-btn').addEventListener('click', doChangePat);
 });
 
 function bindLangBar(barId, onChange, getCurrent) {
@@ -485,6 +570,38 @@ function bindLangBar(barId, onChange, getCurrent) {
 /* ─────────────────────────────────────────────
    AUTH
 ───────────────────────────────────────────── */
+async function doAuth() {
+  var emailVal = document.getElementById('auth-email').value.trim().toLowerCase();
+  var pwVal    = document.getElementById('auth-pw').value;
+  var authErrEl = document.getElementById('auth-err');
+  authErrEl.style.display = 'none';
+
+  if (!emailVal || !pwVal) { authErrEl.textContent = 'Bitte E-Mail und Passwort eingeben.'; authErrEl.style.display = 'block'; return; }
+
+  var storedEmail = (localStorage.getItem('vj_auth_email') || AUTH_DEFAULT.email).toLowerCase();
+  var storedHash  = localStorage.getItem('vj_auth_hash')  || AUTH_DEFAULT.hash;
+  var enteredHash = await sha256(pwVal);
+
+  if (emailVal !== storedEmail || enteredHash !== storedHash) {
+    authErrEl.textContent = 'E-Mail oder Passwort falsch.';
+    authErrEl.style.display = 'block';
+    document.getElementById('auth-pw').value = '';
+    return;
+  }
+
+  sessionStorage.setItem('vj_authed', '1');
+  pat = localStorage.getItem('vj_pat') || '';
+
+  if (pat) {
+    document.getElementById('login').style.display = 'none';
+    loadData();
+  } else {
+    // PAT noch nicht gespeichert → PAT-Screen zeigen
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('pat-screen').style.display = 'block';
+  }
+}
+
 function doLogin() {
   var val = document.getElementById('pat-input').value.trim();
   if (!val) { showLoginErr('Bitte PAT eingeben.'); return; }
@@ -502,17 +619,73 @@ function resetLoginBtn() {
 }
 
 function doLogout() {
+  sessionStorage.removeItem('vj_authed');
   localStorage.removeItem('vj_pat');
   pat = ''; data = {}; fileSha = '';
   document.getElementById('app').style.display = 'none';
   document.getElementById('login').style.display = 'flex';
+  document.getElementById('auth-screen').style.display = 'block';
+  document.getElementById('pat-screen').style.display = 'none';
+  document.getElementById('auth-email').value = '';
+  document.getElementById('auth-pw').value = '';
   document.getElementById('pat-input').value = '';
+  document.getElementById('auth-err').style.display = 'none';
 }
 
 function showLoginErr(msg) {
   var el = document.getElementById('login-err');
   el.textContent = msg;
   el.style.display = 'block';
+}
+
+/* ─────────────────────────────────────────────
+   EINSTELLUNGEN: PW / E-MAIL / PAT ÄNDERN
+───────────────────────────────────────────── */
+async function doChangePassword() {
+  var current = document.getElementById('pw-current').value;
+  var newPw   = document.getElementById('pw-new').value;
+  var confirm = document.getElementById('pw-confirm').value;
+  var errEl   = document.getElementById('pw-err');
+  errEl.style.display = 'none';
+
+  var storedHash  = localStorage.getItem('vj_auth_hash') || AUTH_DEFAULT.hash;
+  var currentHash = await sha256(current);
+
+  if (currentHash !== storedHash) { errEl.textContent = 'Aktuelles Passwort falsch.'; errEl.style.display = 'block'; return; }
+  if (newPw.length < 8)           { errEl.textContent = 'Neues Passwort muss mindestens 8 Zeichen haben.'; errEl.style.display = 'block'; return; }
+  if (newPw !== confirm)          { errEl.textContent = 'Passwörter stimmen nicht überein.'; errEl.style.display = 'block'; return; }
+
+  var newHash = await sha256(newPw);
+  localStorage.setItem('vj_auth_hash', newHash);
+  document.getElementById('pw-current').value = '';
+  document.getElementById('pw-new').value = '';
+  document.getElementById('pw-confirm').value = '';
+  showToast('Passwort gespeichert ✓', 'success');
+}
+
+function doChangeEmail() {
+  var newEmail = document.getElementById('email-new').value.trim().toLowerCase();
+  var errEl    = document.getElementById('email-err');
+  errEl.style.display = 'none';
+  if (!newEmail || !newEmail.includes('@')) { errEl.textContent = 'Bitte gültige E-Mail eingeben.'; errEl.style.background = '#fde8e8'; errEl.style.color = '#c0392b'; errEl.style.display = 'block'; return; }
+  localStorage.setItem('vj_auth_email', newEmail);
+  document.getElementById('email-new').value = '';
+  errEl.textContent = 'E-Mail auf ' + newEmail + ' geändert.';
+  errEl.style.background = '#e8f4f5'; errEl.style.color = '#1A6575';
+  errEl.style.display = 'block';
+}
+
+function doChangePat() {
+  var newPat = document.getElementById('pat-new').value.trim();
+  var errEl  = document.getElementById('pat-err');
+  errEl.style.display = 'none';
+  if (!newPat.startsWith('ghp_') && !newPat.startsWith('github_pat_')) { errEl.textContent = 'Ungültiges Format – Token beginnt mit ghp_ oder github_pat_'; errEl.style.background = '#fde8e8'; errEl.style.color = '#c0392b'; errEl.style.display = 'block'; return; }
+  localStorage.setItem('vj_pat', newPat);
+  pat = newPat;
+  document.getElementById('pat-new').value = '';
+  errEl.textContent = 'Token gespeichert. Wird ab jetzt verwendet.';
+  errEl.style.background = '#e8f4f5'; errEl.style.color = '#1A6575';
+  errEl.style.display = 'block';
 }
 
 /* ─────────────────────────────────────────────
