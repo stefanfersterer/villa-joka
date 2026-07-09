@@ -841,8 +841,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
         <h2 class="sec-h lang-de fu">Direkt buchen &ndash; <em>und sparen!</em></h2>
         <h2 class="sec-h lang-en hidden fu">Book direct &ndash; <em>and save!</em></h2>
         <h2 class="sec-h lang-uk hidden fu">Пряме бронювання &ndash; <em>вигідно!</em></h2>
-        <!-- FORMSPREE FORM: Register at formspree.io and replace YOUR_FORM_ID below -->
-        <form class="cform fu" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="cform fu" id="kontakt-form" name="kontakt" netlify data-netlify="true" method="POST">
           <p class="cform-h lang-de">Direkte Anfrage an Familie Fersterer</p>
           <p class="cform-h lang-en hidden">Direct enquiry to the Fersterer family</p>
           <p class="cform-h lang-uk hidden">Прямий запит до родини Ферстерер</p>
@@ -880,11 +879,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
               <textarea name="nachricht" data-ph-de="Fragen, Wünsche, Infos..." data-ph-en="Questions, requests, info..." data-ph-uk="Запитання, побажання, інформація..." placeholder="Fragen, Wünsche, Infos..."></textarea>
             </div>
           </div>
-          <input type="hidden" name="_subject" value="Villa Joka Anfrage">
+          <input type="hidden" name="form-name" value="kontakt">
           <input type="hidden" name="_language" id="form-lang" value="de">
           <button type="submit" class="fsub lang-de">Anfrage senden &rarr;</button>
           <button type="submit" class="fsub lang-en hidden">Send Enquiry &rarr;</button>
           <button type="submit" class="fsub lang-uk hidden">Надіслати запит &rarr;</button>
+          <div class="form-success" id="form-success-de">✅ Danke! Wir melden uns bald.</div>
+          <div class="form-success hidden" id="form-success-en">✅ Thank you! We'll be in touch soon.</div>
+          <div class="form-success hidden" id="form-success-uk">✅ Дякуємо! Ми незабаром відповімо.</div>
         </form>
       </div>
       <div class="fu">
@@ -1188,6 +1190,32 @@ document.getElementById('hbg').addEventListener('click', function() {
 function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
 
 window.addEventListener('load', function() { document.getElementById('heroBg').classList.add('go'); });
+
+// Kontaktformular – Netlify Forms AJAX
+(function() {
+  var form = document.getElementById('kontakt-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelectorAll('.fsub');
+    btn.forEach(function(b) { b.disabled = true; b.style.opacity = '0.6'; });
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function() {
+      form.reset();
+      ['de','en','uk'].forEach(function(l) {
+        var s = document.getElementById('form-success-' + l);
+        if (s) s.style.display = lang === l ? 'block' : 'none';
+      });
+      btn.forEach(function(b) { b.style.display = 'none'; });
+    }).catch(function() {
+      btn.forEach(function(b) { b.disabled = false; b.style.opacity = '1'; });
+      alert('Fehler beim Senden – bitte direkt per E-Mail: chris@fg-eventproductions.com');
+    });
+  });
+})();
 
 var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
