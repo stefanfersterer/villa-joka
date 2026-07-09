@@ -13,10 +13,10 @@
   "about": {
     "heading_de": "Unser Zuhause – <em>Ihr Urlaub</em>",
     "heading_en": "Our Home – <em>Your Holiday</em>",
-    "heading_uk": "Наш дім &#8212; <em>ваш відпочинок</em>",
+    "heading_uk": "Наш дім — <em>ваш відпочинок</em>",
     "body_de": "Villa Joka ist unser eigenes Zuhause – gebaut und mit viel Liebe eingerichtet. Was wir uns selbst für den Urlaub wünschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der Tür und Ruhe, die man heute nicht mehr überall findet.",
     "body_en": "Villa Joka is our own home – built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
-    "body_uk": "Вілла Йока &#8212; це наш власний дім, збудований і облаштований з любов'ю. Тут ми втілили все, що самі хотіли б від відпустки: приватний басейн, запах моря біля порога і спокій, якого сьогодні рідко де знайдеш."
+    "body_uk": "Вілла Йока — це наш власний дім, збудований і облаштований з любов'ю. Тут ми втілили все, що самі хотіли б від відпустки: приватний басейн, запах моря біля порога і спокій, якого сьогодні рідко де знайдеш."
   },
   "reviews": [],
   "gallery": [
@@ -288,7 +288,7 @@
       "icon": "🌊",
       "text_de": "350 m zum Meer",
       "text_en": "350 m to the Sea",
-      "text_uk": "600 м до моря"
+      "text_uk": "350 м до моря"
     }
   ],
   "highlights": [
@@ -324,9 +324,9 @@
     },
     {
       "icon": "🏖️",
-      "text_de": "500 m Strand",
-      "text_en": "500 m Beach",
-      "text_uk": "600 м пляж"
+      "text_de": "350 m zum Meer",
+      "text_en": "350 m to the sea",
+      "text_uk": "350 м до моря"
     },
     {
       "icon": "✈️",
