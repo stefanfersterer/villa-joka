@@ -290,19 +290,19 @@
     },
     {
       "icon": "👥",
-      "text_de": "Bis 8 Gäste",
+      "text_de": "Bis 8 Gäste (+2-3 im Einlieger Appartment)",
       "text_en": "Up to 8 Guests",
       "text_uk": "до 8 гостей"
     },
     {
       "icon": "🏖️",
-      "text_de": "600 m Strand",
+      "text_de": "350 m Strand",
       "text_en": "600 m Beach",
       "text_uk": "600 м пляж"
     },
     {
       "icon": "✈️",
-      "text_de": "4 km Flughafen Pula",
+      "text_de": "14 km Flughafen Pula",
       "text_en": "4 km Pula Airport",
       "text_uk": "4 км аеропорт Пула"
     }
