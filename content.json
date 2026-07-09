@@ -152,6 +152,20 @@
       "label_de": "Privater Pool",
       "label_en": "Private Pool",
       "label_uk": "Приватний басейн"
+    },
+    {
+      "src": "images/Schlafzimmer_A_03.jpeg",
+      "alt_de": "Schlafzimmer",
+      "label_de": "Schlafzimmer",
+      "label_en": "",
+      "label_uk": ""
+    },
+    {
+      "src": "images/Bad_06.jpeg",
+      "alt_de": "Schlafzimmer & Bad",
+      "label_de": "Schlafzimmer & Bad",
+      "label_en": "",
+      "label_uk": ""
     }
   ],
   "prices_villa": [
