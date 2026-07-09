@@ -133,9 +133,37 @@
       "label_uk": ""
     },
     {
-      "src": "",
-      "alt_de": "",
-      "label_de": "",
+      "src": "images/image00022.jpeg",
+      "alt_de": "Schlafzimmer",
+      "label_de": "Schlafzimmer",
+      "label_en": "",
+      "label_uk": ""
+    },
+    {
+      "src": "images/image00027.jpeg",
+      "alt_de": "Schlafzimmer & Bad",
+      "label_de": "Schlafzimmer & Bad",
+      "label_en": "",
+      "label_uk": ""
+    },
+    {
+      "src": "images/image00018.jpeg",
+      "alt_de": "Bad & WC",
+      "label_de": "Bad & WC",
+      "label_en": "",
+      "label_uk": ""
+    },
+    {
+      "src": "images/image00057.jpeg",
+      "alt_de": "Wohnzimmer 1.OG",
+      "label_de": "Wohnzimmer 1.OG",
+      "label_en": "",
+      "label_uk": ""
+    },
+    {
+      "src": "images/image00201.jpeg",
+      "alt_de": "Aussicht Dachterrasse",
+      "label_de": "Aussicht Dachterrasse",
       "label_en": "",
       "label_uk": ""
     }
