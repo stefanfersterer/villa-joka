@@ -70,13 +70,6 @@
       "label_uk": "Зовнішня кухня"
     },
     {
-      "src": "images/image00179.jpeg",
-      "alt_de": "Dachterrasse mit Meerblick",
-      "label_de": "Aussicht vom Dach",
-      "label_en": "Rooftop View",
-      "label_uk": "Вид з даху"
-    },
-    {
       "src": "images/banjole_bucht.jpg",
       "alt_de": "Bucht von Banjole",
       "label_de": "Banjole Bucht",
@@ -353,10 +346,10 @@
   "distances": [
     {
       "icon": "🌊",
-      "name_de": "Meer & Hafen Banjole",
-      "name_en": "Sea & Harbour Banjole",
+      "name_de": "Meer Banjole",
+      "name_en": "Sea Banjole",
       "name_uk": "Море та гавань Банйоле",
-      "dist": "~ 600 m"
+      "dist": "~ 350 m"
     },
     {
       "icon": "🏖️",
@@ -384,7 +377,7 @@
       "name_de": "Pula – Römisches Amphitheater",
       "name_en": "Pula – Roman Amphitheatre",
       "name_uk": "Пула – Римський амфітеатр",
-      "dist": "~ 4 km"
+      "dist": "~ 10 km"
     },
     {
       "icon": "✈️",
