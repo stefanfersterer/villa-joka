@@ -16,7 +16,7 @@
 <link rel="alternate" hreflang="uk" href="https://www.villa-joka.eu">
 <link rel="alternate" hreflang="x-default" href="https://www.villa-joka.eu">
 <link rel="icon" href="images/villa_aussen.jpg" type="image/jpeg">
-<link rel="preload" as="image" href="images/villa_aussen.jpg">
+<link rel="preload" as="image" href="images/villa_aussen.jpg" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -42,7 +42,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -1374,9 +1375,9 @@ setTimeout(function() {
       var kEl = document.getElementById('ci-kaution');
       if (kEl && d.kaution) {
         kEl.innerHTML = '<span class="ci-ic">💶</span>'
-          + '<span class="ci-txt lang-de' + (lang !== 'de' ? ' hidden' : '') + '">Kaution: ' + d.kaution + ' (vor Ort zurückgegeben)</span>'
-          + '<span class="ci-txt lang-en' + (lang !== 'en' ? ' hidden' : '') + '">Security deposit: ' + d.kaution + ' (returned on site)</span>'
-          + '<span class="ci-txt lang-uk' + (lang !== 'uk' ? ' hidden' : '') + '">Застава: ' + d.kaution + ' (повертається на місці)</span>';
+          + '<span class="ci-txt lang-de' + (lang !== 'de' ? ' hidden' : '') + '">Kaution: ' + d.kaution + '</span>'
+          + '<span class="ci-txt lang-en' + (lang !== 'en' ? ' hidden' : '') + '">Security deposit: ' + d.kaution + '</span>'
+          + '<span class="ci-txt lang-uk' + (lang !== 'uk' ? ' hidden' : '') + '">Застава: ' + d.kaution + '</span>';
       }
 
       // 14b. Villa-Stats Cards (Check-in / Check-out / Kaution)
