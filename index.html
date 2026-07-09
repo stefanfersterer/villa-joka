@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.villa-joka.eu">
 <link rel="icon" href="images/villa_aussen.jpg" type="image/jpeg">
 <link rel="preload" as="image" href="images/villa_aussen.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/image00101.jpeg">
 <link rel="preload" as="fetch" href="/content.json" crossorigin>
 <script type="application/ld+json">
 {
@@ -725,8 +726,13 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
           <div class="dist-item"><span class="di-icon">🏘️</span><span class="di-name lang-de">Rovinj (Altstadt)</span><span class="di-name lang-en hidden">Rovinj (Old Town)</span><span class="di-name lang-uk hidden">Ровінь (Старе місто)</span><span class="di-dist">~ 40 km</span></div>
         </div>
       </div>
-      <div class="loc-map fu">
-        <iframe src="https://maps.google.com/maps?q=Volme+142,+52100+Banjole,+Croatia&t=&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Villa Joka Karte"></iframe>
+      <div class="loc-map fu" id="map-wrap">
+        <div id="map-ph" onclick="loadMap()" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;cursor:pointer;background:#d4cfc8;">
+          <span style="font-size:2.2rem;">🗺</span>
+          <span class="lang-de" style="font-size:.9rem;font-weight:600;color:#192830;background:rgba(255,255,255,.88);padding:.5rem 1.4rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.12);">Karte anzeigen</span>
+          <span class="lang-en hidden" style="font-size:.9rem;font-weight:600;color:#192830;background:rgba(255,255,255,.88);padding:.5rem 1.4rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.12);">Show map</span>
+          <span class="lang-uk hidden" style="font-size:.9rem;font-weight:600;color:#192830;background:rgba(255,255,255,.88);padding:.5rem 1.4rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.12);">Показати карту</span>
+        </div>
       </div>
     </div>
   </div>
@@ -972,7 +978,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="closeLb()">
   <div class="lb-inner" onclick="event.stopPropagation()">
-    <img class="lb-img" id="lb-img" src="" alt="">
+    <img class="lb-img" id="lb-img" alt="">
   </div>
   <button class="lb-btn lb-x" onclick="closeLb()" aria-label="Schliessen">&times;</button>
   <button class="lb-btn lb-pv" onclick="moveLb(-1);event.stopPropagation()" aria-label="Zurueck">&lsaquo;</button>
@@ -1503,7 +1509,7 @@ setTimeout(function() {
               liHtml += '<li>'
                 + '<span class="lang-de' + lde + '">' + (a.items_de && a.items_de[ii] ? a.items_de[ii] : '') + '</span>'
                 + '<span class="lang-en' + len + '">' + (a.items_en && a.items_en[ii] ? a.items_en[ii] : '') + '</span>'
-                + '<span class="lang-uk' + luk + '">' + (a.items_uk && a.items_uk[ii] ? a.items_uk[ii] : '') + '</span>'
+                a.items_uk[ii] ? a.items_uk[ii] : '') + '</span>'
                 + '</li>';
             }
             return '<div class="acard fu">'
@@ -1518,8 +1524,9 @@ setTimeout(function() {
       }
 
     })
-    .catch(function(){ /* content.json nicht erreichbar – eingebetteter Inhalt bleibt */ });
+    .catch(function() { /* content.json nicht erreichbar – eingebetteter Inhalt bleibt */ });
 })();
+function loadMap(){var w=document.getElementById('map-wrap');var ph=document.getElementById('map-ph');if(!ph)return;ph.style.display='none';var f=document.createElement('iframe');f.src='https://maps.google.com/maps?q=Volme+142,+52100+Banjole,+Croatia&t=&z=17&ie=UTF8&iwloc=&output=embed';f.allowFullscreen=true;f.title='Villa Joka Karte';f.referrerPolicy='no-referrer-when-downgrade';f.style.cssText='width:100%;height:100%;border:none;display:block';w.appendChild(f);}
 </script>
 </body>
 </html>
