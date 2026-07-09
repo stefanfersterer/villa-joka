@@ -258,7 +258,7 @@
     },
     {
       "icon": "🌊",
-      "text_de": "600 m zum Meer",
+      "text_de": "350 m zum Meer",
       "text_en": "600 m to the Sea",
       "text_uk": "600 м до моря"
     }
@@ -356,7 +356,7 @@
       "name_de": "Flughafen Pula",
       "name_en": "Pula Airport",
       "name_uk": "Аеропорт Пули",
-      "dist": "~ 4 km"
+      "dist": "~ 14 km"
     },
     {
       "icon": "🏘️",
@@ -493,7 +493,9 @@
         "Solaranlage & E-Auto-Ladestation",
         "Carport (2 Stellplätze)",
         "Fahrräder (auf Anfrage)",
-        "Babybett & Kinderstuhl (bitte vormerken)"
+        "Fahrradanhänger (auf Anfrage)",
+        "Babybett & Kinderstuhl (bitte vormerken)",
+        "Standup Paddle (auf Anfrage)"
       ],
       "items_en": [
         "Solar panels & EV charger",
