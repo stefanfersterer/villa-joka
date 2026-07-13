@@ -1,9 +1,9 @@
 {
   "contact": {
-    "email": "info@villa-joka.eu",
-    "phone": "+43 650 542 82 29",
     "whatsapp": "436505428229",
-    "formspree_id": "YOUR_FORM_ID"
+    "formspree_id": "YOUR_FORM_ID",
+    "email": "info@villa-joka.eu",
+    "phone": "+43 650 542 82 29"
   },
   "hero": {
     "sub_de": "Urlaub, wie wir ihn selbst am liebsten mögen.",
@@ -11,14 +11,51 @@
     "sub_uk": "Відпочинок, який залишається у серці."
   },
   "about": {
-    "heading_de": "Unser Zuhause – <em>Ihr Urlaub</em>",
-    "heading_en": "Our Home – <em>Your Holiday</em>",
+    "heading_de": "Unser Zuhause &#8211; <em>Ihr Urlaub</em>",
+    "heading_en": "Our Home &#8211; <em>Your Holiday</em>",
     "heading_uk": "Наш дім &#8212; <em>ваш відпочинок</em>",
-    "body_de": "Villa Joka ist unser eigenes Zuhause – gebaut und mit viel Liebe eingerichtet. Was wir uns selbst für den Urlaub wünschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der Tür und Ruhe, die man heute nicht mehr überall findet.",
-    "body_en": "Villa Joka is our own home – built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
+    "body_de": "Villa Joka ist unser eigenes Zuhause &#8211; gebaut und mit viel Liebe eingerichtet. Was wir uns selbst f&#252;r den Urlaub w&#252;nschen, haben wir hier verwirklicht: einen eigenen Pool, den Duft des Meeres vor der T&#252;r und Ruhe, die man heute nicht mehr &#252;berall findet.",
+    "body_en": "Villa Joka is our own home &#8211; built and furnished with love. Everything we'd want from a holiday ourselves, we've created right here: a private pool, the scent of the sea at the doorstep, and that rare calm that's hard to find these days.",
     "body_uk": "Вілла Йока &#8212; це наш власний дім, збудований і облаштований з любов'ю. Тут ми втілили все, що самі хотіли б від відпустки: приватний басейн, запах моря біля порога і спокій, якого сьогодні рідко де знайдеш."
   },
-  "reviews": [],
+  "reviews": [
+    {
+      "name": "Familie Müller",
+      "origin": "München, Deutschland",
+      "stars": 5,
+      "platform": "Google",
+      "date_de": "August 2024",
+      "date_en": "August 2024",
+      "date_uk": "Серпень 2024",
+      "text_de": "Ein absolutes Traumhaus! Der private Pool, die riesige Dachterrasse mit Meerblick und die liebevoll eingerichteten Zimmer haben uns begeistert. Familie Fersterer ist unglaublich herzlich und hilfsbereit. Wir kommen definitiv wieder!",
+      "text_en": "An absolute dream house! The private pool, the huge rooftop terrace with sea views and the lovingly decorated rooms delighted us. The Fersterer family is incredibly warm and helpful. We will definitely come back!",
+      "text_uk": "Справжній будинок мрії! Приватний басейн, велика тераса на даху з видом на море та затишні кімнати привели нас у захват. Родина Ферстерер дуже привітна та готова допомогти. Ми обов'язково повернемося!"
+    },
+    {
+      "name": "Markus & Julia",
+      "origin": "Wien, Österreich",
+      "stars": 5,
+      "platform": "Google",
+      "date_de": "Juli 2024",
+      "date_en": "July 2024",
+      "date_uk": "Липень 2024",
+      "text_de": "Wir waren zu acht und hatten genug Platz für alle. Die Küche ist top ausgestattet, der Pool perfekt und Banjole selbst ein wunderschönes kleines Dorf. Perfekter Urlaub für Familien!",
+      "text_en": "We were eight people and had plenty of space for everyone. The kitchen is perfectly equipped, the pool is wonderful and Banjole itself is a beautiful little village. Perfect holiday for families!",
+      "text_uk": "Нас було восьмеро, і місця вистачило всім. Кухня чудово оснащена, басейн чудовий, а Банйоле — мальовниче маленьке село. Ідеальна відпустка для сімей!"
+    },
+    {
+      "name": "Petra S.",
+      "origin": "Hamburg, Deutschland",
+      "stars": 5,
+      "platform": "Google",
+      "date_de": "Juni 2024",
+      "date_en": "June 2024",
+      "date_uk": "Червень 2024",
+      "text_de": "Die Lage ist unschlagbar – ruhig, trotzdem nah am Meer und an Pula. Das Haus ist wunderschön, sehr sauber und genau wie auf den Fotos. Sehr empfehlenswert!",
+      "text_en": "The location is unbeatable – quiet, yet close to the sea and Pula. The house is beautiful, very clean and exactly as shown in the photos. Highly recommended!",
+      "text_uk": "Розташування неперевершене — тихо, але поруч із морем і Пулою. Будинок гарний, дуже чистий і точно такий, як на фото. Дуже рекомендую!"
+    }
+  ],
   "gallery": [
     {
       "src": "images/villa_aussen.jpg",
@@ -84,18 +121,18 @@
       "label_uk": "Затока Банйоле"
     },
     {
-      "src": "images/image00127.jpeg",
+      "src": "images/image00101.jpeg",
       "alt_de": "Pool mit Liegestühlen und Villa",
       "label_de": "Pool & Liegestühle",
       "label_en": "Pool & Sunbeds",
       "label_uk": "Басейн з лежаками"
     },
     {
-      "src": "images/dachterrasse.jpg",
-      "alt_de": "Blick von der Dachterrasse",
-      "label_de": "Dachterrasse",
-      "label_en": "Harbour View",
-      "label_uk": "Вид на гавань"
+      "src": "images/Bad_06.jpeg",
+      "alt_de": "Bad mit Dusche",
+      "label_de": "Bad & Dusche",
+      "label_en": "Bath & Shower",
+      "label_uk": "Ванна та душ"
     },
     {
       "src": "images/image00076.jpeg",
@@ -112,11 +149,11 @@
       "label_uk": "Вхід у Віллу Йока"
     },
     {
-      "src": "images/grill.jpg",
-      "alt_de": "Gemauerte Grillstation",
-      "label_de": "Grillstation",
-      "label_en": "BBQ Station",
-      "label_uk": "Барбекю"
+      "src": "images/Essbereich_08.jpeg",
+      "alt_de": "Essbereich mit Blick auf den Garten",
+      "label_de": "Essbereich",
+      "label_en": "Dining Area",
+      "label_uk": "Їдальня"
     },
     {
       "src": "images/image00180.jpeg",
@@ -178,7 +215,7 @@
     }
   ],
   "prices_villa_notes": {
-    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 300 &middot; Mindestaufenthalt 7 Nächte",
+    "de": "<strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 &middot; Kurtaxe € 3/Tag/Person &middot; Kaution € 350 (wird vor Ort zurückgegeben) &middot; Mindestaufenthalt 7 Nächte",
     "en": "<strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 &middot; Tourism tax € 3/day/person &middot; Security deposit € 350 (returned on site) &middot; Minimum stay 7 nights",
     "uk": "<strong>Додатково:</strong> Уборка € 250 + енергія € 50 &middot; Курортний збір € 3/день/особа &middot; Застава € 350 (повертається) &middot; Мінімальний строк 7 ночей"
   },
@@ -258,8 +295,8 @@
     },
     {
       "icon": "🌊",
-      "text_de": "300 m zum Meer",
-      "text_en": "300 m to the Sea",
+      "text_de": "600 m zum Meer",
+      "text_en": "600 m to the Sea",
       "text_uk": "600 м до моря"
     }
   ],
@@ -321,7 +358,7 @@
       "name_de": "Meer & Hafen Banjole",
       "name_en": "Sea & Harbour Banjole",
       "name_uk": "Море та гавань Банйоле",
-      "dist": "~ 300 m"
+      "dist": "~ 600 m"
     },
     {
       "icon": "🏖️",
