@@ -348,6 +348,18 @@
       "text_de": "4 km Flughafen Pula",
       "text_en": "4 km Pula Airport",
       "text_uk": "4 км аеропорт Пула"
+    },
+    {
+      "icon": "✓",
+      "text_de": "hduri",
+      "text_en": "",
+      "text_uk": ""
+    },
+    {
+      "icon": "✓",
+      "text_de": "irgendwas",
+      "text_en": "",
+      "text_uk": ""
     }
   ],
   "footer_tagline": {
