@@ -633,6 +633,13 @@ function doLogout() {
 }
 
 function showLoginErr(msg) {
+  // Clear bad PAT and show PAT-entry screen so user can enter new token
+  localStorage.removeItem('vj_pat');
+  pat = '';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login').style.display = 'flex';
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('pat-screen').style.display = 'block';
   var el = document.getElementById('login-err');
   el.textContent = msg;
   el.style.display = 'block';
@@ -1366,12 +1373,4 @@ function addAmenityCard() {
   loadAmenitiesFromData();
 }
 
-/* ─────────────────────────────────────────────
-   ESCAPE
-───────────────────────────────────────────── */
-function esc(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-</script>
-</body>
-</html>
+/* ────────────────────────�
