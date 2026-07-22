@@ -1,0 +1,19 @@
+{
+  "name": "villa-joka",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs && esbuild src/admin.js --bundle --minify --format=esm --outfile=dist/admin/admin.js",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "@netlify/identity": "1.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.6"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
