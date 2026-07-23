@@ -287,7 +287,7 @@ function renderBooking(section, data) {
           <div class="ci"><span class="ci-ic">📧</span><span class="ci-txt"><a href="${mailHref}">${email}</a></span></div>
           <div class="ci"><span class="ci-ic">📞</span><span class="ci-txt"><a href="${telHref}">${phone}</a></span></div>
           <div class="ci"><span class="ci-ic">🔑</span><span class="ci-txt lang-de">Check-in ab ${checkin} · Check-out bis ${checkout}</span><span class="ci-txt lang-en hidden">Check-in from ${checkin} · Check-out by ${checkout}</span><span class="ci-txt lang-uk hidden">Заїзд від ${checkin} · Виїзд до ${checkout}</span></div>
-          <div class="ci"><span class="ci-ic">💶</span><span class="ci-txt lang-de">Kaution: ${deposit} (vor Ort zurückgegeben)</span><span class="ci-txt lang-en hidden">Security deposit: ${deposit} (returned on site)</span><span class="ci-txt lang-uk hidden">Застава: ${deposit} (повертається на місці)</span></div>
+          <div class="ci"><span class="ci-ic">💶</span><span class="ci-txt lang-de">Kaution: ${deposit}</span><span class="ci-txt lang-en hidden">Security deposit: ${deposit}</span><span class="ci-txt lang-uk hidden">Застава: ${deposit}</span></div>
           <div class="ci"><span class="ci-ic">📍</span><span class="ci-txt lang-de">${esc(data.site?.address_de || '')}</span><span class="ci-txt lang-en hidden">${esc(data.site?.address_en || data.site?.address_de || '')}</span><span class="ci-txt lang-uk hidden">${esc(data.site?.address_uk || data.site?.address_de || '')}</span></div>
         `);
   return section;
