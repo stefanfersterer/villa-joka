@@ -519,6 +519,22 @@
       "label_de": "Eingang Villa Joka",
       "label_en": "Villa Joka Entrance",
       "label_uk": "Вхід у Віллу Йока"
+    },
+    {
+      "src": "images/19-05-26-20-12-29-20260723185915.jpg",
+      "_full": "",
+      "alt_de": "Dachterrasse Villa Joka",
+      "label_de": "Dachterrasse Villa Joka",
+      "label_en": "roof top terrace",
+      "label_uk": "тераса на даху"
+    },
+    {
+      "src": "images/865454580-20260723190053.jpg",
+      "_full": "",
+      "alt_de": "Küche mit Utensilien",
+      "label_de": "Küche mit Utensilien",
+      "label_en": "Kitchen with utensils",
+      "label_uk": "Кухня з посудом"
     }
   ],
   "prices_villa": [
