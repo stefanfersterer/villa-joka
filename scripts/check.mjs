@@ -15,7 +15,6 @@ const required = [
   '<!DOCTYPE html>',
   'Villa Joka',
   'class="gallery-grid',
-  'class="review-grid',
   '</body>',
   '</html>'
 ];
@@ -30,6 +29,21 @@ if (/\{\{[a-z0-9_.]+\}\}/i.test(html)) throw new Error('Die fertige Website enth
 if (!adminHtml.includes('/admin/admin.js')) throw new Error('Das Dashboard lädt sein JavaScript nicht.');
 if (!adminJs.includes('/api/content') || !adminJs.includes('/api/images')) throw new Error('Dashboard-Endpunkte fehlen im Admin-Bundle.');
 if (/pagescms/i.test(adminHtml + adminJs)) throw new Error('Veralteter Pages-CMS-Verweis gefunden.');
+if (sourceContent.reviews.length && !html.includes('class="review-grid')) {
+  throw new Error('Vorhandene Bewertungen wurden nicht ausgegeben.');
+}
+if (html.includes('id="lb-img"') && html.includes('id="lb-img" src=') && /id="lb-img"[^>]*display:\s*none/i.test(html)) {
+  throw new Error('Das Vollbild der Galerie ist weiterhin unsichtbar.');
+}
+if (!html.includes('event.stopPropagation();moveLb(-1)') || !html.includes('event.stopPropagation();moveLb(1)')) {
+  throw new Error('Die Galerie-Navigation schließt beim Weiterschalten möglicherweise das Vollbild.');
+}
+if (!html.includes('name="buchungsanfrage"') || !html.includes('data-netlify="true"') || !html.includes('name="form-name" value="buchungsanfrage"')) {
+  throw new Error('Das Netlify-Kontaktformular ist nicht vollständig konfiguriert.');
+}
+if (!html.includes('maps?q=Volme%20142%2C%20Haus%202B%2C%2052100%20Banjole%2C%20Kroatien')) {
+  throw new Error('Die Karte verweist nicht auf die vollständige Adresse.');
+}
 
 const galleryCount = (html.match(/class="gi gi-\d+"/g) || []).length;
 if (galleryCount !== sourceContent.gallery.length) throw new Error(`Galerie unvollständig: ${galleryCount} von ${sourceContent.gallery.length} Bildern gebaut.`);

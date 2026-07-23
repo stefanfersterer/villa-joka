@@ -95,6 +95,14 @@ function ensureDoctype(source) {
 }
 
 function renderPage(source, data) {
+  const mapAddress = String(data.site?.address_de || '').replace(/\s*·\s*/g, ', ');
+  data = {
+    ...data,
+    site: {
+      ...data.site,
+      map_embed_url: `https://www.google.com/maps?q=${encodeURIComponent(mapAddress)}&output=embed`
+    }
+  };
   let result = source;
 
   result = replaceElementTextByClass(result, 'p', 'hero-tag', data.hero, 'sub_', true);
@@ -268,20 +276,6 @@ function renderReviews(items) {
 }
 
 function renderBooking(section, data) {
-  const formId = String(data.contact?.formspree_id || '').trim();
-  const ready = /^[A-Za-z0-9_-]{6,}$/.test(formId) && formId !== 'YOUR_FORM_ID';
-  section = section.replace(
-    /<form class="cform fu vis" action="[^"]*" method="POST">/,
-    `<form class="cform fu vis" action="${ready ? `https://formspree.io/f/${attr(formId)}` : '#'}" method="POST"${ready ? '' : ' data-form-unavailable="true" onsubmit="return false"'}>`
-  );
-  if (!ready) {
-    const unavailable = languages.map(lang => `<p class="lang-${lang}${lang === 'de' ? '' : ' hidden'}" style="margin-top:1rem;color:var(--terra);font-size:.88rem;">${rich(data.copy?.form_unavailable?.[lang] || '')}</p>`).join('');
-    const disabled = languages.map(lang => `<button type="submit" class="fsub lang-${lang}${lang === 'de' ? '' : ' hidden'}" disabled aria-disabled="true">${rich(data.copy?.form_submit?.[lang] || '')}</button>`).join('');
-    section = section.replace(
-      /<button type="submit" class="fsub lang-de">[\s\S]*?<button type="submit" class="fsub lang-uk hidden">[\s\S]*?<\/button>/,
-      unavailable + disabled
-    );
-  }
   const checkin = esc(data.checkin_time || '16:00');
   const checkout = esc(data.checkout_time || '10:00');
   const deposit = esc(data.kaution || '€ 300');
