@@ -700,7 +700,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
           <div class="dist-item"><span class="di-icon">🏘️</span><span class="di-name lang-de">Rovinj (Altstadt)</span><span class="di-name lang-en hidden">Rovinj (Old Town)</span><span class="di-name lang-uk hidden">Ровінь (Старе місто)</span><span class="di-dist">~ 40 km</span></div>
         </div>
       </div>
-      <div class="loc-map fu vis"><div id="map-facade" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2843.8!2d13.9204!3d44.7964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477cd5b6af9d7b7b%3A0x1a1b2c3d4e5f6a7b!2sBanjole%2C%20Croatia!5e0!3m2!1sde!2sat!4v1700000000000" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#E8EDF0;cursor:pointer;" onclick="(function(el){var fr=document.createElement('iframe');fr.src=el.dataset.src;fr.allowFullscreen=true;fr.referrerPolicy='no-referrer-when-downgrade';fr.title='Villa Joka Karte';fr.style.cssText='width:100%;height:100%;border:none;display:block;';el.parentNode.replaceChild(fr,el);})(this)">
+      <div class="loc-map fu vis"><div id="map-facade" data-src="{{site.map_embed_url}}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#E8EDF0;cursor:pointer;" onclick="(function(el){var fr=document.createElement('iframe');fr.src=el.dataset.src;fr.allowFullscreen=true;fr.referrerPolicy='no-referrer-when-downgrade';fr.title='Villa Joka Karte';fr.style.cssText='width:100%;height:100%;border:none;display:block;';el.parentNode.replaceChild(fr,el);})(this)">
   <div style="text-align:center;padding:2rem">
     <div style="font-size:2.5rem;margin-bottom:.75rem">🗺️</div>
     <button type="button" style="background:#1A6575;color:#fff;border:none;padding:.7rem 1.4rem;border-radius:8px;font-size:.95rem;font-family:inherit;cursor:pointer;">
@@ -761,8 +761,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
         <h2 class="sec-h lang-de fu vis">{{copy.booking_heading.de}}</h2>
         <h2 class="sec-h lang-en hidden fu vis">{{copy.booking_heading.en}}</h2>
         <h2 class="sec-h lang-uk hidden fu vis">{{copy.booking_heading.uk}}</h2>
-        <!-- Das Build-Script setzt die Formspree-ID aus content.json ein. -->
-        <form class="cform fu vis" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- Netlify Forms verarbeitet die Anfrage serverseitig. -->
+        <form class="cform fu vis" name="buchungsanfrage" action="/danke/" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="buchungsanfrage">
+          <p hidden><label>Bitte nicht ausfüllen: <input type="text" name="bot-field"></label></p>
           <p class="cform-h lang-de">{{copy.form_heading.de}}</p>
           <p class="cform-h lang-en hidden">{{copy.form_heading.en}}</p>
           <p class="cform-h lang-uk hidden">{{copy.form_heading.uk}}</p>
@@ -881,11 +883,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildergalerie" onclick="closeLb()">
   <div class="lb-inner" onclick="event.stopPropagation()">
-    <img class="lb-img" id="lb-img" src="{{site.hero_image}}" alt="" style="display: none;">
+    <img class="lb-img" id="lb-img" src="{{site.hero_image}}" alt="">
   </div>
-  <button type="button" class="lb-btn lb-x" onclick="closeLb()" aria-label="Schließen">×</button>
-  <button type="button" class="lb-btn lb-pv" onclick="moveLb(-1)" aria-label="Zurück">‹</button>
-  <button type="button" class="lb-btn lb-nx" onclick="moveLb(1)" aria-label="Weiter">›</button>
+  <button type="button" class="lb-btn lb-x" onclick="event.stopPropagation();closeLb()" aria-label="Schließen">×</button>
+  <button type="button" class="lb-btn lb-pv" onclick="event.stopPropagation();moveLb(-1)" aria-label="Zurück">‹</button>
+  <button type="button" class="lb-btn lb-nx" onclick="event.stopPropagation();moveLb(1)" aria-label="Weiter">›</button>
   <div class="lb-ct" id="lb-ct"></div>
 </div>
 
@@ -985,6 +987,16 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft') moveLb(-1);
   if (e.key === 'ArrowRight') moveLb(1);
 });
+var lbTouchX = null;
+document.getElementById('lb').addEventListener('touchstart', function(e) {
+  lbTouchX = e.changedTouches[0].clientX;
+}, {passive:true});
+document.getElementById('lb').addEventListener('touchend', function(e) {
+  if (lbTouchX === null) return;
+  var distance = e.changedTouches[0].clientX - lbTouchX;
+  lbTouchX = null;
+  if (Math.abs(distance) > 45) moveLb(distance > 0 ? -1 : 1);
+}, {passive:true});
 
 function openModal(id) {
   document.getElementById('modal-' + id).classList.add('open');
