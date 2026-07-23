@@ -640,15 +640,15 @@
     },
     {
       "icon": "👥",
-      "text_de": "Bis 8 Gäste",
-      "text_en": "Up to 8 Guests",
+      "text_de": "Bis 8 Gäste (+ 3 im Appartment möglich)",
+      "text_en": "Up to 8 Guests (+ 3 at the apartment possible)",
       "text_uk": "до 8 гостей"
     },
     {
       "icon": "🌊",
-      "text_de": "300 m zum Meer",
-      "text_en": "300 m to the Sea",
-      "text_uk": "300 м до моря"
+      "text_de": "350 m zum Meer",
+      "text_en": "350 m to the Sea",
+      "text_uk": "350 м до моря"
     }
   ],
   "highlights": [
@@ -678,21 +678,21 @@
     },
     {
       "icon": "👥",
-      "text_de": "Bis 8 Gäste",
-      "text_en": "Up to 8 Guests",
+      "text_de": "Bis 8 Gäste (+ 3 im Appartment möglich)",
+      "text_en": "Up to 8 Guests (+ 3 at the apartment possible)",
       "text_uk": "до 8 гостей"
     },
     {
       "icon": "🏖️",
-      "text_de": "300 m Strand",
-      "text_en": "300 m Beach",
-      "text_uk": "300 м пляж"
+      "text_de": "350 m Strand",
+      "text_en": "350 m Beach",
+      "text_uk": "350 м пляж"
     },
     {
       "icon": "✈️",
-      "text_de": "4 km Flughafen Pula",
-      "text_en": "4 km Pula Airport",
-      "text_uk": "4 км аеропорт Пула"
+      "text_de": "14 km Flughafen Pula",
+      "text_en": "14 km Pula Airport",
+      "text_uk": "14 км аеропорт Пула"
     }
   ],
   "footer_tagline": {
@@ -709,7 +709,7 @@
       "name_de": "Meer & Hafen Banjole",
       "name_en": "Sea & Harbour Banjole",
       "name_uk": "Море та гавань Банйоле",
-      "dist": "~ 300 m"
+      "dist": "~ 350 m"
     },
     {
       "icon": "🏖️",
@@ -723,7 +723,7 @@
       "name_de": "Supermarkt",
       "name_en": "Supermarket",
       "name_uk": "Супермаркет",
-      "dist": "~ 500 m"
+      "dist": "~ 700 m"
     },
     {
       "icon": "🍽️",
@@ -737,14 +737,14 @@
       "name_de": "Pula – Römisches Amphitheater",
       "name_en": "Pula – Roman Amphitheatre",
       "name_uk": "Пула – Римський амфітеатр",
-      "dist": "~ 4 km"
+      "dist": "~ 10 km"
     },
     {
       "icon": "✈️",
       "name_de": "Flughafen Pula",
       "name_en": "Pula Airport",
       "name_uk": "Аеропорт Пули",
-      "dist": "~ 4 km"
+      "dist": "~ 14 km"
     },
     {
       "icon": "🏘️",
