@@ -99,6 +99,7 @@ function buildEmail(data) {
   const departure = formatDate(data.abreise, language, text.fallback);
   const guests = clean(data.personen, 10) || text.fallback;
   const message = clean(data.nachricht) || text.fallback;
+  const subject = `Booking request Villa Joka ${arrival} - ${departure}`;
 
   const plainText = [
     text.greeting(firstName),
@@ -144,7 +145,7 @@ function buildEmail(data) {
   </body>
 </html>`;
 
-  return { language, fullName, subject: text.subject, plainText, html };
+  return { language, fullName, subject, plainText, html };
 }
 
 export default {
