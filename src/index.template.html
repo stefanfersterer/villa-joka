@@ -795,7 +795,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
               <textarea name="nachricht" data-placeholder-de="{{copy.form_placeholder.de}}" data-placeholder-en="{{copy.form_placeholder.en}}" data-placeholder-uk="{{copy.form_placeholder.uk}}" placeholder="{{copy.form_placeholder.de}}"></textarea>
             </div>
           </div>
-          <input type="hidden" name="_subject" value="Booking request Villa Joka">
+          <input type="hidden" name="subject" value="Booking request Villa Joka" data-remove-prefix>
           <input type="hidden" name="_language" id="form-lang" value="de">
           <button type="submit" class="fsub lang-de">{{copy.form_submit.de}}</button>
           <button type="submit" class="fsub lang-en hidden">{{copy.form_submit.en}}</button>
@@ -1034,7 +1034,7 @@ if (bookingForm) {
     }
     var arrival = bookingForm.elements.anreise ? bookingForm.elements.anreise.value : '';
     var departure = bookingForm.elements.abreise ? bookingForm.elements.abreise.value : '';
-    bookingForm.elements._subject.value =
+    bookingForm.elements.subject.value =
       'Booking request Villa Joka ' + subjectDate(arrival) + ' - ' + subjectDate(departure);
   });
 }
