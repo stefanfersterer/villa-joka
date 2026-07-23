@@ -626,9 +626,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
             </tbody>
           </table>
           <div class="price-note">
-            <span class="lang-de"><strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 · Kurtaxe € 3/Tag/Person · Kaution € 300 (wird vor Ort zurückgegeben) · Mindesaufenthalt 7 Nächte</span>
-            <span class="lang-en hidden"><strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 · Tourism tax € 3/day/person · Security deposit € 300 (returned on site) · Minimum stay 7 nights</span>
-            <span class="lang-uk hidden"><strong>Додатково:</strong> Уборка € 250 + енергія € 50 · Курортний збір € 3/день/особа · Застава € 300 (повертається) · Мінімальний строк 7 ночей</span>
+            <span class="lang-de"><strong>Zusätzlich:</strong> Endreinigung € 250 + Energiepauschale € 50 · Kurtaxe € 3/Tag/Person · Kaution € 300 · Mindesaufenthalt 7 Nächte</span>
+            <span class="lang-en hidden"><strong>Additional costs:</strong> End cleaning € 250 + energy flat rate € 50 · Tourism tax € 3/day/person · Security deposit € 300 · Minimum stay 7 nights</span>
+            <span class="lang-uk hidden"><strong>Додатково:</strong> Уборка € 250 + енергія € 50 · Курортний збір € 3/день/особа · Застава € 300 · Мінімальний строк 7 ночей</span>
           </div>
         </div>
       </div>
@@ -795,7 +795,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
               <textarea name="nachricht" data-placeholder-de="{{copy.form_placeholder.de}}" data-placeholder-en="{{copy.form_placeholder.en}}" data-placeholder-uk="{{copy.form_placeholder.uk}}" placeholder="{{copy.form_placeholder.de}}"></textarea>
             </div>
           </div>
-          <input type="hidden" name="_subject" value="Villa Joka Anfrage">
+          <input type="hidden" name="_subject" value="Booking request Villa Joka">
           <input type="hidden" name="_language" id="form-lang" value="de">
           <button type="submit" class="fsub lang-de">{{copy.form_submit.de}}</button>
           <button type="submit" class="fsub lang-en hidden">{{copy.form_submit.en}}</button>
@@ -828,7 +828,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
           <div class="ci"><span class="ci-ic">📧</span><span class="ci-txt"><a href="mailto:info@villa-joka.eu">info@villa-joka.eu</a></span></div>
           <div class="ci"><span class="ci-ic">📞</span><span class="ci-txt"><a href="tel:+436505428229">+43 650 542 82 29</a></span></div>
           <div class="ci"><span class="ci-ic">🔑</span><span class="ci-txt lang-de">Check-in ab 16:00 · Check-out bis 10:00</span><span class="ci-txt lang-en hidden">Check-in from 4 pm · Check-out by 10:00 am</span><span class="ci-txt lang-uk hidden">Заїзд від 16:00 · Виїзд до 10:00</span></div>
-          <div class="ci"><span class="ci-ic">💶</span><span class="ci-txt lang-de">Kaution: € 300 (vor Ort zurückgegeben)</span><span class="ci-txt lang-en hidden">Security deposit: € 300 (returned on site)</span><span class="ci-txt lang-uk hidden">Застава: € 300 (повертається на місці)</span></div>
+          <div class="ci"><span class="ci-ic">💶</span><span class="ci-txt lang-de">Kaution: € 300</span><span class="ci-txt lang-en hidden">Security deposit: € 300</span><span class="ci-txt lang-uk hidden">Застава: € 300</span></div>
           <div class="ci"><span class="ci-ic">📍</span><span class="ci-txt lang-de">Volme 142, Haus 2B · 52100 Banjole, Kroatien</span><span class="ci-txt lang-en hidden">Volme 142, House 2B · 52100 Banjole, Croatia</span><span class="ci-txt lang-uk hidden">Volme 142, будинок 2B · 52100 Банйоле, Хорватія</span></div>
         </div>
       </div>
@@ -1024,6 +1024,20 @@ document.getElementById('hbg').addEventListener('click', function() {
   document.getElementById('mobNav').classList.toggle('open');
 });
 function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+
+var bookingForm = document.querySelector('form[name="buchungsanfrage"]');
+if (bookingForm) {
+  bookingForm.addEventListener('submit', function() {
+    function subjectDate(value) {
+      var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || '');
+      return match ? match[3] + '.' + match[2] + '.' + match[1] : 'Datum offen';
+    }
+    var arrival = bookingForm.elements.anreise ? bookingForm.elements.anreise.value : '';
+    var departure = bookingForm.elements.abreise ? bookingForm.elements.abreise.value : '';
+    bookingForm.elements._subject.value =
+      'Booking request Villa Joka ' + subjectDate(arrival) + ' - ' + subjectDate(departure);
+  });
+}
 
 window.addEventListener('load', function() { document.getElementById('heroBg').classList.add('go'); });
 
