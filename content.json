@@ -417,7 +417,7 @@
       "label_uk": "Спальня"
     },
     {
-      "src": "images/optimized/pool-720.webp",
+      "src": "images/pool-20260723102647.jpg",
       "_full": "images/optimized/pool-1200.webp",
       "alt_de": "Privater Pool im Garten der Villa Joka",
       "label_de": "Privater Pool",
@@ -497,6 +497,14 @@
       "label_uk": "Простора тераса на даху"
     },
     {
+      "src": "images/flur-eingang-05-20260723102817.jpg",
+      "_full": "images/optimized/villa-fassade-1200.webp",
+      "alt_de": "Flur Obergeschoss",
+      "label_de": "Flur Obersgeschoss",
+      "label_en": "Villa & Carport",
+      "label_uk": "Вілла та навіс для авто"
+    },
+    {
       "src": "images/optimized/bad-waesche-720.webp",
       "_full": "images/optimized/bad-waesche-1200.webp",
       "alt_de": "Großes Bad mit Dusche und Waschmaschine",
@@ -511,14 +519,6 @@
       "label_de": "Eingang Villa Joka",
       "label_en": "Villa Joka Entrance",
       "label_uk": "Вхід у Віллу Йока"
-    },
-    {
-      "src": "images/optimized/villa-fassade-720.webp",
-      "_full": "images/optimized/villa-fassade-1200.webp",
-      "alt_de": "Straßenansicht der Villa Joka mit Carport",
-      "label_de": "Villa & Carport",
-      "label_en": "Villa & Carport",
-      "label_uk": "Вілла та навіс для авто"
     }
   ],
   "prices_villa": [
