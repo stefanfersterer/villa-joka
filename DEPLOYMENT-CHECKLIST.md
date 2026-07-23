@@ -11,6 +11,7 @@
 - [ ] Token auf genau dieses Repository und **Contents: Read and write** begrenzen.
 - [ ] Gastgeber per E-Mail einladen und Rolle `editor` setzen.
 - [ ] Nach den Einstellungen einen neuen Deploy auslösen.
+- [ ] Unter **Forms → Form notifications** für `buchungsanfrage` eine E-Mail-Benachrichtigung an `info@villa-joka.eu` anlegen.
 
 ## Dashboard testen
 
@@ -31,7 +32,8 @@
 - [ ] Galerie sowie Vor/Zurück/Escape testen.
 - [ ] Preise und Zusatzkosten abgleichen.
 - [ ] E-Mail-, Telefon-, WhatsApp-, Airbnb- und Booking-Links testen.
-- [ ] Formular mit einer echten Formspree-ID testen.
+- [ ] Formular absenden, Danke-Seite prüfen und Eingang unter Netlify Forms kontrollieren.
+- [ ] E-Mail-Eingang bei `info@villa-joka.eu` kontrollieren.
 - [ ] Impressum und Datenschutz öffnen und schließen.
 - [ ] Smartphone- und Desktop-Darstellung prüfen.
 

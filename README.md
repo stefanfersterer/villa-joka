@@ -41,9 +41,9 @@ npm run check
 
 Danach `dist/index.html` über einen lokalen Webserver öffnen, zum Beispiel mit `npx serve dist`. Anmeldung und Speichern funktionieren vollständig erst im Netlify-Projekt mit aktivierter Identity.
 
-## Formspree
+## Kontaktformular
 
-Solange in `content.json` noch `YOUR_FORM_ID` steht, wird das Anfrageformular sicher deaktiviert und verweist auf E-Mail und WhatsApp. Die echte Formspree-ID wird einmalig technisch in `content.json` eingetragen und ist nicht Teil der Vermieter-Oberfläche.
+Das Anfrageformular wird von Netlify Forms verarbeitet und leitet nach erfolgreichem Versand auf `/danke/` weiter. Damit jede neue Anfrage zusätzlich per E-Mail ankommt, in Netlify bei den Formular-Benachrichtigungen für `buchungsanfrage` die Adresse `info@villa-joka.eu` hinterlegen. Die Einträge bleiben unabhängig davon im Netlify-Bereich **Forms** gespeichert.
 
 ## Wichtige Dateien
 
