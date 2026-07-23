@@ -100,7 +100,8 @@ function renderPage(source, data) {
     ...data,
     site: {
       ...data.site,
-      map_embed_url: `https://www.google.com/maps?q=${encodeURIComponent(mapAddress)}&output=embed`
+      map_embed_url: `https://www.google.com/maps?q=${encodeURIComponent(mapAddress)}&output=embed`,
+      map_route_url: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapAddress)}`
     }
   };
   let result = source;
