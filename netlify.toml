@@ -34,6 +34,54 @@
   status = 301
 
 [[redirects]]
+  from = "/unterkunft"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/galerie"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ausstattung"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/preisliste"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sehenswürdigkeiten"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sehenswuerdigkeiten"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kontakt"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impressum"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/api/content"
   to = "/.netlify/functions/content"
   status = 200
