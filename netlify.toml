@@ -64,6 +64,12 @@
   force = true
 
 [[redirects]]
+  from = "/sehensw%C3%BCrdigkeiten"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/sehenswuerdigkeiten"
   to = "/"
   status = 301
