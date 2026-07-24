@@ -190,24 +190,9 @@ h1.hero-h em{font-style:italic;color:#A8DCE8}
 .loc-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
 .loc-map{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-md);aspect-ratio:4/3;background:var(--sand2)}
 .loc-map iframe{width:100%;height:100%;border:none;display:block}
-.map-facade{position:relative;width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;padding:clamp(1rem,4vw,2rem);overflow:hidden;background:#dce9e7}
-.map-art{position:absolute;inset:0;background:linear-gradient(28deg,transparent 43%,rgba(255,255,255,.92) 43%,rgba(255,255,255,.92) 47%,transparent 47%),linear-gradient(148deg,transparent 55%,rgba(255,255,255,.8) 55%,rgba(255,255,255,.8) 59%,transparent 59%),linear-gradient(82deg,transparent 28%,rgba(201,219,211,.8) 28%,rgba(201,219,211,.8) 31%,transparent 31%),linear-gradient(160deg,#dbe9e0 0 48%,#bdd9df 48% 63%,#dfece5 63%)}
-.map-art::before,.map-art::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.42)}
-.map-art::before{width:12rem;height:12rem;top:-4rem;left:-3rem}
-.map-art::after{width:9rem;height:9rem;right:-2rem;top:17%}
-.map-pin{position:absolute;z-index:1;top:31%;left:57%;width:3.2rem;height:3.2rem;border-radius:50% 50% 50% 0;background:var(--terra);transform:translate(-50%,-50%) rotate(-45deg);box-shadow:0 8px 22px rgba(38,54,57,.25)}
-.map-pin::after{content:"";position:absolute;width:1.15rem;height:1.15rem;border-radius:50%;background:#fff;top:50%;left:50%;transform:translate(-50%,-50%)}
-.map-card{position:relative;z-index:2;width:min(100%,25rem);padding:1.25rem 1.35rem;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.85);border-radius:14px;box-shadow:0 12px 35px rgba(29,62,67,.18);backdrop-filter:blur(8px)}
-.map-card-kicker{font-size:.7rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--terra);margin-bottom:.3rem}
-.map-card-address{font-family:var(--serif);font-size:1.18rem;line-height:1.3;font-weight:600;color:var(--dark);margin-bottom:.9rem}
-.map-actions{display:flex;gap:.55rem;flex-wrap:wrap}
-.map-action{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:2.7rem;padding:.65rem 1rem;border-radius:8px;font:600 .83rem/1 var(--sans);cursor:pointer;transition:transform .15s,background .2s,border-color .2s}
-.map-action:hover{transform:translateY(-1px)}
-.map-load{color:#fff;background:var(--ocean);border:1px solid var(--ocean)}
-.map-load:hover{background:var(--dark)}
-.map-route{color:var(--ocean);background:#fff;border:1px solid var(--ocean3)}
-.map-route:hover{border-color:var(--ocean);background:var(--cream)}
-.map-privacy{margin-top:.65rem;font-size:.7rem;line-height:1.4;color:var(--muted)}
+.map-live{position:relative;width:100%;height:100%}
+.map-route-float{position:absolute;z-index:2;right:1rem;bottom:1rem;display:inline-flex;align-items:center;gap:.42rem;padding:.75rem 1.05rem;border-radius:9px;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.85);box-shadow:0 8px 24px rgba(29,62,67,.22);color:var(--ocean);font-size:.84rem;font-weight:700;line-height:1;transition:transform .15s,background .2s}
+.map-route-float:hover{transform:translateY(-1px);background:#fff}
 .dist-list{display:flex;flex-direction:column;gap:.5rem;margin-top:1.4rem}
 .dist-item{display:flex;align-items:center;gap:.9rem;padding:.7rem 1rem;background:#fff;border-radius:10px;border:1px solid var(--border);font-size:.9rem;transition:border-color .2s}
 .dist-item:hover{border-color:var(--ocean3)}
@@ -719,28 +704,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);font-size:.87rem;line-h
         </div>
       </div>
       <div class="loc-map fu vis">
-        <div id="map-facade" class="map-facade" data-src="{{site.map_embed_url}}">
-          <div class="map-art" aria-hidden="true"></div>
-          <div class="map-pin" aria-hidden="true"></div>
-          <div class="map-card">
-            <div class="map-card-kicker">Villa Joka</div>
-            <div class="map-card-address lang-de">{{site.address_de}}</div>
-            <div class="map-card-address lang-en hidden">{{site.address_en}}</div>
-            <div class="map-card-address lang-uk hidden">{{site.address_uk}}</div>
-            <div class="map-actions">
-              <button type="button" class="map-action map-load" onclick="loadVillaMap()">
-                <span aria-hidden="true">🗺️</span>
-                <span class="lang-de">{{copy.map_button.de}}</span><span class="lang-en hidden">{{copy.map_button.en}}</span><span class="lang-uk hidden">{{copy.map_button.uk}}</span>
-              </button>
-              <a class="map-action map-route" href="{{site.map_route_url}}" target="_blank" rel="noopener">
-                <span aria-hidden="true">↗</span>
-                <span class="lang-de">Route öffnen</span><span class="lang-en hidden">Open route</span><span class="lang-uk hidden">Відкрити маршрут</span>
-              </a>
-            </div>
-            <p class="map-privacy">
-              <span class="lang-de">{{copy.map_note.de}} erst nach Klick.</span><span class="lang-en hidden">{{copy.map_note.en}} only after clicking.</span><span class="lang-uk hidden">{{copy.map_note.uk}} лише після натискання.</span>
-            </p>
-          </div>
+        <div class="map-live">
+          <iframe src="{{site.map_embed_url}}" title="Villa Joka – Google Maps" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="map-route-float" href="{{site.map_route_url}}" target="_blank" rel="noopener">
+            <span aria-hidden="true">↗</span>
+            <span class="lang-de">Route öffnen</span><span class="lang-en hidden">Open route</span><span class="lang-uk hidden">Відкрити маршрут</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1056,18 +1025,6 @@ document.getElementById('hbg').addEventListener('click', function() {
   document.getElementById('mobNav').classList.toggle('open');
 });
 function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
-
-function loadVillaMap() {
-  var facade = document.getElementById('map-facade');
-  if (!facade) return;
-  var frame = document.createElement('iframe');
-  frame.src = facade.dataset.src;
-  frame.allowFullscreen = true;
-  frame.referrerPolicy = 'no-referrer-when-downgrade';
-  frame.title = 'Villa Joka – Google Maps';
-  frame.loading = 'lazy';
-  facade.parentNode.replaceChild(frame, facade);
-}
 
 var bookingForm = document.querySelector('form[name="buchungsanfrage"]');
 if (bookingForm) {
